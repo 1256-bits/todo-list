@@ -1,4 +1,8 @@
-import { type TodoObject, type checklistItem, type ProjectObject } from './interfaces'
+import {
+  type TodoObject,
+  type checklistItem,
+  type ProjectObject
+} from './interfaces'
 
 export class TodoItem implements TodoObject {
   title: string
@@ -27,7 +31,7 @@ export class TodoItem implements TodoObject {
     this.checklist = checklist
   }
 
-  addChecklistItem (itemText: string): void {
+  adddChecklistItem (itemText: string): void {
     const item = { text: itemText, completed: false }
     this.checklist.push(item)
   }
@@ -42,7 +46,7 @@ export class Project implements ProjectObject {
     this.items = []
   }
 
-  addProject (item: TodoItem):void {
-
+  addProject (item: TodoItem): void {
+    this.items.push(item)
   }
 }

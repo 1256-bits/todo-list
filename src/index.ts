@@ -1,1 +1,1 @@
-import {TodoItem, Project} from "./classes"
+import { TodoItem, Project } from './classes'
