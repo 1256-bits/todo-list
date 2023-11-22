@@ -13,7 +13,7 @@ export class TodoItem implements TodoObject {
   notes: string[]
   checklist: checklistItem[]
 
-  constructor ({
+  constructor({
     title,
     description,
     dueDate,
@@ -31,7 +31,7 @@ export class TodoItem implements TodoObject {
     this.checklist = checklist
   }
 
-  adddChecklistItem (itemText: string): void {
+  adddChecklistItem(itemText: string): void {
     const item = { text: itemText, completed: false }
     this.checklist.push(item)
   }
@@ -41,12 +41,16 @@ export class Project implements ProjectObject {
   name: string
   items: TodoItem[]
 
-  constructor (name: string) {
+  constructor(name: string) {
     this.name = name
     this.items = []
   }
 
-  addProject (item: TodoItem): void {
+  addItem(item: TodoItem): void {
     this.items.push(item)
+  }
+
+  removeItem(title: string): void {
+    this.items = this.items.filter(item => item.title !== title);
   }
 }
