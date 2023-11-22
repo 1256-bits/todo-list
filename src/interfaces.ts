@@ -17,3 +17,8 @@ export interface ProjectObject {
   name: string
   items: TodoObject[]
 }
+
+export interface projectImport {
+  name: string
+  items: TodoObject[]
+}
