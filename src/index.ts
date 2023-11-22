@@ -13,6 +13,11 @@ interface checklistItem {
   completed: boolean;
 }
 
+interface ProjectObject {
+  name: string;
+  items: TodoItem[]
+}
+
 class TodoItem implements TodoObject {
   title: string;
   description: string;
@@ -46,10 +51,12 @@ class TodoItem implements TodoObject {
   }
 }
 
-class Project {
+class Project implements ProjectObject {
+  name: string;
   items: TodoItem[];
 
-  constructor() {
+  constructor(name: string) {
+    this.name: name;
     this.items = [];
   }
 }
