@@ -9,7 +9,7 @@ interface TodoObject {
 }
 
 interface checklistItem {
-  test: string;
+  text: string;
   completed: boolean;
 }
 
