@@ -5,7 +5,12 @@ interface TodoObject {
   dateStarted: Date;
   priority: "low" | "normal" | "high";
   notes: string[];
-  checklist: string[];
+  checklist: checklistItem[];
+}
+
+interface checklistItem {
+  test: string;
+  completed: boolean;
 }
 
 class TodoItem implements TodoObject {
@@ -15,7 +20,7 @@ class TodoItem implements TodoObject {
   dateStarted: Date;
   priority: "low" | "normal" | "high";
   notes: string[];
-  checklist: string[];
+  checklist: checklistItem[];
   constructor({
     title,
     description,
