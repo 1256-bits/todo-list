@@ -39,11 +39,11 @@ export class TodoItem implements TodoObject {
 }
 
 export class Project implements ProjectObject {
-  name: string
+  title: string
   items: TodoItem[]
 
   constructor(name: string) {
-    this.name = name
+    this.title = name
     this.items = []
   }
 
@@ -58,13 +58,22 @@ export class Project implements ProjectObject {
 
 export class ProjectList {
   items: Project[] = []
+
   fromJSON(json: string): void {
     const imports: projectImport[] = JSON.parse(json)
     const projects: Project[] = []
     imports.forEach(prImport => {
-      const project = new Project(prImport.name)
+      const project = new Project(prImport.title)
       prImport.items.forEach(item => project.items.push(new TodoItem(item)))
       projects.push(project)
     })
+  }
+
+  addProject(project: Project): void {
+    this.items.push(project);
+  }
+
+  removeProject(title: string): void {
+    this.items = this.items.filter(item => item.title !== title)
   }
 }

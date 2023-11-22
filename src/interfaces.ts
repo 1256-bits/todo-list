@@ -14,11 +14,11 @@ export interface checklistItem {
 }
 
 export interface ProjectObject {
-  name: string
+  title: string
   items: TodoObject[]
 }
 
 export interface projectImport {
-  name: string
+  title: string
   items: TodoObject[]
 }
