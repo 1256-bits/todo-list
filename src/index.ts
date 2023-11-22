@@ -21,6 +21,7 @@ class TodoItem implements TodoObject {
   priority: "low" | "normal" | "high";
   notes: string[];
   checklist: checklistItem[];
+
   constructor({
     title,
     description,
@@ -38,6 +39,7 @@ class TodoItem implements TodoObject {
     this.notes = notes;
     this.checklist = checklist;
   }
+
   addChecklistItem(itemText: string) {
     const item = { text: itemText, completed: false };
     this.checklist.push(item);
@@ -46,6 +48,7 @@ class TodoItem implements TodoObject {
 
 class Project {
   items: TodoItem[];
+
   constructor() {
     this.items = [];
   }
