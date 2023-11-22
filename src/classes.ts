@@ -51,6 +51,6 @@ export class Project implements ProjectObject {
   }
 
   removeItem(title: string): void {
-    this.items = this.items.filter(item => item.title !== title);
+    this.items = this.items.filter(item => item.title !== title)
   }
 }
