@@ -38,6 +38,10 @@ class TodoItem implements TodoObject {
     this.notes = notes;
     this.checklist = checklist;
   }
+  addChecklistItem(itemText: string) {
+    const item = { text: itemText, completed: false };
+    this.checklist.push(item);
+  }
 }
 
 class Project {
