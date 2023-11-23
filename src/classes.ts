@@ -20,7 +20,7 @@ export class TodoItem implements TodoObject {
     dueDate,
     dateStarted,
     priority,
-    notes = "",
+    notes = '',
     checklist = []
   }: TodoObject) {
     this.title = title
@@ -32,7 +32,7 @@ export class TodoItem implements TodoObject {
     this.checklist = checklist
   }
 
-  adddChecklistItem(itemText: string): void {
+  adddChecklistItem (itemText: string): void {
     const item = { text: itemText, completed: false }
     this.checklist.push(item)
   }
@@ -47,11 +47,11 @@ export class Project implements ProjectObject {
     this.items = []
   }
 
-  addItem(item: TodoItem): void {
+  addItem (item: TodoItem): void {
     this.items.push(item)
   }
 
-  removeItem(title: string): void {
+  removeItem (title: string): void {
     this.items = this.items.filter(item => item.title !== title)
   }
 }
@@ -59,7 +59,7 @@ export class Project implements ProjectObject {
 export class ProjectList {
   items: Project[] = []
 
-  fromJSON(json: string): void {
+  fromJSON (json: string): void {
     const imports: projectImport[] = JSON.parse(json)
     const projects: Project[] = []
     imports.forEach(prImport => {
@@ -69,11 +69,11 @@ export class ProjectList {
     })
   }
 
-  addProject(project: Project): void {
-    this.items.push(project);
+  addProject (project: Project): void {
+    this.items.push(project)
   }
 
-  removeProject(title: string): void {
+  removeProject (title: string): void {
     this.items = this.items.filter(item => item.title !== title)
   }
 }
