@@ -11,7 +11,7 @@ export default function createTodoObject (formData: FormData): TodoObject {
 }
 
 function getStringParam (param: FormDataEntryValue | null, defParam: string): string {
-  if (param == null) {
+  if (!param) {
     return defParam
   }
   return String(param)
