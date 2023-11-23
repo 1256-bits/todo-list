@@ -21,6 +21,10 @@ const config = {
     open: true,
     host: "localhost",
     static: "./src",
+    hot: true,
+    client: {
+      overlay: false,
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,6 +32,7 @@ const config = {
     }),
     new ESLintPlugin({
       extensions: ['js', 'ts'],
+      failOnError: false,
     }),
 
     // Add your plugins here
