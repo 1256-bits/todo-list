@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Webpack App</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-        <h2>Tip: Check your console</h2>
-    </body>
-    
+
+<head>
+  <meta charset="utf-8" />
+  <title>Webpack App</title>
+</head>
+
+<body>
+  <form action="">
+    <ul>
+      <li>
+        <label for="title">title</label>
+        <input name="title" id="title" type="text">
+      </li>
+      <li>
+        <label for="description">description</label>
+        <input name="description" id="description" type="text">
+      </li>
+      <li>
+        <label for="dueDate">dueDate</label>
+        <input name="dueDate" id="dueDate" type="datetime-local">
+      </li>
+      <li>
+        <label for="dateStarted">dateStarted</label>
+        <input name="dateStarted" id="dateStarted" type="datetime-local">
+      </li>
+      <li>
+        <fieldset>
+          <legend>Priority</legend>
+          <div>
+            <label for="priority">Low</label>
+            <input name="priority" id="priority" type="radio" value="low">
+          </div>
+          <div>
+            <label for="priority">Medium</label>
+            <input name="priority" id="priority" type="radio" value="medium">
+          </div>
+          <div>
+            <label for="priority">High</label>
+            <input name="priority" id="priority" type="radio" value="high">
+          </div>
+        </fieldset>
+      </li>
+      <li>
+        <label for="notes">notes</label>
+        <input name="notes" id="notes" type="text">
+      </li>
+    </ul>
+    <button id="create-todo">Create todo</button>
+  </form>
+  <button id="list-projects">List projects</button>
+</body>
+
 </html>
