@@ -1,9 +1,13 @@
+import { TodoItem } from './classes'
+
+export type priority = 'low' | 'normal' | 'high'
+
 export interface TodoObject {
   title: string
   description: string
   dueDate: Date | null
   dateStarted: Date
-  priority: 'low' | 'normal' | 'high'
+  priority: priority
   notes: string
   checklist: checklistItem[]
 }
@@ -15,7 +19,7 @@ export interface checklistItem {
 
 export interface ProjectObject {
   title: string
-  items: TodoObject[]
+  items: TodoItem[]
 }
 
 export interface projectImport {
