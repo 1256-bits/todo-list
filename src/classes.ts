@@ -11,7 +11,7 @@ export class TodoItem implements TodoObject {
   dueDate: Date | null
   dateStarted: Date
   priority: 'low' | 'normal' | 'high'
-  notes: string[]
+  notes: string
   checklist: checklistItem[]
 
   constructor({
@@ -20,7 +20,7 @@ export class TodoItem implements TodoObject {
     dueDate,
     dateStarted,
     priority,
-    notes = [],
+    notes = "",
     checklist = []
   }: TodoObject) {
     this.title = title

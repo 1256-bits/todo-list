@@ -4,7 +4,7 @@ export interface TodoObject {
   dueDate: Date | null
   dateStarted: Date
   priority: 'low' | 'normal' | 'high'
-  notes: string[]
+  notes: string
   checklist: checklistItem[]
 }
 
