@@ -14,7 +14,7 @@ export class TodoItem implements TodoObject {
   notes: string
   checklist: checklistItem[]
 
-  constructor({
+  constructor ({
     title,
     description,
     dueDate,
@@ -42,7 +42,7 @@ export class Project implements ProjectObject {
   title: string
   items: TodoItem[]
 
-  constructor(name: string) {
+  constructor (name: string) {
     this.title = name
     this.items = []
   }
