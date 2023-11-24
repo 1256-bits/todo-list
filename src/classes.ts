@@ -78,6 +78,6 @@ export class ProjectList {
   }
 
   removeProject (id: number): void {
-    this.items = this.items.filter(item => item.title !== id)
+    this.items = this.items.filter(item => item.id !== id)
   }
 }
