@@ -10,10 +10,11 @@ export interface TodoObject {
   priority: priority
   notes: string
   checklist: checklistItem[]
-  id: string
+  id: number
 }
 
 export interface checklistItem {
+  index: number
   text: string
   completed: boolean
 }
