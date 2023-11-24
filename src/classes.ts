@@ -1,8 +1,7 @@
 import {
   type TodoObject,
   type checklistItem,
-  type ProjectObject,
-  type projectImport
+  type ProjectObject
 } from './interfaces'
 
 export class TodoItem implements TodoObject {
@@ -69,7 +68,7 @@ export class ProjectList {
     const imports: ProjectList = JSON.parse(json)
     imports.items.forEach(prImport => {
       const project = new Project(prImport.title, prImport.id)
-      prImport.items.forEach(item => project.addItem(new TodoItem(item)))
+      prImport.items.forEach(item => { project.addItem(new TodoItem(item)) })
       this.addProject(project)
     })
   }
