@@ -12,17 +12,11 @@ export default function createTodoObject (formData: FormData): TodoObject {
 }
 
 function getStringParam (param: FormDataEntryValue | null, defParam: string): string {
-  if (!param) {
-    return defParam
-  }
-  return String(param)
+  return (param === "" || param == null) ? defParam : String(param)
 }
 
 function getDateParam (param: FormDataEntryValue | null, defParam: Date | null): Date | null {
-  if (param && typeof param === 'string') {
-    return new Date(param)
-  }
-  return defParam
+  return (param == null || typeof param !== 'string' || param === "") ? defParam : new Date(param) 
 }
 
 function getPriority (param: FormDataEntryValue | null, defParam: priority): priority {
