@@ -7,7 +7,12 @@
 </head>
 
 <body>
-  <form action="">
+  <form id="new-project">
+    <label for="project-title">New project title</label>
+    <input type="text" name="title" id="project-title">
+    <button id="new-proj-btn">Create Project</button>
+  </form>
+  <form id="new-todo">
     <ul>
       <li>
         <label for="title">title</label>
@@ -49,7 +54,9 @@
     </ul>
     <button id="create-todo">Create todo</button>
   </form>
-  <button id="list-projects">List projects</button>
+  <div class="project-list">
+    <button id="list-projects">List projects</button>
+  </div>
 </body>
 
 </html>
