@@ -21,10 +21,12 @@ export interface checklistItem {
 
 export interface ProjectObject {
   title: string
+  id: number
   items: TodoItem[]
 }
 
 export interface projectImport {
   title: string
+  id: number
   items: TodoObject[]
 }
