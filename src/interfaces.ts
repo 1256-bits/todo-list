@@ -24,9 +24,3 @@ export interface ProjectObject {
   id: number
   items: TodoItem[]
 }
-
-export interface projectImport {
-  title: string
-  id: number
-  items: TodoObject[]
-}
