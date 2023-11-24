@@ -7,7 +7,8 @@ export default function createTodoObject (formData: FormData): TodoObject {
   const priority = getPriority(formData.get('priority'), 'normal')
   const notes = ''
   const checklist: checklistItem[] = []
-  return { title, description, dueDate, dateStarted, priority, notes, checklist }
+  const id = Date.now()
+  return { title, description, dueDate, dateStarted, priority, notes, checklist, id }
 }
 
 function getStringParam (param: FormDataEntryValue | null, defParam: string): string {

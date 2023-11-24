@@ -13,6 +13,7 @@ export class TodoItem implements TodoObject {
   priority: 'low' | 'normal' | 'high'
   notes: string
   checklist: checklistItem[]
+  id: number
 
   constructor ({
     title,
@@ -21,7 +22,8 @@ export class TodoItem implements TodoObject {
     dateStarted,
     priority,
     notes = '',
-    checklist = []
+    checklist = [],
+    id
   }: TodoObject) {
     this.title = title
     this.description = description
@@ -30,6 +32,7 @@ export class TodoItem implements TodoObject {
     this.priority = priority
     this.notes = notes
     this.checklist = checklist
+    this.id = id
   }
 
   adddChecklistItem (itemText: string): void {
