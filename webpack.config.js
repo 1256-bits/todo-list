@@ -16,7 +16,6 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
   },
-  devtool: "eval-source-map",
   devServer: {
     open: true,
     host: "localhost",
@@ -70,6 +69,7 @@ module.exports = () => {
     config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = "development";
+    config.devtool = "inline-source-map";
   }
   return config;
 };
