@@ -1,5 +1,7 @@
 @use "colors.scss" as *;
-@use "header.scss" as *;
+@use "header.scss";
+@use "nav.scss";
+@use "main.scss";
 @import url(https://fonts.bunny.net/css?family=nunito|pt-sans);
 
 :root {
@@ -27,6 +29,14 @@
 
 .font-body {
   font-family: "PT Sans", sans-serif;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr 20fr;
+  grid-template-columns: 1fr 3fr;
 }
 
 /*
