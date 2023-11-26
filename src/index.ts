@@ -3,7 +3,7 @@ import { TodoItem, Project, ProjectList } from './classes'
 import * as DOM from './dom'
 import createTodoObject from './createTodoObject'
 import 'normalize.css'
-import 'styles.scss'
+import './styles.scss'
 
 const projectList = new ProjectList()
 const project = new Project('default', 0)
@@ -27,4 +27,4 @@ newProject?.addEventListener('submit', form => {
 })
 
 const listProjects = document.querySelector('#list-projects')
-listProjects?.addEventListener('click', DOM.listProjects)
+// listProjects?.addEventListener('click', DOM.listProjects)
