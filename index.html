@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
@@ -7,56 +7,120 @@
 </head>
 
 <body>
+  <div class="page-wrapper">
+    <!--
   <form id="new-project">
     <label for="project-title">New project title</label>
     <input type="text" name="title" id="project-title">
     <button id="new-proj-btn">Create Project</button>
   </form>
-  <form id="new-todo">
-    <ul>
-      <li>
-        <label for="title">title</label>
-        <input name="title" id="title" type="text">
-      </li>
-      <li>
-        <label for="description">description</label>
-        <input name="description" id="description" type="text">
-      </li>
-      <li>
-        <label for="dueDate">dueDate</label>
-        <input name="dueDate" id="dueDate" type="datetime-local">
-      </li>
-      <li>
-        <label for="dateStarted">dateStarted</label>
-        <input name="dateStarted" id="dateStarted" type="datetime-local">
-      </li>
-      <li>
-        <fieldset>
-          <legend>Priority</legend>
-          <div>
-            <label for="priority">Low</label>
-            <input name="priority" id="priority" type="radio" value="low">
-          </div>
-          <div>
-            <label for="priority">Medium</label>
-            <input name="priority" id="priority" type="radio" value="medium">
-          </div>
-          <div>
-            <label for="priority">High</label>
-            <input name="priority" id="priority" type="radio" value="high">
-          </div>
-        </fieldset>
-      </li>
-      <li>
-        <label for="notes">notes</label>
-        <input name="notes" id="notes" type="text">
-      </li>
-    </ul>
-    <button id="create-todo">Create todo</button>
-  </form>
-  <div class="project-list">
+      -->
+    <header class="page-header">
+      <h1>Todo list by 1256-bits</h1>
+      <button class="header-button import">Import</button>
+      <button class="header-button export">Export</button>
+    </header>
+    <nav class="project-list">
+      <h3 class="center">Projects</h3>
+      <ul>
+        <li class="project">
+          <button class="project-name">Project 1</button>
+          <button class="rename-button">Rename</button>
+          <button class="delete-button">Delete</button>
+        </li>
+        <li class="project">
+          <button class="project-name">Project 2</button>
+          <button class="rename-button">Rename</button>
+          <button class="delete-button">Delete</button>
+        </li>
+        <li class="project">
+          <button class="project-name">Project 3</button>
+          <button class="rename-button">Rename</button>
+          <button class="delete-button">Delete</button>
+        </li>
+        <li class="project">
+          <button class="project-name">Project 4</button>
+          <button class="rename-button">Rename</button>
+          <button class="delete-button">Delete</button>
+        </li>
+        <li class="project">
+          <button class="project-name">Project 5</button>
+          <button class="rename-button">Rename</button>
+          <button class="delete-button">Delete</button>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div class="project-header">
+        <h2>Project name</h2>
+        <button class="add-button">Add</button>
+        <button class="rename-button">Rename</button>
+        <button class="delete-button">Delete</button>
+      </div>
+      <ul>
+        <li>Task 1</li>
+        <li>Task 2</li>
+        <li>Task 3</li>
+        <li>Task 4</li>
+        <li>Task 5</li>
+        <li>Task 6</li>
+        <li>Task 7</li>
+      </ul>
+      <dialog>
+        <form class="todo-form" id="new-todo">
+          <ul class="todo-form-items">
+            <li>
+              <label for="title">title</label>
+              <input name="title" id="title" type="text" />
+            </li>
+            <li>
+              <label for="description">description</label>
+              <input name="description" id="description" type="text" />
+            </li>
+            <li>
+              <label for="dueDate">dueDate</label>
+              <input name="dueDate" id="dueDate" type="datetime-local" />
+            </li>
+            <li>
+              <label for="dateStarted">dateStarted</label>
+              <input name="dateStarted" id="dateStarted" type="datetime-local" />
+            </li>
+            <li>
+              <fieldset>
+                <legend>Priority</legend>
+                <div>
+                  <label for="priority">Low</label>
+                  <input name="priority" id="priority" type="radio" value="low" />
+                </div>
+                <div>
+                  <label for="priority">Medium</label>
+                  <input name="priority" id="priority" type="radio" value="medium" />
+                </div>
+                <div>
+                  <label for="priority">High</label>
+                  <input name="priority" id="priority" type="radio" value="high" />
+                </div>
+              </fieldset>
+            </li>
+            <li>
+              <label for="notes">notes</label>
+              <input name="notes" id="notes" type="text" />
+            </li>
+            <button id="create-todo">Create todo</button>
+          </ul>
+        </form>
+      </dialog>
+    </main>
+    <footer>
+      <p>Icons: <a href="https://www.svgrepo.com/">SVG repo</a></p>
+    </footer>
+  </div>
+  <!--
+  <div id="project-list">
+    <div id="pl-wrapper"></div>
     <button id="list-projects">List projects</button>
   </div>
+    -->
 </body>
 
 </html>
