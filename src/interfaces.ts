@@ -11,6 +11,7 @@ export interface TodoObject {
   notes: string
   checklist: checklistItem[]
   id: number
+  done: boolean
 }
 
 export interface checklistItem {

@@ -13,6 +13,7 @@ export class TodoItem implements TodoObject {
   notes: string
   checklist: checklistItem[]
   id: number
+  done: boolean
 
   constructor ({
     title,
@@ -22,7 +23,8 @@ export class TodoItem implements TodoObject {
     priority,
     notes = '',
     checklist = [],
-    id
+    id,
+    done,
   }: TodoObject) {
     this.title = title
     this.description = description
@@ -32,6 +34,7 @@ export class TodoItem implements TodoObject {
     this.notes = notes
     this.checklist = checklist
     this.id = id
+    this.done = done
   }
 
   adddChecklistItem (itemText: string): void {

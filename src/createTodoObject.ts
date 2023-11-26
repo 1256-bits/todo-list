@@ -8,7 +8,8 @@ export default function createTodoObject (formData: FormData): TodoObject {
   const notes = ''
   const checklist: checklistItem[] = []
   const id = Date.now()
-  return { title, description, dueDate, dateStarted, priority, notes, checklist, id }
+  const done = getBoolean(formData.get('done'), false)
+  return { title, description, dueDate, dateStarted, priority, notes, checklist, id, done }
 }
 
 function getStringParam (param: FormDataEntryValue | null, defParam: string): string {
@@ -25,4 +26,15 @@ function getPriority (param: FormDataEntryValue | null, defParam: priority): pri
     return param as priority
   }
   return defParam
+}
+
+function getBoolean (param: FormDataEntryValue | null, defParam: boolean): boolean {
+  switch (param) {
+    case "true":
+      return true
+    case "false":
+      return false
+    default:
+      return defParam
+  }
 }
