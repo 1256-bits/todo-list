@@ -1,0 +1,57 @@
+@use "colors.scss" as *;
+@use "header.scss" as *;
+@import url(https://fonts.bunny.net/css?family=nunito|pt-sans);
+
+:root {
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+}
+
+@each $name, $color in $colors {
+  @if ($name != "text") {
+    .bg-#{$name} {
+      background-color: var(--#{$name});
+    }
+  }
+  @if ($name != "background") {
+    .color-#{$name} {
+      background-color: var(--#{$name});
+    }
+  }
+}
+
+.font-head {
+  font-family: "Nunito", sans-serif;
+}
+
+.font-body {
+  font-family: "PT Sans", sans-serif;
+}
+
+/*
+.todo-form {
+  max-width: 70%;
+  margin: auto;
+  border: 2px solid black;
+  margin-top: 2rem;
+  border-radius: 2rem;
+
+  ul {
+    list-style: none;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  label {
+    display: inline-block;
+    width: 150px;
+  }
+
+  input {
+    appearance: none;
+  }
+}
+*/

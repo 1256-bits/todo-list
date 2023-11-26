@@ -1,0 +1,24 @@
+.page-header {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  align-items: center;
+  gap: 5px;
+
+  h1 {
+    font-size: 1.5rem;
+    grid-column: 2/10;
+  }
+
+  .import {
+    grid-column: 18/19;
+  }
+
+  .export {
+    grid-column: 19/20;
+  }
+}
+
+// TESTING ONLY
+.page-header {
+  border: 2px solid red;
+}
