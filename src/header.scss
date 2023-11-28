@@ -11,16 +11,30 @@
     margin: 0.5rem;
   }
 
+  button {
+    appearance: none;
+    border: none;
+    padding: 0;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    background: none;
+  }
+
+  button:hover svg {
+    fill: red;
+  }
+
   .import {
-    grid-column: 18/19;
+    grid-column: 19/20;
+    justify-self: right;
   }
 
   .export {
-    grid-column: 19/20;
+    grid-column: 20/21;
+    justify-self: left;
   }
 }
 
 // TESTING ONLY
 .page-header {
-  border: 2px solid red;
 }
