@@ -1,13 +1,10 @@
-<!doctype html>
-<html>
-
 <head>
   <meta charset="utf-8" />
   <title>Webpack App</title>
 </head>
 
 <body>
-  <div class="page-wrapper">
+  <div class="page-wrapper bg-background">
     <!--
   <form id="new-project">
     <label for="project-title">New project title</label>
@@ -15,12 +12,20 @@
     <button id="new-proj-btn">Create Project</button>
   </form>
       -->
-    <header class="page-header">
+    <header class="page-header bg-primary">
       <h1>Todo list by 1256-bits</h1>
-      <button class="header-button import">Import</button>
-      <button class="header-button export">Export</button>
+      <button class="header-button import">
+        <svg viewBox="0 0 20 20">
+          <use width="20" height="20" href="./svg/import.svg#import">
+        </svg>
+      </button>
+      <button class="header-button export">
+        <svg viewBox="0 0 20 20">
+          <use width="20" height="20" href="./svg/export.svg#export" />
+        </svg>
+      </button>
     </header>
-    <nav class="project-list">
+    <nav class="project-list bg-secondary">
       <h3 class="center">Projects</h3>
       <ul>
         <li class="project">
@@ -50,8 +55,8 @@
         </li>
       </ul>
     </nav>
-    <main>
-      <div class="project-header">
+    <main class="bg-secondary">
+      <div class=" project-header">
         <h2>Project name</h2>
         <button class="add-button">Add</button>
         <button class="rename-button">Rename</button>
@@ -111,9 +116,6 @@
         </form>
       </dialog>
     </main>
-    <footer>
-      <p>Icons: <a href="https://www.svgrepo.com/">SVG repo</a></p>
-    </footer>
   </div>
   <!--
   <div id="project-list">
