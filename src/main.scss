@@ -1,5 +1,6 @@
 .todo-list {
   margin-right: 1rem;
+  width: min(95ch, calc(100% - 1rem));
 }
 
 .project-list,
@@ -40,6 +41,8 @@
 
 .project-list {
   margin-left: 1rem;
+  width: min(50ch, calc(100% - 1rem));
+  justify-self: right;
 
   h2 {
     align-self: center;
