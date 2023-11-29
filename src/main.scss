@@ -13,13 +13,13 @@
 
 .project-header {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(20, 1fr);
   align-items: center;
   margin-inline: 1rem;
   gap: 5px;
 
   h2 {
-    grid-column: 1/5;
+    grid-column: 1/18;
   }
 
   button {
@@ -27,15 +27,15 @@
   }
 
   .add-button {
-    grid-column: 8/9;
+    grid-column: 18/19;
   }
 
   .rename-button {
-    grid-column: 9/10;
+    grid-column: 19/20;
   }
 
   .delete-button {
-    grid-column: 10/11;
+    grid-column: 20/21;
   }
 }
 
