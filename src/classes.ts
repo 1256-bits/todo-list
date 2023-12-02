@@ -24,7 +24,7 @@ export class TodoItem implements TodoObject {
     notes = '',
     checklist = [],
     id,
-    done,
+    done
   }: TodoObject) {
     this.title = title
     this.description = description
