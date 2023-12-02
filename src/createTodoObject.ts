@@ -30,9 +30,9 @@ function getPriority (param: FormDataEntryValue | null, defParam: priority): pri
 
 function getBoolean (param: FormDataEntryValue | null, defParam: boolean): boolean {
   switch (param) {
-    case "true":
+    case 'true':
       return true
-    case "false":
+    case 'false':
       return false
     default:
       return defParam
