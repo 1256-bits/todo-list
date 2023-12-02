@@ -24,12 +24,12 @@
   }
 
   button:hover {
-    border-color: black;
+    border-color: var(--black);
     background-color: var(--accent);
   }
 
   button:hover svg {
-    fill: black;
+    fill: var(--text);
   }
 
   .import {
