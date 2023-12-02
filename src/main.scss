@@ -60,7 +60,7 @@
   gap: 5px;
   padding: 0.75rem;
   margin: 0.7rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   background-color: var(--primary);
   border: 1px solid var(--accent);
   border-radius: 0.5rem;
@@ -83,9 +83,107 @@
 .rename-button,
 .delete-button {
   fill: transparent;
-  width: 2rem;
+  width: 2.3rem;
   stroke: var(--accent);
   background-color: var(--secondary);
   border: 2px solid var(--accent);
   border-radius: 0.5rem;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--primary);
+  padding: 0.3rem;
+
+  input[type="checkbox"] {
+    appearance: none;
+    background-color: var(--background);
+    border: solid 1px var(--accent);
+    aspect-ratio: 1;
+  }
+
+  > input[type="checkbox"] {
+    appearance: none;
+    width: 2rem;
+    grid-column: 2/3;
+    background-color: var(--background);
+    border: solid 1px var(--accent);
+  }
+
+  .checklist input[type="checkbox"] {
+    width: 1.2rem;
+  }
+
+  input[type="checkbox"]:checked {
+    position: relative;
+    background-color: var(--accent);
+  }
+
+  .checklist input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: grey;
+  }
+
+  input[type="checkbox"]:checked:before {
+    content: "✅︎";
+  }
+  
+  > input[type="checkbox"]:checked:before {
+    font-size: 2rem;
+    position: absolute;
+    top: -2px;
+    left: -6px;
+    font-weight: 600;
+  }
+
+  .checklist input[type="checkbox"]:checked:before {
+    font-size: 1rem;
+    position: absolute;
+    top: -1px;
+    left: -2px;
+    font-weight: 600;
+  }
+
+  .todo-name {
+    grid-column: 3/12;
+    justify-self: start;
+  }
+
+  .add-button,
+  .rename-button,
+  .delete-button {
+    border: none;
+    width: 2rem;
+  }
+
+  .add-button {
+    grid-column: 27/28;
+  }
+
+  .rename-button {
+    grid-column: 28/29;
+  }
+
+  .delete-button {
+    grid-column: 29/30;
+  }
+}
+
+.todo-item:first-child {
+  border-top: 2px solid var(--primary);
+}
+
+.checklist {
+  grid-row: 2;
+  grid-column: 3/-3;
+
+  li {
+    display: grid;
+    grid-template-columns: 1.2rem 1fr;
+    gap: 5px;
+    align-items: center;
+  }
 }
