@@ -1,0 +1,51 @@
+@use "./checkbox.scss";
+
+.todo-item {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--primary);
+  padding: 0.3rem;
+
+  .todo-name {
+    grid-column: 3/12;
+    justify-self: start;
+  }
+
+  .add-button,
+  .rename-button,
+  .delete-button {
+    border: none;
+    width: 2rem;
+  }
+
+  .add-button {
+    grid-column: 27/28;
+  }
+
+  .rename-button {
+    grid-column: 28/29;
+  }
+
+  .delete-button {
+    grid-column: 29/30;
+  }
+  
+  &:first-child {
+    border-top: 2px solid var(--primary);
+  }
+}
+
+.checklist {
+  grid-row: 2;
+  grid-column: 3/-3;
+
+  li {
+    display: grid;
+    grid-template-columns: 1.2rem 1fr;
+    gap: 5px;
+    align-items: center;
+  }
+}
+

@@ -1,0 +1,47 @@
+input[type="checkbox"] {
+  appearance: none;
+  background-color: var(--background);
+  border: solid 1px var(--accent);
+  aspect-ratio: 1;
+
+  &:checked {
+    position: relative;
+    background-color: var(--accent);
+  }
+  &:checked:before {
+    content: "✅︎";
+  }
+}
+
+.todo-item > input[type="checkbox"] {
+  appearance: none;
+  width: 2rem;
+  grid-column: 2/3;
+  background-color: var(--background);
+  border: solid 1px var(--accent);
+
+  &:checked:before {
+    font-size: 2rem;
+    position: absolute;
+    top: -2px;
+    left: -6px;
+    font-weight: 600;
+  }
+}
+
+.checklist input[type="checkbox"] {
+  width: 1.2rem;
+
+  &:checked + label {
+    text-decoration: line-through;
+    color: grey;
+  }
+
+  &:checked:before {
+    font-size: 1rem;
+    position: absolute;
+    top: -1px;
+    left: -2px;
+    font-weight: 600;
+  }
+}

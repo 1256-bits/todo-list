@@ -1,5 +1,6 @@
 @use "colors.scss" as *;
 @use "elements.scss";
+@use "buttons.scss";
 @use "header.scss";
 @use "nav.scss";
 @use "main.scss";
@@ -39,6 +40,10 @@
   font-style: italic;
 }
 
+.hidden {
+  display: none;
+}
+
 .page-wrapper {
   --padding: 0.5rem;
   min-height: calc(100vh - var(--padding));
@@ -52,6 +57,14 @@
   h2 {
     margin: 0;
   }
+}
+
+.project-list,
+.todo-list {
+  grid-row: 2/4;
+  display: grid;
+  grid-template-rows: subgrid;
+  border-radius: 1rem;
 }
 
 /*

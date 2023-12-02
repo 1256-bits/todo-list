@@ -1,0 +1,24 @@
+.project {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  padding: 0.75rem;
+  margin: 0.7rem;
+  font-size: 1.3rem;
+  background-color: var(--primary);
+  border: 1px solid var(--accent);
+  border-radius: 0.5rem;
+
+  .project-name {
+    grid-column: 1/8;
+    justify-self: start;
+  }
+
+  .rename-button {
+    grid-column: 9/10;
+  }
+
+  .delete-button {
+    grid-column: 10/11;
+  }
+}

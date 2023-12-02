@@ -1,0 +1,14 @@
+.project-list {
+  margin-left: 1rem;
+  width: min(50ch, calc(100% - 1rem));
+  justify-self: right;
+
+  h2 {
+    align-self: center;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
