@@ -1,5 +1,6 @@
 body {
   font-family: "PT Sans", sans-serif;
+  color: var(--text);
 }
 
 h1,
@@ -24,3 +25,13 @@ button {
   background: none;
 }
 
+input:read-only {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: default;
+}
+
+input:read-only:focus {
+  outline: none;
+}
