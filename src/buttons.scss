@@ -1,0 +1,15 @@
+.add-button,
+.rename-button,
+.delete-button {
+  fill: transparent;
+  width: 2.3rem;
+  stroke: var(--accent);
+  background-color: var(--secondary);
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+
+  &:hover {
+    border-color: var(--text);
+    stroke: var(--text);
+  }
+}
