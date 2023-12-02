@@ -25,11 +25,11 @@
 
   button:hover {
     border-color: var(--black);
-    background-color: var(--accent);
+    fill: var(--text);
   }
 
-  button:hover svg {
-    fill: var(--text);
+  button:active {
+    background-color: var(--accent);
   }
 
   .import {
