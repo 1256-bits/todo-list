@@ -12,26 +12,6 @@
     margin: 0.5rem;
   }
 
-  button {
-    appearance: none;
-    border: 2px solid var(--accent);
-    border-radius: 0.5em;
-    padding: 0;
-    width: 2rem;
-    aspect-ratio: 1/1;
-    background-color: var(--background);
-    fill: var(--accent);
-  }
-
-  button:hover {
-    border-color: var(--black);
-    fill: var(--text);
-  }
-
-  button:active {
-    background-color: var(--accent);
-  }
-
   .import {
     grid-column: 19/20;
     justify-self: right;
@@ -40,5 +20,25 @@
   .export {
     grid-column: 20/21;
     justify-self: left;
+  }
+}
+
+.header-button {
+  appearance: none;
+  border: 2px solid var(--accent);
+  border-radius: 0.5em;
+  padding: 0;
+  width: 2rem;
+  aspect-ratio: 1/1;
+  background-color: var(--background);
+  fill: var(--accent);
+
+  &:hover {
+    border-color: var(--black);
+    fill: var(--text);
+  }
+
+  &:active {
+    background-color: var(--accent);
   }
 }
