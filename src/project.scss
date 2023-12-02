@@ -8,6 +8,7 @@
   background-color: var(--primary);
   border: 1px solid var(--accent);
   border-radius: 0.5rem;
+  transition: all .1s linear;
 
   .project-name {
     grid-column: 1/8;
@@ -20,5 +21,9 @@
 
   .delete-button {
     grid-column: 10/11;
+  }
+
+  &:hover {
+    background-color: color-mix(in lch, var(--background) 40%, var(--primary)); 
   }
 }
