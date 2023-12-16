@@ -28,6 +28,7 @@
     <nav class="project-list bg-secondary">
       <h2 class="center">Projects</h2>
       <ul>
+        <!--
         <li class="project">
           <button class="project-name italic">Project 1</button>
           <button class="rename-button">
@@ -93,16 +94,40 @@
             </svg>
           </button>
         </li>
+-->
       </ul>
     </nav>
     <main class="bg-secondary todo-list">
       <div class=" project-header">
         <h2>Project name</h2>
         <button class="add-button">
+          <svg viewBox="0 0 20 20">
+            <use width="20" height="20" href="./svg/add.svg#add" />
+          </svg>
+        </button>
+        <button class="rename-button">
+          <svg viewBox="0 0 20 20">
+            <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+          </svg>
+        </button>
+        <button class="delete-button">
+          <svg viewBox="0 0 20 20">
+            <use width="20" height="20" href="./svg/delete.svg#delete" />
+          </svg>
+        </button>
+      </div>
+      <ul>
+        <!--
+        <li class="todo-item">
+          <input type="checkbox" name="done" id="done">
+          <label for="done" class="hidden">Done</label>
+          <input class="todo-name" type="text" for="one" readonly value="Item 1">
+          <button class="add-button">
             <svg viewBox="0 0 20 20">
+              <title>New checklist item</title>
               <use width="20" height="20" href="./svg/add.svg#add" />
             </svg>
-        </button>
+          </button>
           <button class="rename-button">
             <svg viewBox="0 0 20 20">
               <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
@@ -113,15 +138,45 @@
               <use width="20" height="20" href="./svg/delete.svg#delete" />
             </svg>
           </button>
-      </div>
-      <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-        <li>Task 4</li>
-        <li>Task 5</li>
-        <li>Task 6</li>
-        <li>Task 7</li>
+          <div class="checklist">
+            <ul>
+              <li>
+                <input type="checkbox" name="this">
+                <label for="this">Do this</label>
+              </li>
+              <li>
+                <input type="checkbox" name="that">
+                <label for="that">Do that</label>
+              </li>
+              <li>
+                <input type="checkbox" name="not">
+                <label for="not">Don't do that</label>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="todo-item">
+          <input type="checkbox" name="done" id="done">
+          <label for="done" class="hidden">Done</label>
+          <input class="todo-name" type="text" for="one" readonly value="Item 1">
+          <button class="add-button">
+            <svg viewBox="0 0 20 20">
+              <title>New checklist item</title>
+              <use width="20" height="20" href="./svg/add.svg#add" />
+            </svg>
+          </button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+-->
       </ul>
       <dialog>
         <form class="todo-form" id="new-todo">
