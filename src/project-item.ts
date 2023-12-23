@@ -1,4 +1,4 @@
-import { Project } from './classes'
+import { type Project } from './classes'
 import createIcon from './create-icon'
 
 export default function createProjectItem (project: Project): HTMLLIElement {
@@ -13,7 +13,7 @@ export default function createProjectItem (project: Project): HTMLLIElement {
   const editBtn = createEditButton()  
   const delBtn = createDeleteButton()
 
-  li.append(editBtn, delBtn)
+  li.append(nameBtn, editBtn, delBtn)
   return li
 }
 
