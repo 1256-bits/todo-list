@@ -27,31 +27,36 @@ newProject?.addEventListener('submit', form => {
 })
 */
 
-const listProjects = document.querySelector('#list-projects')
+// const listProjects = document.querySelector('#list-projects')
 // listProjects?.addEventListener('click', DOM.listProjects)
 
 projectList.addProject(new Project('Project 1', Date.now()))
 projectList.addProject(new Project('Project 2', Date.now()))
 projectList.addProject(new Project('Project 3', Date.now()))
 
-const item = new TodoItem(createTodoObject(new FormData))
+const item = new TodoItem(createTodoObject(new FormData()))
 item.addChecklistItem('Item 1')
 item.addChecklistItem('Item 2')
 projectList.items[0].addItem(item)
 
 const projectUL = document.querySelector('nav > ul')
-projectList.items.forEach(item => projectUL?.appendChild(createProjectItem(item)))
+projectList.items.forEach(item => {
+  projectUL?.appendChild(createProjectItem(item))
+})
 const projectNames = document.querySelectorAll('.project-name')
-projectNames.forEach(name => name.addEventListener('click', e => listTodos(e)))
+projectNames.forEach(name => {
+  name.addEventListener('click', e => {
+    listTodos(e)
+  })
+})
 
-function listTodos(e: Event): void {
+function listTodos (e: Event): void {
   if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
     console.error('listTodos: not an HTML element or missing ID')
     return
   }
-  const id = parseInt(e.target.dataset.id as string)
+  const id = parseInt(e.target.dataset.id)
   projectList.items.filter(item => item.id === id)
-  
 }
 
 if (projectList.items.length === 0) {
