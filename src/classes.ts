@@ -65,7 +65,7 @@ export class Project implements ProjectObject {
 }
 
 export class ProjectList {
-  items: Project[] = []
+  readonly items: Project[] = []
 
   fromJSON (json: string): void {
     const imports: ProjectList = JSON.parse(json)
@@ -81,6 +81,11 @@ export class ProjectList {
   }
 
   removeProject (id: number): void {
-    this.items = this.items.filter(item => item.id !== id)
+    const item = this.items.filter(item => item.id !== id)
+    if (item.length > 1) {
+      throw new Error(`The following todo items have the same id: ${toString(item)}`)
+    }
+    const index = this.items.indexOf(item[0])
+    this.items.splice(index, 1)
   }
 }
