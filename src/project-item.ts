@@ -10,7 +10,7 @@ export default function createProjectItem (project: Project): HTMLLIElement {
   nameBtn.innerText = project.title
   nameBtn.setAttribute('data-id', String(project.id))
 
-  const editBtn = createEditButton()  
+  const editBtn = createEditButton()
   const delBtn = createDeleteButton()
 
   li.append(nameBtn, editBtn, delBtn)
@@ -23,14 +23,14 @@ function createEditButton (): HTMLButtonElement {
 
   const svg = createIcon('edit')
   button.appendChild(svg)
-  
+
   return button
 }
 
 function createDeleteButton (): HTMLButtonElement {
   const button = document.createElement('button')
   button.classList.add('delete-button')
-  
+
   const svg = createIcon('delete')
   button.appendChild(svg)
 
