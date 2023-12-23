@@ -1,4 +1,4 @@
-import { TodoItem } from './classes'
+import { type TodoItem } from './classes'
 
 export type priority = 'low' | 'normal' | 'high'
 
