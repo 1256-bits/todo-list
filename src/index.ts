@@ -2,6 +2,7 @@ import { TodoItem, Project, ProjectList } from './classes'
 // import { type priority, type TodoObject, type checklistItem } from './interfaces'
 // import * as DOM from './dom'
 import createTodoObject from './createTodoObject'
+import createProjectItem from './project-item'
 import 'normalize.css'
 import './styles.scss'
 
@@ -32,3 +33,6 @@ const listProjects = document.querySelector('#list-projects')
 projectList.addProject(new Project('Project 1', Date.now()))
 projectList.addProject(new Project('Project 2', Date.now()))
 projectList.addProject(new Project('Project 3', Date.now()))
+
+const projectUL = document.querySelector('nav > ul')
+projectList.items.forEach(item => projectUL?.appendChild(createProjectItem(item)))
