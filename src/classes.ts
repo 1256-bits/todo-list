@@ -45,9 +45,9 @@ export class TodoItem implements TodoObject {
 }
 
 export class Project implements ProjectObject {
-  title: string
-  id: number
-  items: TodoItem[]
+  readonly title: string
+  readonly id: number
+  readonly items: TodoItem[]
 
   constructor (name: string, id: number) {
     this.title = name
@@ -59,8 +59,13 @@ export class Project implements ProjectObject {
     this.items.push(item)
   }
 
-  removeItem (title: string): void {
-    this.items = this.items.filter(item => item.title !== title)
+  removeItem (id: number): void {
+    const item = this.items.filter(item => item.id !== id)
+    if (item.length > 1) {
+      throw new Error(`${item.length} todo items have the same id`)
+    }
+    const index = this.items.indexOf(item[0])
+    this.items.splice(index, 1)
   }
 }
 
@@ -83,7 +88,7 @@ export class ProjectList {
   removeProject (id: number): void {
     const item = this.items.filter(item => item.id !== id)
     if (item.length > 1) {
-      throw new Error(`The following todo items have the same id: ${toString(item)}`)
+      throw new Error(`${item.length} projects have the same id`)
     }
     const index = this.items.indexOf(item[0])
     this.items.splice(index, 1)
