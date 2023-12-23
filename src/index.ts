@@ -3,6 +3,7 @@ import { TodoItem, Project, ProjectList } from './classes'
 // import * as DOM from './dom'
 import createTodoObject from './createTodoObject'
 import createProjectItem from './project-item'
+import listTodos from './listTodos'
 import 'normalize.css'
 import './styles.scss'
 
@@ -49,15 +50,6 @@ projectNames.forEach(name => {
     listTodos(e)
   })
 })
-
-function listTodos (e: Event): void {
-  if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
-    console.error('listTodos: not an HTML element or missing ID')
-    return
-  }
-  const id = parseInt(e.target.dataset.id)
-  projectList.items.filter(item => item.id === id)
-}
 
 if (projectList.items.length === 0) {
   const project = new Project('default', 0)
