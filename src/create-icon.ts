@@ -1,5 +1,5 @@
 export default function createIcon (type: 'add' | 'edit' | 'delete'): HTMLElement {
-  const href = { add: './svg/add.svg#add', edit: "./svg/edit-pencil.svg#edit", delete: "./svg/delete.svg#delete" }
+  const href = { add: './svg/add.svg#add', edit: './svg/edit-pencil.svg#edit', delete: './svg/delete.svg#delete' }
   const svg = document.createElement('svg')
   svg.setAttribute('viewBox', '0 0 20 20')
 
