@@ -1,5 +1,5 @@
 import { type Project } from './classes'
-import createIcon from './create-icon'
+import createButtonElement from './createButtonElement'
 
 export default function createProjectItem (project: Project): HTMLLIElement {
   const li = document.createElement('li')
@@ -10,29 +10,9 @@ export default function createProjectItem (project: Project): HTMLLIElement {
   nameBtn.innerText = project.title
   nameBtn.setAttribute('data-id', String(project.id))
 
-  const editBtn = createEditButton()
-  const delBtn = createDeleteButton()
+  const renameBtn = createButtonElement('rename')
+  const delBtn = createButtonElement('delete')
 
-  li.append(nameBtn, editBtn, delBtn)
+  li.append(nameBtn, renameBtn, delBtn)
   return li
-}
-
-function createEditButton (): HTMLButtonElement {
-  const button = document.createElement('button')
-  button.classList.add('rename-button')
-
-  const svg = createIcon('edit')
-  button.appendChild(svg)
-
-  return button
-}
-
-function createDeleteButton (): HTMLButtonElement {
-  const button = document.createElement('button')
-  button.classList.add('delete-button')
-
-  const svg = createIcon('delete')
-  button.appendChild(svg)
-
-  return button
 }
