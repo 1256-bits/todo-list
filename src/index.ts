@@ -7,9 +7,12 @@ import 'normalize.css'
 import './styles.scss'
 
 const projectList = new ProjectList()
-const project = new Project('default', 0)
-projectList.addProject(project)
+if (projectList.items.length === 0) {
+  const project = new Project('default', 0)
+  projectList.addProject(project)
+}
 
+/*
 const form = document.querySelector('#new-todo')
 form?.addEventListener('submit', e => {
   e.preventDefault()
@@ -17,6 +20,7 @@ form?.addEventListener('submit', e => {
   const initParams = createTodoObject(formData)
   project.addItem(new TodoItem(initParams))
 })
+*/
 
 const newProject = document.querySelector('#new-project')
 newProject?.addEventListener('submit', form => {
