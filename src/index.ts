@@ -1,6 +1,6 @@
 import { TodoItem, Project, ProjectList } from './classes'
 // import { type priority, type TodoObject, type checklistItem } from './interfaces'
-import * as DOM from './dom'
+// import * as DOM from './dom'
 import createTodoObject from './createTodoObject'
 import 'normalize.css'
 import './styles.scss'
@@ -28,3 +28,7 @@ newProject?.addEventListener('submit', form => {
 
 const listProjects = document.querySelector('#list-projects')
 // listProjects?.addEventListener('click', DOM.listProjects)
+
+projectList.addProject(new Project('Project 1', Date.now()))
+projectList.addProject(new Project('Project 2', Date.now()))
+projectList.addProject(new Project('Project 3', Date.now()))
