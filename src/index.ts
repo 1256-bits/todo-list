@@ -35,14 +35,24 @@ projectList.addProject(new Project('Project 2', Date.now()))
 projectList.addProject(new Project('Project 3', Date.now()))
 
 const item = new TodoItem(createTodoObject(new FormData))
-item.adddChecklistItem('Item 1')
-item.adddChecklistItem('Item 2')
+item.addChecklistItem('Item 1')
+item.addChecklistItem('Item 2')
 projectList.items[0].addItem(item)
 
 const projectUL = document.querySelector('nav > ul')
 projectList.items.forEach(item => projectUL?.appendChild(createProjectItem(item)))
-//const projectNames = document.querySelectorAll('project-name')
-//projectNames.forEach(name => name.addEventListener('click', name => )
+const projectNames = document.querySelectorAll('.project-name')
+projectNames.forEach(name => name.addEventListener('click', e => listTodos(e)))
+
+function listTodos(e: Event): void {
+  if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
+    console.error('listTodos: not an HTML element or missing ID')
+    return
+  }
+  const id = parseInt(e.target.dataset.id as string)
+  projectList.items.filter(item => item.id === id)
+  
+}
 
 if (projectList.items.length === 0) {
   const project = new Project('default', 0)
