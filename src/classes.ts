@@ -11,8 +11,8 @@ export class TodoItem implements TodoObject {
   dateStarted: Date
   priority: 'low' | 'normal' | 'high'
   notes: string
-  checklist: checklistItem[]
-  id: number
+  readonly checklist: checklistItem[]
+  readonly id: number
   done: boolean
 
   constructor ({
