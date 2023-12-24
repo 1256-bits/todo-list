@@ -32,7 +32,7 @@
     grid-column: 29/30;
   }
   
-  &:first-child {
+  &:nth-child(2) {
     border-top: 2px solid var(--primary);
   }
 }

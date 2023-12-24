@@ -15,7 +15,8 @@ export default function listTodos (e: Event): void {
   }
   // Remove all currenlty displayed todo items
   if (todoArea != null) {
-    Array.from(todoArea.children).forEach(child => {
+    const children = Array.from(todoArea.children).filter(child => !child.classList.contains('no-todos'))
+    children.forEach(child => {
       todoArea?.removeChild(child)
     })
   }
