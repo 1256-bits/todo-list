@@ -37,6 +37,7 @@ const item = new TodoItem(createTodoObject(new FormData()))
 item.addChecklistItem('Item 1')
 item.addChecklistItem('Item 2')
 projectList.items[0].addItem(item)
+projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 
 // LIST PROJECTS IN NAV
 projectList.items.forEach(item => {
