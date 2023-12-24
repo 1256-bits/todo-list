@@ -7,8 +7,23 @@ export default function listTodos (e: Event): void {
     console.error('listTodos: not an HTML element or missing ID')
     return
   }
+
   const todoArea = document.querySelector('main > ul')
   const id = e.target.dataset.id
+
+  // If the same project selecteda gain - do nothing
+  if (todoArea?.getAttribute('data-project-id') === id) {
+    return
+  }
+
+  // Remove all currenlty displayed todo items
+  if (todoArea != null) {
+    Array.from(todoArea.children).forEach(child => {
+      todoArea?.removeChild(child)
+    })
+  }
+
+  todoArea?.setAttribute('data-project-id', id)
   const project = projectList.items.filter(item => item.id === id)[0]
   project.items.forEach(item => {
     todoArea?.appendChild(createTodo(item))
