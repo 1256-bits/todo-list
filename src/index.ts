@@ -1,9 +1,6 @@
 import { TodoItem, Project, ProjectList } from './classes'
-// import { type priority, type TodoObject, type checklistItem } from './interfaces'
-// import * as DOM from './dom'
 import createTodoObject from './createTodoObject'
-import createProjectItem from './project-item'
-import listTodos from './listTodos'
+import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
 
@@ -28,9 +25,6 @@ newProject?.addEventListener('submit', form => {
 })
 */
 
-// const listProjects = document.querySelector('#list-projects')
-// listProjects?.addEventListener('click', DOM.listProjects)
-
 projectList.addProject(new Project('Project 1', Date.now()))
 projectList.addProject(new Project('Project 2', Date.now()))
 projectList.addProject(new Project('Project 3', Date.now()))
@@ -42,12 +36,12 @@ projectList.items[0].addItem(item)
 
 const projectUL = document.querySelector('nav > ul')
 projectList.items.forEach(item => {
-  projectUL?.appendChild(createProjectItem(item))
+  projectUL?.appendChild(DOM.createProjectItem(item))
 })
 const projectNames = document.querySelectorAll('.project-name')
 projectNames.forEach(name => {
   name.addEventListener('click', e => {
-    listTodos(e)
+    DOM.listTodos(e)
   })
 })
 
