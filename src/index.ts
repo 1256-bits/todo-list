@@ -55,3 +55,5 @@ if (projectList.items.length === 0) {
   const project = new Project('default', 0)
   projectList.addProject(project)
 }
+
+export { projectList }
