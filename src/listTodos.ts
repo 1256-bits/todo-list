@@ -25,7 +25,7 @@ function createTodo (item: TodoItem): HTMLLIElement {
   const addBtn = createButtonElement('add')
   const renameBtn = createButtonElement('rename')
   const deleteBtn = createButtonElement('delete')
-  
+
   todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn)
   return todoItem
 }
