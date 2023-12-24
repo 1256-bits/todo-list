@@ -44,7 +44,7 @@ projectList.items.forEach(item => {
   projectUL?.appendChild(DOM.createProjectItem(item))
 })
 
-// LIST TODOS. BUG?
+// LIST TODOS.
 const projectNameBtns = document.querySelectorAll('.project-name')
 projectNameBtns.forEach(name => {
   name.addEventListener('click', e => {
