@@ -5,6 +5,7 @@ import 'normalize.css'
 import './styles.scss'
 
 const projectList = new ProjectList()
+const projectUL = document.querySelector('nav > ul')
 
 /*
 const form = document.querySelector('#new-todo')
@@ -25,21 +26,25 @@ newProject?.addEventListener('submit', form => {
 })
 */
 
+// DUMMY PROJECTS
 projectList.addProject(new Project('Project 1', Date.now()))
 projectList.addProject(new Project('Project 2', Date.now()))
 projectList.addProject(new Project('Project 3', Date.now()))
 
+// DUMMY TODO WITH CHECKLISTS
 const item = new TodoItem(createTodoObject(new FormData()))
 item.addChecklistItem('Item 1')
 item.addChecklistItem('Item 2')
 projectList.items[0].addItem(item)
 
-const projectUL = document.querySelector('nav > ul')
+// LIST PROJECTS IN NAV
 projectList.items.forEach(item => {
   projectUL?.appendChild(DOM.createProjectItem(item))
 })
-const projectNames = document.querySelectorAll('.project-name')
-projectNames.forEach(name => {
+
+// LIST TODOS. BUG?
+const projectNameBtns = document.querySelectorAll('.project-name')
+projectNameBtns.forEach(name => {
   name.addEventListener('click', e => {
     DOM.listTodos(e)
   })
