@@ -10,7 +10,7 @@ export interface TodoObject {
   priority: priority
   notes: string
   checklist: checklistItem[]
-  id: number
+  id: number | string
   done: boolean
 }
 
@@ -22,6 +22,6 @@ export interface checklistItem {
 
 export interface ProjectObject {
   title: string
-  id: number
+  id: number | string
   items: TodoItem[]
 }

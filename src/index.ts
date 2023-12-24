@@ -1,5 +1,6 @@
 import { TodoItem, Project, ProjectList } from './classes'
 import createTodoObject from './createTodoObject'
+import { v4 as uuid } from 'uuid'
 import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
@@ -27,9 +28,9 @@ newProject?.addEventListener('submit', form => {
 */
 
 // DUMMY PROJECTS
-projectList.addProject(new Project('Project 1', Date.now()))
-projectList.addProject(new Project('Project 2', Date.now()))
-projectList.addProject(new Project('Project 3', Date.now()))
+projectList.addProject(new Project('Project 1', uuid()))
+projectList.addProject(new Project('Project 2', uuid()))
+projectList.addProject(new Project('Project 3', uuid()))
 
 // DUMMY TODO WITH CHECKLISTS
 const item = new TodoItem(createTodoObject(new FormData()))

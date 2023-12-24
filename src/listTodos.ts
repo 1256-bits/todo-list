@@ -8,7 +8,7 @@ export default function listTodos (e: Event): void {
     return
   }
   const todoArea = document.querySelector('main > ul')
-  const id = parseInt(e.target.dataset.id)
+  const id = e.target.dataset.id
   const project = projectList.items.filter(item => item.id === id)[0]
   project.items.forEach(item => {
     todoArea?.appendChild(createTodo(item))
