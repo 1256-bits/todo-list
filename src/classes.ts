@@ -37,10 +37,36 @@ export class TodoItem implements TodoObject {
     this.done = done
   }
 
+  checkTodo (): void {
+    this.done = true
+  }
+
+  uncheckTodo (): void {
+    this.done = false
+  }
+
   addChecklistItem (itemText: string): void {
     const index = this.checklist.length
     const item = { index, text: itemText, completed: false }
     this.checklist.push(item)
+  }
+
+  checklistCheckItem (index: number): void {
+    const checklistFiltered = this.checklist.filter(item => item.index === index)
+    if (checklistFiltered.length > 1) {
+      throw new Error(`${this.title}: 2 or more checklist items appear to have the same index (${index})`)
+    }
+    const item = checklistFiltered[0]
+    item.completed = true
+  }
+
+  checklistUncheckItem (index: number): void {
+    const checklistFiltered = this.checklist.filter(item => item.index === index)
+    if (checklistFiltered.length > 1) {
+      throw new Error(`${this.title}: 2 or more checklist items appear to have the same index (${index})`)
+    }
+    const item = checklistFiltered[0]
+    item.completed = false
   }
 }
 
