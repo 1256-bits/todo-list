@@ -4,8 +4,11 @@ import createButtonElement from './createButtonElement'
 import { checklistItem } from './interfaces'
 
 /* TODO:
-  DONE List chekclist items
-  * Make chekclist items editable
+  * Checklist:
+    DONE List chekclist items
+    TODO Make chekslist items deletable 
+      * Get an X icon
+    TODO Make chekclist items editable
   * Add index and id to todos/checklists
 */
 
