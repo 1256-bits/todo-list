@@ -5,13 +5,6 @@
 
 <body>
   <div class="page-wrapper bg-background">
-    <!--
-  <form id="new-project">
-    <label for="project-title">New project title</label>
-    <input type="text" name="title" id="project-title">
-    <button id="new-proj-btn">Create Project</button>
-  </form>
-      -->
     <header class="page-header bg-primary font-head">
       <h1>Todo list by 1256-bits</h1>
       <button class="header-button import">
@@ -28,6 +21,73 @@
     <nav class="project-list bg-secondary">
       <h2 class="center">Projects</h2>
       <ul>
+        <!--
+        <li class="project">
+          <button class="project-name italic">Project 1</button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+        <li class="project">
+          <button class="project-name italic">Project 2</button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+        <li class="project">
+          <button class="project-name italic">Project 3</button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+        <li class="project">
+          <button class="project-name italic">Project 4</button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+        <li class="project">
+          <button class="project-name italic">Project 5</button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+-->
       </ul>
     </nav>
     <main class="bg-secondary todo-list">
@@ -51,59 +111,113 @@
       </div>
       <ul>
         <p class="no-todos">No todo items available</p>
+        <!--
+        <li class="todo-item">
+          <input type="checkbox" name="done" id="done">
+          <label for="done" class="hidden">Done</label>
+          <input class="todo-name" type="text" for="one" readonly value="Item 1">
+          </div>
+            <svg viewBox="0 0 20 20">
+              <title>New checklist item</title>
+              <use width="20" height="20" href="./svg/add.svg#add" />
+            </svg>
+          </button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+          <div class="checklist">
+            <ul>
+              <li>
+                <input type="checkbox" name="this">
+                <label for="this">Do this</label>
+              </li>
+              <li>
+                <input type="checkbox" name="that">
+                <label for="that">Do that</label>
+              </li>
+              <li>
+                <input type="checkbox" name="not">
+                <label for="not">Don't do that</label>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="todo-item">
+          <input type="checkbox" name="done" id="done">
+          <label for="done" class="hidden">Done</label>
+          <input class="todo-name" type="text" for="one" readonly value="Item 1">
+          <button class="add-button">
+            <svg viewBox="0 0 20 20">
+              <title>New checklist item</title>
+              <use width="20" height="20" href="./svg/add.svg#add" />
+            </svg>
+          </button>
+          <button class="rename-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/edit-pencil.svg#edit" />
+            </svg>
+          </button>
+          <button class="delete-button">
+            <svg viewBox="0 0 20 20">
+              <use width="20" height="20" href="./svg/delete.svg#delete" />
+            </svg>
+          </button>
+        </li>
+-->
       </ul>
-      <dialog>
-        <form class="todo-form" id="new-todo">
-          <ul class="todo-form-items">
-            <li>
-              <label for="title">title</label>
-              <input name="title" id="title" type="text" />
-            </li>
-            <li>
-              <label for="description">description</label>
-              <input name="description" id="description" type="text" />
-            </li>
-            <li>
-              <label for="dueDate">dueDate</label>
-              <input name="dueDate" id="dueDate" type="datetime-local" />
-            </li>
-            <li>
-              <label for="dateStarted">dateStarted</label>
-              <input name="dateStarted" id="dateStarted" type="datetime-local" />
-            </li>
-            <li>
-              <fieldset>
-                <legend>Priority</legend>
-                <div>
-                  <label for="priority">Low</label>
-                  <input name="priority" id="priority" type="radio" value="low" />
-                </div>
-                <div>
-                  <label for="priority">Medium</label>
-                  <input name="priority" id="priority" type="radio" value="medium" />
-                </div>
-                <div>
-                  <label for="priority">High</label>
-                  <input name="priority" id="priority" type="radio" value="high" />
-                </div>
-              </fieldset>
-            </li>
-            <li>
-              <label for="notes">notes</label>
-              <input name="notes" id="notes" type="text" />
-            </li>
-            <button id="create-todo">Create todo</button>
-          </ul>
-        </form>
-      </dialog>
     </main>
   </div>
-  <!--
-  <div id="project-list">
-    <div id="pl-wrapper"></div>
-    <button id="list-projects">List projects</button>
-  </div>
-    -->
+  <dialog>
+    <form class="todo-form" id="new-todo" method="dialog">
+      <ul class="todo-form-items">
+        <li>
+          <label for="title">title</label>
+          <input name="title" id="title" type="text" />
+        </li>
+        <li>
+          <label for="description">description</label>
+          <input name="description" id="description" type="text" />
+        </li>
+        <li>
+          <label for="dueDate">dueDate</label>
+          <input name="dueDate" id="dueDate" type="datetime-local" />
+        </li>
+        <li>
+          <label for="dateStarted">dateStarted</label>
+          <input name="dateStarted" id="dateStarted" type="datetime-local" />
+        </li>
+        <li>
+          <fieldset>
+            <legend>Priority</legend>
+            <div>
+              <label for="priority">Low</label>
+              <input name="priority" id="priority" type="radio" value="low" />
+            </div>
+            <div>
+              <label for="priority">Medium</label>
+              <input name="priority" id="priority" type="radio" value="medium" />
+            </div>
+            <div>
+              <label for="priority">High</label>
+              <input name="priority" id="priority" type="radio" value="high" />
+            </div>
+          </fieldset>
+        </li>
+        <li>
+          <label for="notes">notes</label>
+          <input name="notes" id="notes" type="text" />
+        </li>
+        <button id="create-todo">Create todo</button>
+      </ul>
+    </form>
+  </dialog>
 </body>
 
 </html>
