@@ -1,6 +1,13 @@
 import { type TodoItem } from './classes'
 import { projectList } from './index'
 import createButtonElement from './createButtonElement'
+import { checklistItem } from './interfaces'
+
+/* TODO:
+  DONE List chekclist items
+  * Make chekclist items editable
+  * Add index and id to todos/checklists
+*/
 
 export default function listTodos (e: Event): void {
   if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
@@ -37,8 +44,32 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const addBtn = createButtonElement('add')
   const renameBtn = createButtonElement('rename')
   const deleteBtn = createButtonElement('delete')
+  if (item.checklist.length > 0) {
+    const checklist = createChecklist(item.checklist)
+    todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn, checklist)
+    return todoItem
+  }
   todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn)
   return todoItem
+}
+
+function createChecklist (checklist: checklistItem[]): HTMLDivElement {
+  const checklistElement = document.createElement('div')
+  checklistElement.classList.add('checklist')
+  const ul = document.createElement('ul')
+  checklistElement.appendChild(ul)
+  checklist.forEach(item => checklistElement.appendChild(createChecklistItem(item)))
+  return checklistElement
+}
+
+function createChecklistItem (item: checklistItem): HTMLElement {
+  const checklistItem = document.createElement('li')
+  const checkbox = document.createElement('input')
+  checkbox.setAttribute('type', 'checkbox')
+  const label = document.createElement('label')
+  label.innerText = item.text
+  checklistItem.append(checkbox, label)
+  return checklistItem
 }
 
 function createCheckbox (): HTMLInputElement {
