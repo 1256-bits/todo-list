@@ -57,4 +57,10 @@ if (projectList.items.length === 0) {
   projectList.addProject(project)
 }
 
+// ADD NEW TODO
+
+const newTodoBtn = document.getElementById('new-todo')
+const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
+newTodoBtn?.addEventListener('click', () => newTodoDialog.showModal())
+
 export { projectList }
