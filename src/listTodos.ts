@@ -13,21 +13,22 @@ export default function listTodos (e: Event): void {
   if (todoArea?.getAttribute('data-project-id') === id) {
     return
   }
-  // Remove all currenlty displayed todo items
+  // Remove all currenlty displayed todo items. Leave 'No items available' banner.
   if (todoArea != null) {
     const children = Array.from(todoArea.children).filter(child => !child.classList.contains('no-todos'))
     children.forEach(child => {
       todoArea?.removeChild(child)
     })
   }
+  // Set new id and display new todo items
   todoArea?.setAttribute('data-project-id', id)
   const project = projectList.items.filter(item => item.id === id)[0]
   project.items.forEach(item => {
-    todoArea?.appendChild(createTodo(item))
+    todoArea?.appendChild(createTodoNode(item))
   })
 }
 
-function createTodo (item: TodoItem): HTMLLIElement {
+function createTodoNode (item: TodoItem): HTMLLIElement {
   const todoItem = document.createElement('li')
   todoItem.classList.add('todo-item')
   const done = createCheckbox()
