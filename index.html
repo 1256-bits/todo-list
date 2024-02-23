@@ -187,7 +187,7 @@
         </li>
         <li>
           <label for="dueDate">Due to:</label>
-          <input name="dueDate" id="dueDate" type="datetime-local" class="font-body"/>
+          <input name="dueDate" id="dueDate" type="datetime-local" class="font-body" />
         </li>
         <li>
           <label for="dateStarted">Date started:</label>
@@ -201,7 +201,7 @@
               <label for="priority">Low</label>
             </div>
             <div>
-              <input name="priority" id="priority" type="radio" value="medium" checked/>
+              <input name="priority" id="priority" type="radio" value="medium" checked />
               <label for="priority">Medium</label>
             </div>
             <div>
@@ -210,11 +210,15 @@
             </div>
           </fieldset>
         </li>
-       <li class="li-notes">
+        <li class="li-notes">
           <label for="notes">Notes:</label>
           <textarea name="notes" id="notes" type="text" rows="5" class="font-body"></textarea>
         </li>
-        <button id="create-todo" class="form-el-long">Create todo</button>
+        <li class="form-el-long">
+          <button id="create-todo" class="form-el-long submit">
+            Create todo
+          </button>
+        </li>
       </ul>
     </form>
   </dialog>
