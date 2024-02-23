@@ -122,7 +122,7 @@ export class ProjectList {
   }
 
   getProjectIndexById (id: number | string): number {
-    const item = this.items.filter(item => item.id !== id)
+    const item = this.items.filter(item => item.id === id)
     if (item.length > 1) {
       throw new Error(`${item.length} projects have the same id: ${id}`)
     }
