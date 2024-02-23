@@ -23,6 +23,7 @@ form?.addEventListener('submit', e => {
   }
   const currentProject = projectList.getProject(currentProjectId)
   currentProject.addItem(new TodoItem(initParams))
+  DOM.listTodos(currentProjectId)
 })
 
 /*
