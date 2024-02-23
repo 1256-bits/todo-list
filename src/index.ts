@@ -5,8 +5,6 @@ import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
 
-let currentProjectId = localStorage.getItem('currentProjectId')
-
 const projectList = new ProjectList()
 const projectUL = document.querySelector('nav > ul')
 
@@ -14,9 +12,7 @@ const form = document.querySelector('#new-todo-dialog')
 form?.addEventListener('submit', e => {
   const formData = new FormData(e.target as HTMLFormElement)
   const initParams = createTodoObject(formData)
-
-  const forThePurposeOfThisExcerciseISupposeIcouldHardcodeIt = projectList.items[0].id
-  currentProjectId = forThePurposeOfThisExcerciseISupposeIcouldHardcodeIt
+  const currentProjectId = localStorage.getItem('currentProjectId')
   
   if (currentProjectId == null) {
     console.error("Can't add projects while no project is active. What are you doing?")
@@ -41,8 +37,6 @@ newProject?.addEventListener('submit', form => {
 projectList.addProject(new Project('Project 1', uuid()))
 projectList.addProject(new Project('Project 2', uuid()))
 projectList.addProject(new Project('Project 3', uuid()))
-
-projectList.items.forEach(item => console.log(item.id))
 
 // DUMMY TODO WITH CHECKLISTS
 const item = new TodoItem(createTodoObject(new FormData()))
@@ -84,5 +78,9 @@ if (projectList.items.length === 0) {
   const project = new Project('default', '0')
   projectList.addProject(project)
 }
+
+// Automatically open last opened project or the first available project
+
+projectList.items[0]
 
 export { projectList }
