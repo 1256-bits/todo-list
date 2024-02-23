@@ -1,11 +1,9 @@
 .add-button,
 .rename-button,
-.delete-button {
-  fill: transparent;
-  width: 2.3rem;
+.delete-button,
+.close-button {
   stroke: var(--accent);
   background-color: var(--secondary);
-  border: 2px solid var(--accent);
   border-radius: 0.5rem;
 
   &:hover {
@@ -15,5 +13,21 @@
 
   &:active {
     background-color: var(--primary);
+  }
+}
+
+.add-button,
+.rename-button,
+.delete-button {
+  width: 2.3rem;
+  border: 2px solid var(--accent);
+  fill: transparent;
+}
+
+.close-button {
+  fill: var(--accent);
+
+  &:hover {
+    fill: var(--text);
   }
 }
