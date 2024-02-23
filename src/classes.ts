@@ -117,16 +117,16 @@ export class ProjectList {
   }
 
   getProject (id: string): Project {
-    const index = this.getProjectIndexById(id)
-    return this.items[index]
-  }
-
-  getProjectIndexById (id: string): number {
     const item = this.items.filter(item => item.id === id)
     if (item.length > 1) {
       throw new Error(`${item.length} projects have the same id: ${id}`)
     }
-    const index = this.items.indexOf(item[0])
+    return item[0]
+  }
+
+  getProjectIndexById (id: string): number {
+    const project = this.getProject(id)
+    const index = this.items.indexOf(project)
     return index
   }
 }
