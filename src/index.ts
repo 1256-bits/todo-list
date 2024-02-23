@@ -5,18 +5,29 @@ import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
 
+let currentProjectId: string | number | null;
+
 const projectList = new ProjectList()
 const projectUL = document.querySelector('nav > ul')
 
-/*
-const form = document.querySelector('#new-todo')
+const form = document.querySelector('#new-todo-dialog')
 form?.addEventListener('submit', e => {
   e.preventDefault()
   const formData = new FormData(e.target as HTMLFormElement)
   const initParams = createTodoObject(formData)
-  project.addItem(new TodoItem(initParams))
+
+  const forThePurposeOfThisExcerciseISupposeIcouldHardcodeIt = projectList.items[0].id
+  currentProjectId = forThePurposeOfThisExcerciseISupposeIcouldHardcodeIt
+  
+  if (currentProjectId == null) {
+    console.error("Can't add projects while no project is active. What are you doing?")
+    return
+  }
+  const currentProject = projectList.getProject(currentProjectId)
+  currentProject.addItem(new TodoItem(initParams))
 })
 
+/*
 const newProject = document.querySelector('#new-project')
 newProject?.addEventListener('submit', form => {
   form.preventDefault()
@@ -31,6 +42,8 @@ newProject?.addEventListener('submit', form => {
 projectList.addProject(new Project('Project 1', uuid()))
 projectList.addProject(new Project('Project 2', uuid()))
 projectList.addProject(new Project('Project 3', uuid()))
+
+projectList.items.forEach(item => console.log(item.id))
 
 // DUMMY TODO WITH CHECKLISTS
 const item = new TodoItem(createTodoObject(new FormData()))
@@ -52,11 +65,6 @@ projectNameBtns.forEach(name => {
   })
 })
 
-if (projectList.items.length === 0) {
-  const project = new Project('default', 0)
-  projectList.addProject(project)
-}
-
 // ADD NEW TODO
 
 const newTodoBtn = document.getElementById('new-todo')
@@ -70,5 +78,12 @@ dialogCloseBtn?.addEventListener('click', () => {
   const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
   newTodoDialog.close()
 })
+
+// Add empty default project if there are no projects present
+
+if (projectList.items.length === 0) {
+  const project = new Project('default', 0)
+  projectList.addProject(project)
+}
 
 export { projectList }
