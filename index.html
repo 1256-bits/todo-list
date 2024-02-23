@@ -175,22 +175,22 @@
     </main>
   </div>
   <dialog id="new-todo-dialog">
-    <form class="todo-form" id="new-todo" method="dialog">
+    <form class="todo-form" id="new-todo-form" method="dialog">
       <ul class="todo-form-items">
-        <li>
-          <label for="title">title</label>
-          <input name="title" id="title" type="text" />
+        <li class="form-el-long">
+          <label for="title">Title:</label>
+          <input name="title" id="title" type="text" required />
         </li>
-        <li>
-          <label for="description">description</label>
+        <li class="form-el-long">
+          <label for="description">Description:</label>
           <input name="description" id="description" type="text" />
         </li>
         <li>
-          <label for="dueDate">dueDate</label>
+          <label for="dueDate">Due to:</label>
           <input name="dueDate" id="dueDate" type="datetime-local" />
         </li>
         <li>
-          <label for="dateStarted">dateStarted</label>
+          <label for="dateStarted">Date started:</label>
           <input name="dateStarted" id="dateStarted" type="datetime-local" />
         </li>
         <li>
@@ -210,11 +210,11 @@
             </div>
           </fieldset>
         </li>
-        <li>
+       <li class="form-el-long">
           <label for="notes">notes</label>
           <input name="notes" id="notes" type="text" />
         </li>
-        <button id="create-todo">Create todo</button>
+        <button id="create-todo" class="form-el-long">Create todo</button>
       </ul>
     </form>
   </dialog>
