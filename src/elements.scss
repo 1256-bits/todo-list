@@ -35,3 +35,9 @@ input:read-only {
 input:read-only:focus {
   outline: none;
 }
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
