@@ -3,15 +3,6 @@ import { projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type checklistItem } from './interfaces'
 
-/* TODO:
-  * Checklist:
-    DONE List chekclist items
-    TODO Make chekslist items deletable
-      * Get an X icon
-    TODO Make chekclist items editable
-  * Add index and id to todos/checklists
-*/
-
 export default function listTodos (e: Event): void {
   if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
     console.error('listTodos: not an HTML element or missing ID')
