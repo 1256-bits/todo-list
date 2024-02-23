@@ -175,27 +175,27 @@
     </main>
   </div>
   <dialog id="new-todo-dialog">
-    <form class="todo-form" id="new-todo-form" method="dialog">
+    <form class="todo-form font-head" id="new-todo-form" method="dialog">
       <ul class="todo-form-items">
         <li class="form-el-long">
           <label for="title">Title:</label>
-          <input name="title" id="title" type="text" required />
+          <input name="title" id="title" type="text" class="font-body" required />
         </li>
         <li class="form-el-long">
           <label for="description">Description:</label>
-          <input name="description" id="description" type="text" />
+          <input name="description" id="description" type="text" class="font-body" />
         </li>
         <li>
           <label for="dueDate">Due to:</label>
-          <input name="dueDate" id="dueDate" type="datetime-local" />
+          <input name="dueDate" id="dueDate" type="datetime-local" class="font-body"/>
         </li>
         <li>
           <label for="dateStarted">Date started:</label>
-          <input name="dateStarted" id="dateStarted" type="datetime-local" />
+          <input name="dateStarted" id="dateStarted" type="datetime-local" class="font-body" />
         </li>
         <li>
-          <fieldset class="radio-buttons">
-            <legend>Priority</legend>
+          <fieldset class="radio-buttons font-body">
+            <legend class="font-head">Priority:</legend>
             <div>
               <input name="priority" id="priority" type="radio" value="low" />
               <label for="priority">Low</label>
@@ -211,7 +211,7 @@
           </fieldset>
         </li>
        <li class="li-notes">
-          <label for="notes">Notes</label>
+          <label for="notes">Notes:</label>
           <textarea name="notes" id="notes" type="text" rows="5"></textarea>
         </li>
         <button id="create-todo" class="form-el-long">Create todo</button>
