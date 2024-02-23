@@ -54,7 +54,7 @@ projectList.items.forEach(item => {
 const projectNameBtns = document.querySelectorAll('.project-name')
 projectNameBtns.forEach(name => {
   name.addEventListener('click', e => {
-    DOM.listTodos(e)
+    DOM.listTodos(DOM.getIdFromEvent(e))
   })
 })
 
