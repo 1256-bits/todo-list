@@ -2,6 +2,7 @@
   font-size: 1.3rem;
   margin-bottom: 0;
   padding: 1.5rem;
+  padding-bottom: 1rem;
   background-color: var(--background);
 }
 
@@ -68,5 +69,18 @@
   .li-notes {
     display: flex;
     flex-direction: column;
+  }
+
+  & > li:last-child {
+    display: grid;
+    justify-items: center;
+    margin-top: 1rem;
+  }
+
+  .submit {
+    background-color: var(--secondary);
+    padding: 0.5em;
+    border-radius: 1em;
+    border: solid 2px var(--accent);
   }
 }
