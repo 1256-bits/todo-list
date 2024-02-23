@@ -33,16 +33,16 @@
     }
 
     &:before {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       background-color: var(--secondary);
       border: 2px solid var(--text);
     }
 
     &:after {
       position: absolute;
-      left: 6;
-      top: 6;
+      left: 5;
+      top: 5;
       width: 24px;
       height: 24px;
     }
@@ -61,5 +61,10 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .li-notes {
+    display: flex;
+    flex-direction: column;
   }
 }
