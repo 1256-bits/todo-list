@@ -1,9 +1,18 @@
+.todo-dialog {
+  display: grid;
+  padding: 0 0 1rem 1.5rem;
+  background-color: var(--background);
+}
+
+.close-dialog {
+  width: 40px;
+  justify-self: end;
+}
+
 .todo-form {
   font-size: 1.3rem;
-  margin-bottom: 0;
-  padding: 1.5rem;
-  padding-bottom: 1rem;
-  background-color: var(--background);
+  margin: 0;
+  padding-right: 1.5rem;
 }
 
 .todo-form-items {
