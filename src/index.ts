@@ -5,6 +5,9 @@ import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
 
+// TEMP
+localStorage.clear()
+
 const projectList = new ProjectList()
 const projectUL = document.querySelector('nav > ul')
 
@@ -13,7 +16,7 @@ form?.addEventListener('submit', e => {
   const formData = new FormData(e.target as HTMLFormElement)
   const initParams = createTodoObject(formData)
   const currentProjectId = localStorage.getItem('currentProjectId')
-  
+
   if (currentProjectId == null) {
     console.error("Can't add projects while no project is active. What are you doing?")
     return
@@ -62,7 +65,7 @@ projectNameBtns.forEach(name => {
 
 const newTodoBtn = document.getElementById('new-todo')
 const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
-newTodoBtn?.addEventListener('click', () => newTodoDialog.showModal())
+newTodoBtn?.addEventListener('click', () => { newTodoDialog.showModal() })
 
 // CLOSE DIALOG
 
@@ -80,7 +83,15 @@ if (projectList.items.length === 0) {
 }
 
 // Automatically open last opened project or the first available project
+function init (): void {
+  const id = localStorage.getItem('currentProjectId')
+  if (id == null) {
+    DOM.listTodos(projectList.items[0].id)
+    return
+  }
+  DOM.listTodos(id)
+}
 
-projectList.items[0]
+init()
 
 export { projectList }
