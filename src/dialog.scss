@@ -1,0 +1,16 @@
+.todo-form {
+  font-size: 1.3rem;
+}
+
+.todo-form-items {
+  display: grid;
+
+  li {
+    display: grid;
+  }
+
+  input[type="text"] {
+    font-size: 1.2rem;
+    width: 100%
+  }
+}
