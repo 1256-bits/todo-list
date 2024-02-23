@@ -3,17 +3,13 @@ import { projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type checklistItem } from './interfaces'
 
-export default function listTodos (e: Event): void {
-  if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
-    console.error('listTodos: not an HTML element or missing ID')
-    return
-  }
+export default function listTodos (id: string): void {
   const todoArea = document.querySelector('main > ul')
-  const id = e.target.dataset.id
   // If the same project selecteda gain - do nothing
   if (todoArea?.getAttribute('data-project-id') === id) {
     return
   }
+
   // Remove all currenlty displayed todo items. Leave 'No items available' banner.
   if (todoArea != null) {
     const children = Array.from(todoArea.children).filter(child => !child.classList.contains('no-todos'))
@@ -21,9 +17,17 @@ export default function listTodos (e: Event): void {
       todoArea?.removeChild(child)
     })
   }
+
+  // Save current id to localStorage
+  localStorage.setItem('currentProjectId', id)
+
   // Set new id and display new todo items
+  // ID is stored in DOM in case I for some reason need to change it in localStorage without relisting todo
+  // Potential bugs ahead
+  // NB: remove it if I end up not needing it
   todoArea?.setAttribute('data-project-id', id)
-  const project = projectList.items.filter(item => item.id === id)[0]
+
+  const project = projectList.getProject(id)
   project.items.forEach(item => {
     todoArea?.appendChild(createTodoNode(item))
   })
@@ -97,4 +101,12 @@ function createNameField (title: string): HTMLInputElement {
   name.readOnly = true
   name.value = title
   return name
+}
+
+export function getIdFromEvent (e: Event): string {
+  if (!(e.target instanceof HTMLElement) || e.target.dataset.id == null) {
+    throw new Error('listTodos: not an HTML element or missing ID')
+  }
+  const id = e.target.dataset.id
+  return id
 }
