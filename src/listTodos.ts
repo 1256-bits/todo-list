@@ -1,12 +1,12 @@
 import { type TodoItem } from './classes'
 import { projectList } from './index'
 import createButtonElement from './createButtonElement'
-import { checklistItem } from './interfaces'
+import { type checklistItem } from './interfaces'
 
 /* TODO:
   * Checklist:
     DONE List chekclist items
-    TODO Make chekslist items deletable 
+    TODO Make chekslist items deletable
       * Get an X icon
     TODO Make chekclist items editable
   * Add index and id to todos/checklists
