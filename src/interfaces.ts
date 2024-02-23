@@ -10,7 +10,7 @@ export interface TodoObject {
   priority: priority
   notes: string
   checklist: checklistItem[]
-  id: number | string
+  id: string // has to be string only because localStorage doesn't store values as numbers
   done: boolean
 }
 

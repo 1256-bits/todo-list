@@ -5,14 +5,13 @@ import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
 
-let currentProjectId: string | number | null;
+let currentProjectId = localStorage.getItem('currentProjectId')
 
 const projectList = new ProjectList()
 const projectUL = document.querySelector('nav > ul')
 
 const form = document.querySelector('#new-todo-dialog')
 form?.addEventListener('submit', e => {
-  e.preventDefault()
   const formData = new FormData(e.target as HTMLFormElement)
   const initParams = createTodoObject(formData)
 
@@ -82,7 +81,7 @@ dialogCloseBtn?.addEventListener('click', () => {
 // Add empty default project if there are no projects present
 
 if (projectList.items.length === 0) {
-  const project = new Project('default', 0)
+  const project = new Project('default', '0')
   projectList.addProject(project)
 }
 

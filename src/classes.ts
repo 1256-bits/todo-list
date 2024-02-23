@@ -12,7 +12,7 @@ export class TodoItem implements TodoObject {
   priority: 'low' | 'normal' | 'high'
   notes: string
   readonly checklist: checklistItem[]
-  readonly id: number | string
+  readonly id: string
   done: boolean
 
   constructor ({
@@ -72,10 +72,10 @@ export class TodoItem implements TodoObject {
 
 export class Project implements ProjectObject {
   readonly title: string
-  readonly id: number | string
+  readonly id: string
   readonly items: TodoItem[]
 
-  constructor (name: string, id: number | string) {
+  constructor (name: string, id: string) {
     this.title = name
     this.id = id
     this.items = []
@@ -85,7 +85,7 @@ export class Project implements ProjectObject {
     this.items.push(item)
   }
 
-  removeItem (id: number | string): void {
+  removeItem (id: string): void {
     const item = this.items.filter(item => item.id !== id)
     if (item.length > 1) {
       throw new Error(`${item.length} todo items have the same id`)
@@ -111,17 +111,17 @@ export class ProjectList {
     this.items.push(project)
   }
 
-  removeProject (id: number | string): void {
+  removeProject (id: string): void {
     const index = this.getProjectIndexById(id)
     this.items.splice(index, 1)
   }
 
-  getProject (id: number | string): Project {
+  getProject (id: string): Project {
     const index = this.getProjectIndexById(id)
     return this.items[index]
   }
 
-  getProjectIndexById (id: number | string): number {
+  getProjectIndexById (id: string): number {
     const item = this.items.filter(item => item.id === id)
     if (item.length > 1) {
       throw new Error(`${item.length} projects have the same id: ${id}`)
