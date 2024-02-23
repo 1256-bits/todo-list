@@ -32,17 +32,20 @@ export default function listTodos (e: Event): void {
 function createTodoNode (item: TodoItem): HTMLLIElement {
   const todoItem = document.createElement('li')
   todoItem.classList.add('todo-item')
+
   const done = createCheckbox()
   const doneLabelHidden = createCheckboxLabel()
   const name = createNameField(item.title)
   const addBtn = createButtonElement('add')
   const renameBtn = createButtonElement('rename')
   const deleteBtn = createButtonElement('delete')
+
   if (item.checklist.length > 0) {
     const checklist = createChecklist(item.checklist)
     todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn, checklist)
     return todoItem
   }
+
   todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn)
   return todoItem
 }
@@ -50,19 +53,26 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
 function createChecklist (checklist: checklistItem[]): HTMLDivElement {
   const checklistElement = document.createElement('div')
   checklistElement.classList.add('checklist')
+
   const ul = document.createElement('ul')
   checklistElement.appendChild(ul)
+
   checklist.forEach(item => checklistElement.appendChild(createChecklistItem(item)))
   return checklistElement
 }
 
 function createChecklistItem (item: checklistItem): HTMLElement {
   const checklistItem = document.createElement('li')
+
   const checkbox = document.createElement('input')
   checkbox.setAttribute('type', 'checkbox')
+
   const label = document.createElement('label')
   label.innerText = item.text
-  checklistItem.append(checkbox, label)
+
+  const closeBtn = createButtonElement('close')
+
+  checklistItem.append(checkbox, label, closeBtn)
   return checklistItem
 }
 
