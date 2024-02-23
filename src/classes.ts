@@ -112,11 +112,21 @@ export class ProjectList {
   }
 
   removeProject (id: number | string): void {
+    const index = this.getProjectIndexById(id)
+    this.items.splice(index, 1)
+  }
+
+  getProject (id: number | string): Project {
+    const index = this.getProjectIndexById(id)
+    return this.items[index]
+  }
+
+  getProjectIndexById (id: number | string): number {
     const item = this.items.filter(item => item.id !== id)
     if (item.length > 1) {
-      throw new Error(`${item.length} projects have the same id`)
+      throw new Error(`${item.length} projects have the same id: ${id}`)
     }
     const index = this.items.indexOf(item[0])
-    this.items.splice(index, 1)
+    return index
   }
 }
