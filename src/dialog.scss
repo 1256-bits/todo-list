@@ -16,6 +16,15 @@
     display: grid;
   }
 
+  input[type="text"],
+  input[type="date"],
+  input[type="datetime-local"],
+  textarea {
+    border-radius: 1em;
+    padding: 0.5rem;
+    border: 1px solid var(--text);
+  }
+
   input[type="text"] {
     font-size: 1.2rem;
     width: 100%;
