@@ -15,10 +15,40 @@
 
   input[type="text"] {
     font-size: 1.2rem;
-    width: 100%
+    width: 100%;
   }
-}
 
-.form-el-long {
-  grid-column: 1/-1;
+  .form-el-long {
+    grid-column: 1/-1;
+  }
+
+  input[type="radio"] {
+    position: relative;
+
+    &:before,
+    &:after {
+      display: inline-block;
+      content: " ";
+      border-radius: 100%;
+    }
+
+    &:before {
+      width: 32px;
+      height: 32px;
+      background-color: var(--secondary);
+      border: 2px solid var(--text);
+    }
+
+    &:after {
+      position: absolute;
+      left: 6;
+      top: 6;
+      width: 24px;
+      height: 24px;
+    }
+
+    &:checked:after {
+      background-color: var(--text);
+    }
+  }
 }
