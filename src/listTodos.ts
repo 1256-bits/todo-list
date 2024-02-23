@@ -31,6 +31,10 @@ export default function listTodos (id: string): void {
   project.items.forEach(item => {
     todoArea?.appendChild(createTodoNode(item))
   })
+
+  // Update project name
+  const titleElement = document.querySelector('.project-header > h2') as HTMLElement
+  titleElement.innerText = project.title
 }
 
 function createTodoNode (item: TodoItem): HTMLLIElement {
