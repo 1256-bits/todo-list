@@ -10,8 +10,8 @@ export default function createProjectItem (project: Project): HTMLLIElement {
   nameBtn.innerText = project.title
   nameBtn.setAttribute('data-id', String(project.id))
 
-  const renameBtn = createButtonElement('rename')
-  const delBtn = createButtonElement('delete')
+  const renameBtn = createButtonElement('rename', 'Rename project')
+  const delBtn = createButtonElement('delete', 'Delete project')
 
   li.append(nameBtn, renameBtn, delBtn)
   return li

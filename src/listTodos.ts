@@ -46,9 +46,9 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const done = createCheckbox()
   const doneLabelHidden = createCheckboxLabel()
   const name = createNameField(item.title)
-  const addBtn = createButtonElement('add')
-  const renameBtn = createButtonElement('rename')
-  const deleteBtn = createButtonElement('delete')
+  const addBtn = createButtonElement('add', 'New checklist item')
+  const renameBtn = createButtonElement('rename', 'Edit')
+  const deleteBtn = createButtonElement('delete', 'Delete')
 
   if (item.checklist.length > 0) {
     const checklist = createChecklist(item.checklist)
@@ -80,7 +80,7 @@ function createChecklistItem (item: checklistItem): HTMLElement {
   const label = document.createElement('label')
   label.innerText = item.text
 
-  const closeBtn = createButtonElement('close')
+  const closeBtn = createButtonElement('close', 'Remove')
 
   checklistItem.append(checkbox, label, closeBtn)
   return checklistItem
