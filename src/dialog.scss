@@ -91,8 +91,13 @@
 
   & > li:last-child {
     display: grid;
-    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
     margin-top: 1rem;
+
+    & button:first-of-type {
+      justify-self: right;
+    }
   }
 
   .submit {
@@ -100,5 +105,6 @@
     padding: 0.5em;
     border-radius: 1em;
     border: solid 2px var(--accent);
+    width: 60%;
   }
 }
