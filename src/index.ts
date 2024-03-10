@@ -13,7 +13,8 @@ const projectUL = document.querySelector('nav > ul')
 
 const form = document.querySelector('#new-todo-dialog')
 form?.addEventListener('submit', e => {
-  const formData = new FormData(e.target as HTMLFormElement)
+  const targetForm = e.target as HTMLFormElement
+  const formData = new FormData(targetForm)
   const initParams = createTodoObject(formData)
   const currentProjectId = localStorage.getItem('currentProjectId')
 
@@ -23,6 +24,7 @@ form?.addEventListener('submit', e => {
   }
   const currentProject = projectList.getProject(currentProjectId)
   currentProject.addItem(new TodoItem(initParams))
+  targetForm.reset()
   DOM.listTodos(currentProjectId)
 })
 
