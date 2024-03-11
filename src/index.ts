@@ -7,6 +7,8 @@ import './styles.scss'
 
 // TEMP
 localStorage.clear()
+const np = document.querySelector("#new-project") as HTMLDialogElement
+np.showModal()
 
 const projectList = new ProjectList()
 const projectUL = document.querySelector('nav > ul')
