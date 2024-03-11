@@ -180,7 +180,7 @@
     </main>
   </div>
   <dialog id="new-todo-dialog">
-    <div class="todo-dialog">
+    <div class="todo-dialog bg-background">
       <button class="close-dialog" id="close-dialog"><svg viewBox="0 0 24 24">
           <use width="24" height="24" href="./svg/close.svg#close"></use>
         </svg></button>
@@ -224,16 +224,34 @@
             <textarea name="notes" id="notes" type="text" rows="5" class="font-body"></textarea>
           </li>
           <li class="form-el-long button-area">
-            <button id="create-todo" class="submit">
+            <button id="create-todo" class="submit bg-secondary">
               Create todo
             </button>
-            <button type="reset" id="reset-todo" class="submit">
+            <button type="reset" id="reset-todo" class="submit bg-secondary">
               Reset
             </button>
           </li>
         </ul>
       </form>
     </div>
+  </dialog>
+  <dialog id="new-project">
+    <form method="dialog" class="project-dialog bg-background todo-form">
+      <div class="todo-form-items">
+        <div>
+          <labeli for="project-title" class="font-head">Project title</labeli>
+          <input type="text" name="project-title" class="font-body">
+        </div>
+        <div class="form-el-long button-area">
+          <button id="create-todo" class="submit bg-secondary">
+            Create todo
+          </button>
+          <button type="reset" id="reset-todo" class="submit bg-secondary">
+            Reset
+          </button>
+        </div>
+      </div>
+    </form>
   </dialog>
 </body>
 

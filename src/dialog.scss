@@ -1,7 +1,6 @@
 .todo-dialog {
   display: grid;
   padding: 0 0 1rem 1.5rem;
-  background-color: var(--background);
 }
 
 .close-dialog {
@@ -101,10 +100,15 @@
   }
 
   .submit {
-    background-color: var(--secondary);
     padding: 0.5em;
     border-radius: 1em;
     border: solid 2px var(--accent);
     width: 60%;
   }
+}
+
+.project-dialog {
+  font-size: 1.5rem;
+  padding: 1rem;
+  width: 40ch;
 }
