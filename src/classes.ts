@@ -98,7 +98,11 @@ export class Project implements ProjectObject {
 export class ProjectList {
   readonly items: Project[] = []
 
-  fromJSON (json: string): void {
+  fromJSON (json: string | null): void {
+    if (json == null) {
+      console.error("ProjectList: cannot convert null to json")
+      return
+    }
     const imports: ProjectList = JSON.parse(json)
     imports.items.forEach(prImport => {
       const project = new Project(prImport.title, prImport.id)
