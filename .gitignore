@@ -3,4 +3,4 @@ dist/*
 package-lock.json
 .prettierrc.json
 *.sh
-todo.md
+todo.org
