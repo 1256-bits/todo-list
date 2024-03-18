@@ -72,6 +72,12 @@ const newTodoBtn = document.getElementById('new-todo')
 const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
 newTodoBtn?.addEventListener('click', () => { newTodoDialog.showModal() })
 
+// ADD NEW PROJECT
+
+const newProjectBtn = document.getElementById('new-project-button')
+const newProjectDialog = document.getElementById('new-project') as HTMLDialogElement
+newProjectBtn?.addEventListener('click', () => { newProjectDialog.showModal() })
+
 // CLOSE DIALOG
 
 const dialogCloseBtns = document.querySelectorAll('#close-dialog')
