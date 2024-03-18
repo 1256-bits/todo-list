@@ -14,27 +14,6 @@
   padding-right: 1.5rem;
 }
 
-.new-todo-form-list {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-
-  & > li:last-child {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    margin-top: 1rem;
-
-    & button:first-of-type {
-      justify-self: right;
-    }
-  }
-
-  .li-notes {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .dialog-form-list {
   margin: 0;
   display: grid;
@@ -56,7 +35,6 @@
     font-size: 1.2rem;
     width: 100%;
   }
-
 }
 
 .submit {
@@ -70,7 +48,40 @@
   grid-column: 1/-1;
 }
 
+.new-todo-form-list {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+
+  & > li:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-top: 1rem;
+
+    & button:first-of-type {
+      justify-self: right;
+    }
+  }
+
+  .li-notes {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .project-dialog {
   font-size: 1.5rem;
   width: 40ch;
+
+  input[type="text"] {
+    font-size: 1.5rem;
+  }
+
+  .dialog-form-list {
+    gap: 0.5rem;
+
+    & button {
+      justify-self: center;
+    }
+  }
 }
