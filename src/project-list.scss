@@ -10,6 +10,10 @@
 
   ul {
     padding: 0;
-    margin-inline: var(--margin);
+    margin: 0 var(--margin);
   }
+}
+
+.projects-subarea > li:first-child {
+  margin-top: 0;
 }
