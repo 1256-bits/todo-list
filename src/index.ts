@@ -85,12 +85,12 @@ dialogCloseBtns?.forEach(button => button.addEventListener('click', () => {
 }))
 
 // Add empty default project if there are no projects present
-
-if (projectList.items.length === 0) {
+// Or don't
+/* if (projectList.items.length === 0) {
   const project = new Project('default', '0')
   projectList.addProject(project)
 }
-
+*/
 // Automatically open last opened project or the first available project
 function init (): void {
   const id = localStorage.getItem('currentProjectId')
