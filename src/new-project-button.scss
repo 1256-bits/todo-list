@@ -1,0 +1,25 @@
+.new-project-button {
+  width: 100%;
+  height: 3.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  stroke: var(--accent);
+  border: 2px dashed var(--accent);
+  border-radius: 0.5rem;
+
+  & svg {
+    --size: 2.5rem;
+    height: var(--size);
+    width: var(--size);
+  }
+
+  &:hover {
+    stroke: var(--text);
+    border-color: var(--text);
+  }
+
+  &:active {
+    border-color: var(--accent);
+  }
+}

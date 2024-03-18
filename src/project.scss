@@ -4,7 +4,7 @@
   grid-template-columns: repeat(10, 1fr);
   gap: 5px;
   padding-right: 0.75rem;
-  margin: 0.7rem;
+  margin-block: var(--margin);
   font-size: 1.3rem;
   background-color: var(--primary);
   border: 1px solid var(--accent);
