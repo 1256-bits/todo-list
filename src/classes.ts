@@ -100,7 +100,7 @@ export class ProjectList {
 
   fromJSON (json: string | null): void {
     if (json == null) {
-      console.error("ProjectList: cannot convert null to json")
+      console.error('ProjectList: cannot convert null to json')
       return
     }
     const imports: ProjectList = JSON.parse(json)

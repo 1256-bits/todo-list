@@ -7,7 +7,7 @@ import './styles.scss'
 
 // TEMP
 localStorage.clear()
-const np = document.querySelector("#new-project") as HTMLDialogElement
+const np = document.querySelector('#new-project') as HTMLDialogElement
 np.showModal()
 
 const projectList = new ProjectList()
@@ -75,14 +75,16 @@ newTodoBtn?.addEventListener('click', () => { newTodoDialog.showModal() })
 // CLOSE DIALOG
 
 const dialogCloseBtns = document.querySelectorAll('#close-dialog')
-dialogCloseBtns?.forEach(button => button.addEventListener('click', () => {
-  if (!(button instanceof HTMLElement) || button.dataset.dialogId == null) {
-    return
-  }
-  const dialogId = button.dataset.dialogId
-  const dialog = document.getElementById(dialogId) as HTMLDialogElement
-  dialog.close()
-}))
+dialogCloseBtns?.forEach(button => {
+  button.addEventListener('click', () => {
+    if (!(button instanceof HTMLElement) || button.dataset.dialogId == null) {
+      return
+    }
+    const dialogId = button.dataset.dialogId
+    const dialog = document.getElementById(dialogId) as HTMLDialogElement
+    dialog.close()
+  })
+})
 
 // Add empty default project if there are no projects present
 // Or don't
