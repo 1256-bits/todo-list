@@ -1,4 +1,4 @@
-.todo-dialog {
+.modal-with-close-button {
   display: grid;
   padding: 0 0 1rem 1.5rem;
 }
@@ -14,11 +14,30 @@
   padding-right: 1.5rem;
 }
 
-.dialog-form-items {
-  margin: 0;
-  display: grid;
+.new-todo-form-list {
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
+
+  & > li:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-top: 1rem;
+
+    & button:first-of-type {
+      justify-self: right;
+    }
+  }
+
+  .li-notes {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.dialog-form-list {
+  margin: 0;
+  display: grid;
 
   li {
     display: grid;
@@ -38,41 +57,8 @@
     width: 100%;
   }
 
-  .form-el-long {
-    grid-column: 1/-1;
-  }
-
-  input[type="radio"] {
-    position: relative;
-
-    &:before,
-    &:after {
-      display: inline-block;
-      content: " ";
-      border-radius: 100%;
-    }
-
-    &:before {
-      width: 30px;
-      height: 30px;
-      background-color: var(--secondary);
-      border: 2px solid var(--text);
-    }
-
-    &:after {
-      position: absolute;
-      left: 6;
-      top: 6;
-      width: 22px;
-      height: 22px;
-    }
-
-    &:checked:after {
-      background-color: var(--text);
-    }
-  }
-
-  .radio-buttons > div {
+  .radio-buttons > div,
+  .radio-buttons > li {
     margin-block: 5px;
     display: flex;
     gap: 10px;
@@ -82,29 +68,17 @@
       margin-bottom: 0;
     }
   }
+}
 
-  .li-notes {
-    display: flex;
-    flex-direction: column;
-  }
+.submit {
+  padding: 0.5em;
+  border-radius: 1em;
+  border: solid 2px var(--accent);
+  width: 60%;
+}
 
-  & > li:last-child {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    margin-top: 1rem;
-
-    & button:first-of-type {
-      justify-self: right;
-    }
-  }
-
-  .submit {
-    padding: 0.5em;
-    border-radius: 1em;
-    border: solid 2px var(--accent);
-    width: 60%;
-  }
+.form-el-long {
+  grid-column: 1/-1;
 }
 
 .project-dialog {

@@ -1,0 +1,41 @@
+input[type="radio"] {
+  position: relative;
+
+  &:before,
+  &:after {
+    display: inline-block;
+    content: " ";
+    border-radius: 100%;
+  }
+
+  &:before {
+    width: 30px;
+    height: 30px;
+    background-color: var(--secondary);
+    border: 2px solid var(--text);
+  }
+
+  &:after {
+    position: absolute;
+    left: 6;
+    top: 6;
+    width: 22px;
+    height: 22px;
+  }
+
+  &:checked:after {
+    background-color: var(--text);
+  }
+}
+
+.radio-buttons > div,
+.radio-buttons > li {
+  margin-block: 5px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

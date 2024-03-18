@@ -180,12 +180,13 @@
     </main>
   </div>
   <dialog id="new-todo-dialog">
-    <div class="todo-dialog bg-background">
+    <!-- This div has to be there because changing display on a dialog breaks it -->
+    <div class="modal-with-close-button bg-background">
       <button class="close-dialog" id="close-dialog"><svg viewBox="0 0 24 24">
           <use width="24" height="24" href="./svg/close.svg#close"></use>
         </svg></button>
       <form class="dialog-form font-head" id="new-todo-form" method="dialog">
-        <ul class="dialog-form-items">
+        <ul class="dialog-form-list new-todo-form-list">
           <li class="form-el-long">
             <label for="title">Title:</label>
             <input name="title" id="title" type="text" class="font-body" required />
@@ -236,22 +237,24 @@
     </div>
   </dialog>
   <dialog id="new-project">
-    <form method="dialog" class="project-dialog bg-background dialog-form">
-      <div class="dialog-form-items">
-        <div>
-          <labeli for="project-title" class="font-head">Project title</labeli>
-          <input type="text" name="project-title" class="font-body">
+    <div class="modal-with-close-button bg-background">
+      <button class="close-dialog" id="close-dialog"><svg viewBox="0 0 24 24">
+          <use width="24" height="24" href="./svg/close.svg#close"></use>
+        </svg></button>
+      <form method="dialog" class="project-dialog bg-background dialog-form">
+        <div class="dialog-form-list">
+          <div>
+            <label for="project-title" class="font-head">Project title</label>
+            <input type="text" name="project-title" class="font-body">
+          </div>
+          <div class="form-el-long button-area">
+            <button id="create-todo" class="submit bg-secondary">
+              Create new project
+            </button>
+          </div>
         </div>
-        <div class="form-el-long button-area">
-          <button id="create-todo" class="submit bg-secondary">
-            Create todo
-          </button>
-          <button type="reset" id="reset-todo" class="submit bg-secondary">
-            Reset
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </dialog>
 </body>
 
