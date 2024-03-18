@@ -57,17 +57,6 @@
     width: 100%;
   }
 
-  .radio-buttons > div,
-  .radio-buttons > li {
-    margin-block: 5px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 
 .submit {
@@ -83,6 +72,5 @@
 
 .project-dialog {
   font-size: 1.5rem;
-  padding: 1rem;
   width: 40ch;
 }
