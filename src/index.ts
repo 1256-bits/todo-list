@@ -11,7 +11,7 @@ const np = document.querySelector("#new-project") as HTMLDialogElement
 //np.showModal()
 
 const projectList = new ProjectList()
-const projectUL = document.querySelector('nav > ul')
+const projectUL = document.querySelector('.projects-subarea')
 
 const form = document.querySelector('#new-todo-dialog')
 form?.addEventListener('submit', e => {
