@@ -82,7 +82,7 @@ dialogCloseBtns?.forEach(button => button.addEventListener('click', () => {
   const dialogId = button.dataset.dialogId
   const dialog = document.getElementById(dialogId) as HTMLDialogElement
   dialog.close()
-})
+}))
 
 // Add empty default project if there are no projects present
 
