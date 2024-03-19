@@ -1,4 +1,4 @@
-import createProjectItem from './project-item'
+import listProjects from './listProjects'
 import listTodos, { getIdFromEvent } from './listTodos'
 
-export { createProjectItem, listTodos, getIdFromEvent }
+export { listTodos, getIdFromEvent, listProjects }

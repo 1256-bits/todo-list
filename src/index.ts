@@ -9,7 +9,6 @@ import './styles.scss'
 localStorage.clear()
 
 const projectList = new ProjectList()
-const projectUL = document.querySelector('.projects-subarea')
 
 const form = document.querySelector('#new-todo-dialog')
 form?.addEventListener('submit', e => {
@@ -52,9 +51,7 @@ projectList.items[0].addItem(item)
 projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 
 // LIST PROJECTS IN NAV
-projectList.items.forEach(item => {
-  projectUL?.appendChild(DOM.createProjectItem(item))
-})
+DOM.listProjects()
 
 // LIST TODOS.
 const projectNameBtns = document.querySelectorAll('.project-name')
