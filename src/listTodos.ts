@@ -5,12 +5,6 @@ import { type checklistItem } from './interfaces'
 
 export default function listTodos (id: string): void {
   const todoArea = document.querySelector('main > ul')
-  /*
-  // If the same project selecteda gain - do nothing
-  if (todoArea?.getAttribute('data-project-id') === id) {
-    return
-  }
-  */
 
   // Remove all currenlty displayed todo items. Leave 'No items available' banner.
   if (todoArea != null) {
