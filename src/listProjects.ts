@@ -22,20 +22,38 @@ export default function listProjects (): void {
 function createProjectItem (project: Project): HTMLLIElement {
   const li = document.createElement('li')
   li.classList.add('project')
-  li.setAttribute('data-id', String(project.id))
 
   const nameBtn = document.createElement('button')
+  nameBtn.setAttribute('data-id', String(project.id))
   nameBtn.classList.add('project-name', 'italic')
   nameBtn.innerText = project.title
 
   const renameBtn = createButtonElement('rename', 'Rename project')
+  renameBtn.setAttribute('data-id', String(project.id))
   const delBtn = createButtonElement('delete', 'Delete project')
+  delBtn.setAttribute('data-id', String(project.id))
 
   li.append(nameBtn, renameBtn, delBtn)
   return li
 }
 
-function renameProject (): void {
+function renameProject (e: Event, id: string): void {
+  const target = e.target
+  if (target == null || !(target instanceof HTMLFormElement)) {
+    console.error('renameProject: something went wrong')
+    return
+  }
+
+  const formData = new FormData(target)
+  const title = formData.get('title') as string
+  if (title == null || title.length < 1) {
+    console.error(`Illegal title: ${title}`)
+    return
+  }
+
+  const project = projectList.getProject(id)
+  project.title = title
+  listProjects()
 }
 
 function deleteProject (): void {
@@ -53,6 +71,13 @@ function attachListeners (): void {
     })
 
     renameBtn?.addEventListener('click', e => {
+      const dialog = document.querySelector('#rename-project') as HTMLDialogElement
+      dialog?.showModal()
+      const form = document.querySelector('#rename-project-form') as HTMLFormElement
+      const id = getIdFromEvent(e)
+      form.addEventListener('submit', e => {
+        renameProject(e, id)
+      })
     })
 
     deleteBtn?.addEventListener('click', e => {
