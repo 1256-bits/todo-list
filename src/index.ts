@@ -52,10 +52,7 @@ projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 // LIST PROJECTS IN NAV
 DOM.listProjects()
 
-// LIST TODOS.
-
 // ADD NEW TODO
-
 const newTodoBtn = document.getElementById('new-todo')
 const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
 newTodoBtn?.addEventListener('click', () => { newTodoDialog.showModal() })
