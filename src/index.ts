@@ -30,11 +30,13 @@ form?.addEventListener('submit', e => {
 
 const newProjectForm = document.querySelector('#new-project-form')
 newProjectForm?.addEventListener('submit', e => {
-  const formData = new FormData(e.target as HTMLFormElement)
+  const targetForm = e.target as HTMLFormElement
+  const formData = new FormData(targetForm)
   const { title, id } = createProjectObject(formData)
   const project = new Project(title, id)
   localStorage.setItem('currentProjectId', id)
   projectList.addProject(project)
+  targetForm.reset()
   DOM.listProjects()
   DOM.listTodos(localStorage.getItem('currentProjectId') as string)
 })

@@ -54,6 +54,7 @@ function renameProject (e: Event, id: string): void {
   const project = projectList.getProject(id)
   project.title = title
   listProjects()
+  target.reset()
 }
 
 function deleteProject (): void {
