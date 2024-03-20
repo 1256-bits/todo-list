@@ -19,7 +19,7 @@ form?.addEventListener('submit', e => {
   const currentProjectId = localStorage.getItem('currentProjectId')
 
   if (currentProjectId == null) {
-    console.error("Can't add projects while no project is active. What are you doing?")
+    console.error("Can't add todos while no project is active. What are you doing?")
     return
   }
   const currentProject = projectList.getProject(currentProjectId)
