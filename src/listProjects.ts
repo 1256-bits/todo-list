@@ -1,7 +1,8 @@
 import { type Project } from './classes'
 import createButtonElement from './createButtonElement'
 import { projectList } from './index'
-import listTodos, { getIdFromEvent } from './listTodos'
+import listTodos from './listTodos'
+import getIdFromEvent from './getIdFromEvent'
 
 export default function listProjects (): void {
   const projectArea = document.querySelector('.projects-subarea')
@@ -34,11 +35,27 @@ function createProjectItem (project: Project): HTMLLIElement {
   return li
 }
 
+function renameProject (): void {
+}
+
+function deleteProject (): void {
+}
+
 function attachListeners (): void {
-  const projectNameBtns = document.querySelectorAll('.project-name')
-  projectNameBtns.forEach(name => {
-    name.addEventListener('click', e => {
+  const projects = document.querySelectorAll('li.project')
+  projects.forEach(project => {
+    const nameBtn = project.querySelector('.project-name')
+    const renameBtn = project.querySelector('.rename-button')
+    const deleteBtn = project.querySelector('.delete-button')
+
+    nameBtn?.addEventListener('click', e => {
       listTodos(getIdFromEvent(e))
+    })
+
+    renameBtn?.addEventListener('click', e => {
+    })
+
+    deleteBtn?.addEventListener('click', e => {
     })
   })
 }
