@@ -89,6 +89,11 @@ dialogCloseBtns?.forEach(button => {
 // Automatically open last opened project or the first available project
 function init (): void {
   const id = localStorage.getItem('currentProjectId')
+
+  if (projectList.items.length === 0) {
+    return
+  }
+
   if (id == null) {
     DOM.listTodos(projectList.items[0].id)
     return
