@@ -67,11 +67,12 @@ export class TodoItem implements TodoObject {
     }
     const item = checklistFiltered[0]
     item.completed = false
+
   }
 }
 
 export class Project implements ProjectObject {
-  readonly title: string
+  title: string
   readonly id: string
   readonly items: TodoItem[]
 
