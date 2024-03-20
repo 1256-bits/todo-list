@@ -1,5 +1,6 @@
 import { TodoItem, Project, ProjectList } from './classes'
 import createTodoObject from './createTodoObject'
+import createProjectObject from './createProjectObject'
 import { v4 as uuid } from 'uuid'
 import * as DOM from './dom'
 import 'normalize.css'
@@ -27,16 +28,14 @@ form?.addEventListener('submit', e => {
   DOM.listTodos(currentProjectId)
 })
 
-/*
-const newProject = document.querySelector('#new-project')
-newProject?.addEventListener('submit', form => {
-  form.preventDefault()
-  const formData = new FormData(form.target as HTMLFormElement)
-  const sanitize = (data: FormDataEntryValue | null): string => (data !== '' && typeof data === 'string') ? data : 'New project'
-  const project = new Project(sanitize(formData.get('title')), Date.now())
+const newProjectForm = document.querySelector('#new-project-form')
+newProjectForm?.addEventListener('submit', e => {
+  const formData = new FormData(e.target as HTMLFormElement)
+  const {title, id} = createProjectObject(formData)
+  const project = new Project(title, id)
   projectList.addProject(project)
+  DOM.listProjects()
 })
-*/
 
 // DUMMY PROJECTS
 projectList.addProject(new Project('Project 1', uuid()))
