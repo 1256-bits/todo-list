@@ -72,10 +72,20 @@ function attachListeners (): void {
     })
 
     renameBtn?.addEventListener('click', e => {
-      const dialog = document.querySelector('#rename-project') as HTMLDialogElement
-      dialog?.showModal()
-      const form = document.querySelector('#rename-project-form') as HTMLFormElement
       const id = getIdFromEvent(e)
+      const title = projectList.getProject(id).title
+
+      const dialog = document.querySelector('#rename-project') as HTMLDialogElement
+      const input = dialog.querySelector('input')
+      if (input != null) {
+        input.value = title
+      }
+      input?.addEventListener('focus', () => {
+        input.selectionStart = input.selectionEnd = input.value.length
+      })
+      dialog?.showModal()
+
+      const form = document.querySelector('#rename-project-form') as HTMLFormElement
       form.addEventListener('submit', e => {
         renameProject(e, id)
       }, { once: true })
