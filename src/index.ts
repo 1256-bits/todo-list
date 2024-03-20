@@ -31,7 +31,7 @@ form?.addEventListener('submit', e => {
 const newProjectForm = document.querySelector('#new-project-form')
 newProjectForm?.addEventListener('submit', e => {
   const formData = new FormData(e.target as HTMLFormElement)
-  const {title, id} = createProjectObject(formData)
+  const { title, id } = createProjectObject(formData)
   const project = new Project(title, id)
   projectList.addProject(project)
   DOM.listProjects()
@@ -53,12 +53,6 @@ projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 DOM.listProjects()
 
 // LIST TODOS.
-const projectNameBtns = document.querySelectorAll('.project-name')
-projectNameBtns.forEach(name => {
-  name.addEventListener('click', e => {
-    DOM.listTodos(DOM.getIdFromEvent(e))
-  })
-})
 
 // ADD NEW TODO
 
