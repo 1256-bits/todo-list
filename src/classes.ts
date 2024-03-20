@@ -67,7 +67,6 @@ export class TodoItem implements TodoObject {
     }
     const item = checklistFiltered[0]
     item.completed = false
-
   }
 }
 
