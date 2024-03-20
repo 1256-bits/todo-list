@@ -77,7 +77,7 @@ function attachListeners (): void {
       const id = getIdFromEvent(e)
       form.addEventListener('submit', e => {
         renameProject(e, id)
-      })
+      }, { once: true })
     })
 
     deleteBtn?.addEventListener('click', e => {
