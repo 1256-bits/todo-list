@@ -19,8 +19,15 @@ function createProjectItem (project: Project): HTMLLIElement {
 }
 
 export default function listProjects (): void {
+  const projectArea = document.querySelector('.projects-subarea')
+
+  if (projectArea == null) {
+    console.error('projectArea does not exist')
+    return
+  }
+  
+  projectArea.innerHTML = ''
   projectList.items.forEach(item => {
-    const projectArea = document.querySelector('.projects-subarea')
-    projectArea?.appendChild(createProjectItem(item))
+    projectArea.appendChild(createProjectItem(item))
   })
 }
