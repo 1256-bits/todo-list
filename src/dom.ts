@@ -1,4 +1,5 @@
 import listProjects from './listProjects'
-import listTodos, { getIdFromEvent } from './listTodos'
+import listTodos from './listTodos'
+import getIdFromEvent from './getIdFromEvent'
 
 export { listTodos, getIdFromEvent, listProjects }
