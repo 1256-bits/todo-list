@@ -33,8 +33,10 @@ newProjectForm?.addEventListener('submit', e => {
   const formData = new FormData(e.target as HTMLFormElement)
   const { title, id } = createProjectObject(formData)
   const project = new Project(title, id)
+  localStorage.setItem('currentProjectId', id)
   projectList.addProject(project)
   DOM.listProjects()
+  DOM.listTodos(localStorage.getItem('currentProjectId') as string)
 })
 
 // DUMMY PROJECTS
