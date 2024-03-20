@@ -54,6 +54,12 @@ function renameProject (e: Event, id: string): void {
   const project = projectList.getProject(id)
   project.title = title
   listProjects()
+
+  const titleBar = document.querySelector('.project-header > h2')
+  if (id === localStorage.getItem('currentProjectId') && titleBar != null) {
+    titleBar.textContent = title
+  }
+
   target.reset()
 }
 
