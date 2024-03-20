@@ -22,6 +22,5 @@ export interface checklistItem {
 
 export interface ProjectObject {
   title: string
-  id: number | string
-  items: TodoItem[]
+  id: string
 }
