@@ -36,7 +36,19 @@ export function renameChecklistItem (e: Event): void {
   })
 }
 
-export function deleteChecklistItem (): void {
+export function deleteChecklistItem (e: Event): void {
+  const target = e.currentTarget as HTMLElement
+  const id = target.parentElement?.dataset.id
+  const index = target.parentElement?.dataset.index
+  const projectId = localStorage.getItem('currentProjectId')
+  const conf = confirm('Are you sure?')
+  if (conf && projectId != null && typeof index === 'string' && typeof id === 'string') {
+    const todo = projectList.getProject(projectId).getItem(id)
+    todo.removeChecklistItem(parseInt(index))
+    listTodos(projectId)
+    return
+  }
+  console.error('Something went wrong')
 }
 
 function addChecklistHandler (e: Event, id: string): void {
