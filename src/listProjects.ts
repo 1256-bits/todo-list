@@ -116,7 +116,7 @@ function attachListeners (): void {
       listTodos(getIdFromEvent(e))
     })
 
-    renameBtn?.addEventListener('click', e => renameHandler)
+    renameBtn?.addEventListener('click', renameHandler)
 
     deleteBtn?.addEventListener('click', deleteProject)
   })
