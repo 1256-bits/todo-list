@@ -36,7 +36,6 @@ function addChecklistHandler (e: Event, id: string): void {
   const formData = new FormData(target)
   const content = formData.get('content') as string
   if (content == null) {
-    target.reset()
     return
   }
   const projectId = localStorage.getItem('currentProjectId')
@@ -47,6 +46,7 @@ function addChecklistHandler (e: Event, id: string): void {
   const todo = projectList.getProject(projectId).getItem(id)
   todo.addChecklistItem(content)
   listTodos(projectId)
+  target.reset()
 }
 
 function editChecklistHandler (e: Event, id: string, index: number): void {
@@ -54,7 +54,6 @@ function editChecklistHandler (e: Event, id: string, index: number): void {
   const formData = new FormData(target)
   const content = formData.get('content') as string
   if (content == null) {
-    target.reset()
     return
   }
   const projectId = localStorage.getItem('currentProjectId')
@@ -66,4 +65,5 @@ function editChecklistHandler (e: Event, id: string, index: number): void {
   const item = todo.findChecklistItem(index)
   item.text = content
   listTodos(projectId)
+  target.reset()
 }
