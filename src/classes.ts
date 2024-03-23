@@ -51,6 +51,12 @@ export class TodoItem implements TodoObject {
     this.checklist.push(item)
   }
 
+  removeChecklistItem (index: number) {
+    const item = this.findChecklistItem(index)
+    const trueIndex = this.checklist.indexOf(item)
+    this.checklist.splice(trueIndex, 1)
+  }
+
   checklistCheckItem (index: number): void {
     const checklistFiltered = this.checklist.filter(item => item.index === index)
     if (checklistFiltered.length > 1) {
