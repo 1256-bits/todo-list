@@ -5,13 +5,17 @@ export function addChecklistItem (e: Event): void {
   const newChecklistDialog = document.querySelector('#new-checklist') as HTMLDialogElement
   const target = e.currentTarget as HTMLElement
   const id = target.parentElement?.dataset.id
-  newChecklistDialog.showModal()
-  newChecklistDialog.addEventListener('submit', e => {
+  const callback = (e: Event) => {
     if (id == null) {
       return
     }
     addChecklistHandler(e, id)
-  }, { once: true })
+  }
+  newChecklistDialog.showModal()
+  newChecklistDialog.addEventListener('submit', callback, { once: true })
+  newChecklistDialog.addEventListener('close', e => {
+    e.currentTarget?.removeEventListener('submit', callback)
+  })
 }
 
 export function renameChecklistItem (e: Event): void {
@@ -19,13 +23,17 @@ export function renameChecklistItem (e: Event): void {
   const target = e.currentTarget as HTMLElement
   const id = target.parentElement?.dataset.id
   const index = target.parentElement?.dataset.index
-  editChecklistDialog.showModal()
-  editChecklistDialog.addEventListener('submit', e => {
+  const callback = (e: Event) => {
     if (id == null || index == null) {
       return
     }
     editChecklistHandler(e, id, parseInt(index))
-  }, { once: true })
+  }
+  editChecklistDialog.showModal()
+  editChecklistDialog.addEventListener('submit', callback, { once: true })
+  editChecklistDialog.addEventListener('close', e => {
+    e.currentTarget?.removeEventListener('submit', callback)
+  })
 }
 
 export function deleteChecklistItem (): void {
