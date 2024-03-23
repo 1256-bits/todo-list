@@ -2,6 +2,7 @@ import { type TodoItem } from './classes'
 import { projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type checklistItem } from './interfaces'
+import { addChecklistItem, renameChecklistItem, deleteChecklistItem } from './dom'
 
 export default function listTodos (id: string): void {
   const todoArea = document.querySelector('main > ul')
@@ -41,6 +42,9 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const addBtn = createButtonElement('add', 'New checklist item')
   const renameBtn = createButtonElement('rename', 'Edit')
   const deleteBtn = createButtonElement('delete', 'Delete')
+  addBtn.addEventListener('click', addChecklistItem)
+  renameBtn.addEventListener('click', editTodoItem)
+  deleteBtn.addEventListener('click', deleteTodoItem)
 
   if (item.checklist.length > 0) {
     const checklist = createChecklist(item.checklist)
@@ -74,6 +78,8 @@ function createChecklistItem (item: checklistItem): HTMLElement {
 
   const closeBtn = createButtonElement('close', 'Remove')
   const renameBtn = createButtonElement('rename', 'Rename')
+  closeBtn.addEventListener('click', deleteChecklistItem)
+  renameBtn.addEventListener('click', renameChecklistItem)
 
   checklistItem.append(checkbox, label, renameBtn, closeBtn)
   return checklistItem
@@ -100,4 +106,10 @@ function createNameField (title: string): HTMLInputElement {
   name.readOnly = true
   name.value = title
   return name
+}
+
+function editTodoItem (): void {
+}
+
+function deleteTodoItem (): void {
 }

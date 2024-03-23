@@ -9,3 +9,12 @@ const headerDeleteBtn = document.querySelector('.project-header > .delete-button
 
 headerRenameBtn?.addEventListener('click', renameHandler)
 headerDeleteBtn?.addEventListener('click', deleteProject)
+
+export function addChecklistItem (): void {
+}
+
+export function renameChecklistItem (): void {
+}
+
+export function deleteChecklistItem (): void {
+}
