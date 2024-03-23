@@ -62,7 +62,7 @@ const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogEl
 newTodoBtn?.addEventListener('click', () => { newTodoDialog.showModal() })
 
 // ADD NEW PROJECT
-// NB: repurpose for new project + new checklist
+
 const newProjectBtn = document.getElementById('new-project-button')
 const newProjectDialog = document.getElementById('new-project') as HTMLDialogElement
 newProjectBtn?.addEventListener('click', () => { newProjectDialog.showModal() })
