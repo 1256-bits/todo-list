@@ -46,7 +46,8 @@ export class TodoItem implements TodoObject {
   }
 
   addChecklistItem (itemText: string): void {
-    const index = this.checklist.length
+    const itemCount = this.checklist.length
+    const index = (itemCount === 0) ? 0 : this.checklist[itemCount - 1].index + 1
     const item = { index, text: itemText, completed: false }
     this.checklist.push(item)
   }
