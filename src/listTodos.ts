@@ -48,7 +48,7 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   deleteBtn.addEventListener('click', deleteTodoItem)
 
   if (item.checklist.length > 0) {
-    const checklist = createChecklist(item.checklist)
+    const checklist = createChecklist(item.checklist, item.id)
     todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn, checklist)
     return todoItem
   }
@@ -57,19 +57,21 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   return todoItem
 }
 
-function createChecklist (checklist: checklistItem[]): HTMLDivElement {
+function createChecklist (checklist: checklistItem[], parentId: string): HTMLDivElement {
   const checklistElement = document.createElement('div')
   checklistElement.classList.add('checklist')
 
   const ul = document.createElement('ul')
   checklistElement.appendChild(ul)
 
-  checklist.forEach(item => checklistElement.appendChild(createChecklistItem(item)))
+  checklist.forEach(item => checklistElement.appendChild(createChecklistItem(item, parentId)))
   return checklistElement
 }
 
-function createChecklistItem (item: checklistItem): HTMLElement {
+function createChecklistItem (item: checklistItem, parentId: string): HTMLElement {
   const checklistItem = document.createElement('li')
+  checklistItem.setAttribute('data-index', String(item.index))
+  checklistItem.setAttribute('data-id', parentId)
 
   const checkbox = document.createElement('input')
   checkbox.setAttribute('type', 'checkbox')

@@ -20,17 +20,30 @@ export function addChecklistItem (e: Event): void {
     if (id == null) {
       return
     }
-    newChecklistHandler(e, id)
+    checklistHandler(e, id, 'add')
   }, { once: true })
 }
 
-export function renameChecklistItem (): void {
+export function renameChecklistItem (e: Event): void {
+  const editChecklistDialog = document.querySelector('#edit-checklist') as HTMLDialogElement
+  const target = e.currentTarget as HTMLElement
+  const id = target.parentElement?.dataset.id
+  const index = target.parentElement?.dataset.index as string
+  editChecklistDialog.showModal()
+  editChecklistDialog.addEventListener('submit', e => {
+    if (id == null) {
+      return
+    }
+    checklistHandler(e, id, 'edit', parseInt(index))
+  }, { once: true })
 }
 
 export function deleteChecklistItem (): void {
 }
 
-function newChecklistHandler (e: Event, id: string): void {
+function checklistHandler (e: Event, id: string, type: 'add'): void
+function checklistHandler (e: Event, id: string, type: 'edit', index: number): void
+function checklistHandler (e: Event, id: string, type: 'add' | 'edit', index?: number): void {
   const target = e.target as HTMLFormElement
   const formData = new FormData(target)
   const content = formData.get('content') as string
@@ -44,6 +57,11 @@ function newChecklistHandler (e: Event, id: string): void {
     return
   }
   const todo = projectList.getProject(projectId).getItem(id)
-  todo.addChecklistItem(content)
+  if (type === 'add') {
+    todo.addChecklistItem(content)
+  } else if (index != null) {
+    const item = todo.findChecklistItem(index)
+    item.text = content
+  }
   listTodos(projectId)
 }

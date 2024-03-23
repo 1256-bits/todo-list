@@ -68,6 +68,14 @@ export class TodoItem implements TodoObject {
     const item = checklistFiltered[0]
     item.completed = false
   }
+
+  findChecklistItem (index: number): checklistItem {
+    const item = this.checklist.filter(item => item.index === index)
+    if (item.length > 1) {
+      throw new Error(`${this.title}: 2 or more checklist items appear to have the same index (${index})`)
+    }
+    return item[0]
+  }
 }
 
 export class Project implements ProjectObject {
