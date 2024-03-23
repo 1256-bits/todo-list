@@ -37,6 +37,26 @@ function createProjectItem (project: Project): HTMLLIElement {
   return li
 }
 
+export function renameHandler (e: Event): void {
+  const id = getIdFromEvent(e)
+  const title = projectList.getProject(id).title
+
+  const dialog = document.querySelector('#rename-project') as HTMLDialogElement
+  const input = dialog.querySelector('input')
+  if (input != null) {
+    input.value = title
+  }
+  input?.addEventListener('focus', () => {
+    input.selectionStart = input.selectionEnd = input.value.length
+  })
+  dialog?.showModal()
+
+  const form = document.querySelector('#rename-project-form') as HTMLFormElement
+  form.addEventListener('submit', e => {
+    renameProject(e, id)
+  }, { once: true })
+}
+
 function renameProject (e: Event, id: string): void {
   const target = e.target
   if (target == null || !(target instanceof HTMLFormElement)) {
@@ -63,7 +83,7 @@ function renameProject (e: Event, id: string): void {
   target.reset()
 }
 
-function deleteProject (e: Event): void {
+export function deleteProject (e: Event): void {
   const target = e.currentTarget as HTMLElement
   const id = target.dataset.id as string
   const currentProjectId = localStorage.getItem('currentProjectId')
@@ -96,25 +116,7 @@ function attachListeners (): void {
       listTodos(getIdFromEvent(e))
     })
 
-    renameBtn?.addEventListener('click', e => {
-      const id = getIdFromEvent(e)
-      const title = projectList.getProject(id).title
-
-      const dialog = document.querySelector('#rename-project') as HTMLDialogElement
-      const input = dialog.querySelector('input')
-      if (input != null) {
-        input.value = title
-      }
-      input?.addEventListener('focus', () => {
-        input.selectionStart = input.selectionEnd = input.value.length
-      })
-      dialog?.showModal()
-
-      const form = document.querySelector('#rename-project-form') as HTMLFormElement
-      form.addEventListener('submit', e => {
-        renameProject(e, id)
-      }, { once: true })
-    })
+    renameBtn?.addEventListener('click', e => renameHandler)
 
     deleteBtn?.addEventListener('click', deleteProject)
   })
