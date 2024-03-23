@@ -5,7 +5,7 @@ export function addChecklistItem (e: Event): void {
   const newChecklistDialog = document.querySelector('#new-checklist') as HTMLDialogElement
   const target = e.currentTarget as HTMLElement
   const id = target.parentElement?.dataset.id
-  const callback = (e: Event) => {
+  const callback = (e: Event): void => {
     if (id == null) {
       return
     }
@@ -23,7 +23,7 @@ export function renameChecklistItem (e: Event): void {
   const target = e.currentTarget as HTMLElement
   const id = target.parentElement?.dataset.id
   const index = target.parentElement?.dataset.index
-  const callback = (e: Event) => {
+  const callback = (e: Event): void => {
     if (id == null || index == null) {
       return
     }
