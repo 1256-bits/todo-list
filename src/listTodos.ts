@@ -35,6 +35,7 @@ export default function listTodos (id: string): void {
 function createTodoNode (item: TodoItem): HTMLLIElement {
   const todoItem = document.createElement('li')
   todoItem.classList.add('todo-item')
+  todoItem.setAttribute('data-id', item.id)
 
   const done = createCheckbox()
   const doneLabelHidden = createCheckboxLabel()
