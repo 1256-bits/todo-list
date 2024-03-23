@@ -17,12 +17,6 @@ export default function listTodos (id: string): void {
   // Save current id to localStorage
   localStorage.setItem('currentProjectId', id)
 
-  // Set new id and display new todo items
-  // ID is stored in DOM in case I for some reason need to change it in localStorage without relisting todo
-  // Potential bugs ahead
-  // NB: remove it if I end up not needing it
-  todoArea?.setAttribute('data-project-id', id)
-
   const project = projectList.getProject(id)
   project.items.forEach(item => {
     todoArea?.appendChild(createTodoNode(item))
@@ -30,7 +24,11 @@ export default function listTodos (id: string): void {
 
   // Update project name
   const titleElement = document.querySelector('.project-header > h2') as HTMLElement
+  const headerRenameBtn = document.querySelector('.project-header > .rename-button')
+  const headerDeleteBtn = document.querySelector('.project-header > .delete-button')
   titleElement.innerText = project.title
+  headerRenameBtn?.setAttribute('data-id', id)
+  headerDeleteBtn?.setAttribute('data-id', id)
 }
 
 function createTodoNode (item: TodoItem): HTMLLIElement {
