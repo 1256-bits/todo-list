@@ -63,7 +63,26 @@ function renameProject (e: Event, id: string): void {
   target.reset()
 }
 
-function deleteProject (): void {
+function deleteProject (e: Event): void {
+  const target = e.currentTarget as HTMLElement
+  const id = target.dataset.id as string
+  const currentProjectId = localStorage.getItem('currentProjectId')
+  const projectIndex = projectList.getProjectIndexById(id)
+  const projectTitle = projectList.getProject(id).title
+  const confirmation = confirm(`Are you sure you want to delete ${projectTitle}`)
+  if (confirmation) {
+    if (id === currentProjectId && projectList.items.length > 1) {
+      const newIndex = (projectList.items.length > projectIndex + 1) ? projectIndex + 1 : projectIndex - 1
+      const newId = projectList.items[newIndex].id
+      localStorage.setItem('currentProjectId', newId)
+      listTodos(newId)
+    }
+    if (projectList.items.length === 1) {
+      localStorage.removeItem('currentProjectId')
+    }
+    projectList.removeProject(id)
+    listProjects()
+  }
 }
 
 function attachListeners (): void {
@@ -97,7 +116,6 @@ function attachListeners (): void {
       }, { once: true })
     })
 
-    deleteBtn?.addEventListener('click', e => {
-    })
+    deleteBtn?.addEventListener('click', deleteProject)
   })
 }
