@@ -73,8 +73,9 @@ function createChecklistItem (item: checklistItem): HTMLElement {
   label.innerText = item.text
 
   const closeBtn = createButtonElement('close', 'Remove')
+  const renameBtn = createButtonElement('rename', 'Rename')
 
-  checklistItem.append(checkbox, label, closeBtn)
+  checklistItem.append(checkbox, label, renameBtn, closeBtn)
   return checklistItem
 }
 

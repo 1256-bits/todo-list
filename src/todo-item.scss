@@ -43,9 +43,14 @@
 
   li {
     display: grid;
-    grid-template-columns: 1.2rem 1fr 1.2rem;
+    grid-template-columns: 1.2rem 1fr 1.6rem 1.2rem;
     gap: 5px;
     align-items: center;
+  }
+
+  .rename-button {
+    grid-column: auto;
+    width: 1.6rem;
   }
 }
 
