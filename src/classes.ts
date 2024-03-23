@@ -93,6 +93,14 @@ export class Project implements ProjectObject {
     const index = this.items.indexOf(item[0])
     this.items.splice(index, 1)
   }
+
+  getItem (id: string): TodoItem {
+    const item = this.items.filter(item => item.id === id)
+    if (item.length > 1) {
+      throw new Error('More than 1 items with the same id')
+    }
+    return item[0]
+  }
 }
 
 export class ProjectList {
