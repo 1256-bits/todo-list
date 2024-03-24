@@ -1,4 +1,4 @@
-import { projectList } from '.'
+import { getCurrentProjectId, projectList } from '.'
 import { listTodos } from './dom'
 
 export function addChecklistItem (e: Event): void {
@@ -50,9 +50,9 @@ export function deleteChecklistItem (e: Event): void {
   const target = e.currentTarget as HTMLElement
   const id = target.parentElement?.dataset.id
   const index = target.parentElement?.dataset.index
-  const projectId = localStorage.getItem('currentProjectId')
+  const projectId = getCurrentProjectId()
   const conf = confirm('Are you sure?')
-  if (conf && projectId != null && typeof index === 'string' && typeof id === 'string') {
+  if (conf && typeof index === 'string' && typeof id === 'string') {
     const todo = projectList.getProject(projectId).getItem(id)
     todo.removeChecklistItem(parseInt(index))
     listTodos(projectId)
@@ -68,11 +68,7 @@ function addChecklistHandler (e: Event, id: string): void {
   if (content == null) {
     return
   }
-  const projectId = localStorage.getItem('currentProjectId')
-  if (projectId == null) {
-    console.error('Current project ID not found')
-    return
-  }
+  const projectId = getCurrentProjectId()
   const todo = projectList.getProject(projectId).getItem(id)
   todo.addChecklistItem(content)
   listTodos(projectId)
@@ -86,11 +82,7 @@ function editChecklistHandler (e: Event, id: string, index: number): void {
   if (content == null) {
     return
   }
-  const projectId = localStorage.getItem('currentProjectId')
-  if (projectId == null) {
-    console.error('Current project ID not found')
-    return
-  }
+  const projectId = getCurrentProjectId()
   const todo = projectList.getProject(projectId).getItem(id)
   const item = todo.findChecklistItem(index)
   item.text = content
