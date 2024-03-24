@@ -8,8 +8,21 @@
   border-bottom: 2px solid var(--primary);
   padding: 0.3rem;
 
+  .container {
+    --width: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(2rem - var(--width));
+    grid-column: 1/4;
+
+    .priority {
+      width: var(--width);
+      place-self: center;
+    }
+  }
+
   .todo-name {
-    grid-column: 3/12;
+    grid-column: 4/12;
     justify-self: start;
   }
 
@@ -31,7 +44,7 @@
   .delete-button {
     grid-column: 29/30;
   }
-  
+
   &:nth-child(2) {
     border-top: 2px solid var(--primary);
   }
@@ -52,9 +65,4 @@
     grid-column: auto;
     width: 1.6rem;
   }
-}
-
-.priority {
-  width: 1.5rem;
-  place-self: center;
 }

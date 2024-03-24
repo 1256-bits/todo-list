@@ -37,6 +37,8 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   todoItem.classList.add('todo-item')
   todoItem.setAttribute('data-id', item.id)
 
+  const container = document.createElement('div')
+  container.classList.add('container')
   const done = createCheckbox(item)
   const doneLabelHidden = createCheckboxLabel()
   const name = createNameField(item.title)
@@ -47,14 +49,15 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   addBtn.addEventListener('click', addChecklistItem)
   renameBtn.addEventListener('click', editTodoItem)
   deleteBtn.addEventListener('click', deleteTodoItem)
+  container.append(priority, done, doneLabelHidden)
 
   if (item.checklist.length > 0) {
     const checklist = createChecklist(item.checklist, item.id)
-    todoItem.append(priority, done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn, checklist)
+    todoItem.append(container, name, addBtn, renameBtn, deleteBtn, checklist)
     return todoItem
   }
 
-  todoItem.append(priority, done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn)
+  todoItem.append(container, name, addBtn, renameBtn, deleteBtn)
   return todoItem
 }
 

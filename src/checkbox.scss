@@ -17,7 +17,6 @@
 .todo-item .checkbox-big {
   appearance: none;
   width: 2rem;
-  grid-column: 2/3;
 
   &:checked:before {
     font-size: 2rem;
