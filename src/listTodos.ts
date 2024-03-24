@@ -82,8 +82,7 @@ function createChecklistItem (item: checklistItem, parentId: string): HTMLElemen
     const todo = projectList.getProject(projectId).getItem(parentId)
     if (target.checked) {
       todo.checklistCheckItem(item.index)
-    }
-    else {
+    } else {
       todo.checklistUncheckItem(item.index)
     }
   })
@@ -109,8 +108,7 @@ function createCheckbox (item: TodoItem): HTMLInputElement {
     const target = e.target as HTMLInputElement
     if (target.checked) {
       item.checkTodo()
-    }
-    else {
+    } else {
       item.uncheckTodo()
     }
   })

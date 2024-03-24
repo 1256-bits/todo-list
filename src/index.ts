@@ -16,7 +16,7 @@ form?.addEventListener('submit', e => {
   const targetForm = e.target as HTMLFormElement
   const formData = new FormData(targetForm)
   const initParams = createTodoObject(formData)
-  const currentProjectId = getCurrentProjectId() 
+  const currentProjectId = getCurrentProjectId()
 
   const currentProject = projectList.getProject(currentProjectId)
   currentProject.addItem(new TodoItem(initParams))
@@ -102,7 +102,7 @@ function init (): void {
 function getCurrentProjectId (): string {
   const projectId = localStorage.getItem('currentProjectId')
   if (projectId == null) {
-    throw new Error("Missing current project ID")
+    throw new Error('Missing current project ID')
   }
   return projectId
 }
