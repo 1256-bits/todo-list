@@ -135,5 +135,16 @@ function createNameField (title: string): HTMLInputElement {
 function editTodoItem (): void {
 }
 
-function deleteTodoItem (): void {
+function deleteTodoItem (e: Event): void {
+  const target = e.currentTarget as HTMLElement
+  const id = target.parentElement?.dataset.id
+  if (id == null) {
+    return
+  }
+  const conf = confirm('Are you sure?')
+  const projectId = getCurrentProjectId()
+  if (conf) {
+    projectList.getProject(projectId).removeItem(id)
+    listTodos(projectId)
+  }
 }
