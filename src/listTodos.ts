@@ -1,5 +1,5 @@
 import { type TodoItem } from './classes'
-import { projectList } from './index'
+import { getCurrentProjectId, projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type checklistItem } from './interfaces'
 import { addChecklistItem, renameChecklistItem, deleteChecklistItem } from './dom'
@@ -37,7 +37,7 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   todoItem.classList.add('todo-item')
   todoItem.setAttribute('data-id', item.id)
 
-  const done = createCheckbox()
+  const done = createCheckbox(item)
   const doneLabelHidden = createCheckboxLabel()
   const name = createNameField(item.title)
   const addBtn = createButtonElement('add', 'New checklist item')
@@ -76,6 +76,19 @@ function createChecklistItem (item: checklistItem, parentId: string): HTMLElemen
   const checkbox = document.createElement('input')
   checkbox.setAttribute('type', 'checkbox')
 
+  checkbox.addEventListener('change', e => {
+    const target = e.target as HTMLInputElement
+    const projectId = getCurrentProjectId()
+    const todo = projectList.getProject(projectId).getItem(parentId)
+    if (target.checked) {
+      todo.checklistCheckItem(item.index)
+    }
+    else {
+      todo.checklistUncheckItem(item.index)
+    }
+  })
+  checkbox.checked = item.completed
+
   const label = document.createElement('label')
   label.innerText = item.text
 
@@ -88,10 +101,20 @@ function createChecklistItem (item: checklistItem, parentId: string): HTMLElemen
   return checklistItem
 }
 
-function createCheckbox (): HTMLInputElement {
+function createCheckbox (item: TodoItem): HTMLInputElement {
   const done = document.createElement('input')
   done.setAttribute('type', 'checkbox')
   done.setAttribute('name', 'done')
+  done.addEventListener('change', e => {
+    const target = e.target as HTMLInputElement
+    if (target.checked) {
+      item.checkTodo()
+    }
+    else {
+      item.uncheckTodo()
+    }
+  })
+  done.checked = item.done
   return done
 }
 
