@@ -76,6 +76,7 @@ function createChecklistItem (item: checklistItem, parentId: string): HTMLElemen
 
   const checkbox = document.createElement('input')
   checkbox.setAttribute('type', 'checkbox')
+  checkbox.classList.add('checkbox-small')
 
   checkbox.addEventListener('change', e => {
     const target = e.target as HTMLInputElement
@@ -103,6 +104,7 @@ function createChecklistItem (item: checklistItem, parentId: string): HTMLElemen
 
 function createCheckbox (item: TodoItem): HTMLInputElement {
   const done = document.createElement('input')
+  done.classList.add('checkbox-big')
   done.setAttribute('type', 'checkbox')
   done.setAttribute('name', 'done')
   done.addEventListener('change', e => {

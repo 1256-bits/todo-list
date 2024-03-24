@@ -14,7 +14,7 @@
   }
 }
 
-.todo-item > input[type="checkbox"] {
+.todo-item .checkbox-big {
   appearance: none;
   width: 2rem;
   grid-column: 2/3;
@@ -28,7 +28,7 @@
   }
 }
 
-.checklist input[type="checkbox"] {
+.checklist .checkbox-small {
   width: 1.2rem;
 
   &:checked + label {
