@@ -16,12 +16,8 @@ form?.addEventListener('submit', e => {
   const targetForm = e.target as HTMLFormElement
   const formData = new FormData(targetForm)
   const initParams = createTodoObject(formData)
-  const currentProjectId = localStorage.getItem('currentProjectId')
+  const currentProjectId = getCurrentProjectId() 
 
-  if (currentProjectId == null) {
-    console.error("Can't add todos while no project is active. What are you doing?")
-    return
-  }
   const currentProject = projectList.getProject(currentProjectId)
   currentProject.addItem(new TodoItem(initParams))
   targetForm.reset()
@@ -38,7 +34,7 @@ newProjectForm?.addEventListener('submit', e => {
   projectList.addProject(project)
   targetForm.reset()
   DOM.listProjects()
-  DOM.listTodos(localStorage.getItem('currentProjectId') as string)
+  DOM.listTodos(getCurrentProjectId())
 })
 
 // DUMMY PROJECTS
@@ -103,6 +99,14 @@ function init (): void {
   DOM.listTodos(id)
 }
 
+function getCurrentProjectId (): string {
+  const projectId = localStorage.getItem('currentProjectId')
+  if (projectId == null) {
+    throw new Error("Missing current project ID")
+  }
+  return projectId
+}
+
 init()
 
-export { projectList }
+export { projectList, getCurrentProjectId }
