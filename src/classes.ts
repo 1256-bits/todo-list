@@ -101,7 +101,7 @@ export class Project implements ProjectObject {
   }
 
   removeItem (id: string): void {
-    const item = this.items.filter(item => item.id !== id)
+    const item = this.items.filter(item => item.id === id)
     if (item.length > 1) {
       throw new Error(`${item.length} todo items have the same id`)
     }
