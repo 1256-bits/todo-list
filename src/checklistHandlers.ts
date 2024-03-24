@@ -29,6 +29,16 @@ export function renameChecklistItem (e: Event): void {
     }
     editChecklistHandler(e, id, parseInt(index))
   }
+
+  const input = editChecklistDialog.querySelector('input')
+  const title = target.parentElement?.querySelector('label')?.textContent
+  if (input != null && title != null) {
+    input.value = title
+  }
+  input?.addEventListener('focus', () => {
+    input.selectionStart = input.selectionEnd = input.value.length
+  })
+
   editChecklistDialog.showModal()
   editChecklistDialog.addEventListener('submit', callback, { once: true })
   editChecklistDialog.addEventListener('close', e => {
