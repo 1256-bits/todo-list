@@ -1,7 +1,7 @@
 import { type TodoItem } from './classes'
 import { getCurrentProjectId, projectList } from './index'
 import createButtonElement from './createButtonElement'
-import { type checklistItem } from './interfaces'
+import { priority, type checklistItem } from './interfaces'
 import { addChecklistItem, renameChecklistItem, deleteChecklistItem } from './dom'
 
 export default function listTodos (id: string): void {
@@ -40,6 +40,7 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const done = createCheckbox(item)
   const doneLabelHidden = createCheckboxLabel()
   const name = createNameField(item.title)
+  const priority = createPriorityElement(item.priority)
   const addBtn = createButtonElement('add', 'New checklist item')
   const renameBtn = createButtonElement('rename', 'Edit')
   const deleteBtn = createButtonElement('delete', 'Delete')
@@ -49,11 +50,11 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
 
   if (item.checklist.length > 0) {
     const checklist = createChecklist(item.checklist, item.id)
-    todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn, checklist)
+    todoItem.append(priority, done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn, checklist)
     return todoItem
   }
 
-  todoItem.append(done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn)
+  todoItem.append(priority, done, doneLabelHidden, name, addBtn, renameBtn, deleteBtn)
   return todoItem
 }
 
@@ -147,4 +148,18 @@ function deleteTodoItem (e: Event): void {
     projectList.getProject(projectId).removeItem(id)
     listTodos(projectId)
   }
+}
+
+function createPriorityElement (priority: priority): SVGSVGElement {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  const title = document.createElementNS('http://www.w3.org/2000/svg', 'title')
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
+
+  svg.setAttribute('viewBox', '0 0 20 20')
+  svg.classList.add('priority')
+  title.textContent = priority.slice(0,1).toUpperCase() + priority.slice(1)
+  use.setAttribute('href', `./svg/${priority}.svg#${priority}`)
+
+  svg.append(title, use)
+  return svg
 }
