@@ -1,7 +1,7 @@
 import { type TodoItem } from './classes'
 import { getCurrentProjectId, projectList } from './index'
 import createButtonElement from './createButtonElement'
-import { priority, type checklistItem } from './interfaces'
+import { type priority, type checklistItem } from './interfaces'
 import { addChecklistItem, renameChecklistItem, deleteChecklistItem } from './dom'
 
 export default function listTodos (id: string): void {
@@ -162,7 +162,7 @@ function createPriorityElement (priority: priority): SVGSVGElement {
 
   svg.setAttribute('viewBox', '0 0 20 20')
   svg.classList.add('priority')
-  title.textContent = priority.slice(0,1).toUpperCase() + priority.slice(1)
+  title.textContent = priority.slice(0, 1).toUpperCase() + priority.slice(1)
   use.setAttribute('href', `./svg/${priority}.svg#${priority}`)
 
   svg.append(title, use)
