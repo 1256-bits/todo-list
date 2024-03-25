@@ -95,6 +95,8 @@ function init (): void {
   const id = localStorage.getItem('currentProjectId')
 
   if (projectList.items.length === 0) {
+    const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
+    addBtn.disabled = true
     return
   }
 
