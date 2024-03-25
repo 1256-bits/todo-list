@@ -1,6 +1,5 @@
 import { TodoItem, Project, ProjectList } from './classes'
 import createTodoObject from './createTodoObject'
-import createProjectObject from './createProjectObject'
 import { v4 as uuid } from 'uuid'
 import * as DOM from './dom'
 import 'normalize.css'
@@ -10,27 +9,17 @@ import './styles.scss'
 localStorage.clear()
 
 const projectList = new ProjectList()
+
 const newTodoBtn = document.getElementById('new-todo')
 newTodoBtn?.addEventListener('click', DOM.newTodoBtnClickHandler)
 
 const newProjectForm = document.querySelector('#new-project-form')
-newProjectForm?.addEventListener('submit', e => {
-  const targetForm = e.target as HTMLFormElement
-  const formData = new FormData(targetForm)
-  const { title, id } = createProjectObject(formData)
-  const project = new Project(title, id)
-  localStorage.setItem('currentProjectId', id)
+newProjectForm?.addEventListener('submit', DOM.newProjectHandler)
 
-  if (projectList.items.length === 0) {
-    const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
-    addBtn.disabled = false
-  }
-
-  projectList.addProject(project)
-  targetForm.reset()
-  DOM.listProjects()
-  DOM.listTodos(getCurrentProjectId())
-})
+const headerRenameBtn = document.querySelector('.project-header > .rename-button')
+const headerDeleteBtn = document.querySelector('.project-header > .delete-button')
+headerRenameBtn?.addEventListener('click', DOM.renameHandler)
+headerDeleteBtn?.addEventListener('click', DOM.deleteProject)
 
 // DUMMY PROJECTS
 projectList.addProject(new Project('Project 1', uuid()))
