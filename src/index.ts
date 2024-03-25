@@ -61,7 +61,11 @@ DOM.listProjects()
 // ADD NEW TODO
 const newTodoBtn = document.getElementById('new-todo')
 const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
-newTodoBtn?.addEventListener('click', () => { newTodoDialog.showModal() })
+newTodoBtn?.addEventListener('click', () => {
+  const submitBtn = document.querySelector('#create-todo') as HTMLButtonElement
+  submitBtn.textContent = 'Create todo'
+  newTodoDialog.showModal()
+})
 
 // ADD NEW PROJECT
 
