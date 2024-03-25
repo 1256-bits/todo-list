@@ -1,7 +1,8 @@
 .add-button,
 .rename-button,
 .delete-button,
-.close-button {
+.close-button,
+.notes-button {
   stroke: var(--accent);
   background-color: var(--secondary);
   border-radius: 0.5rem;
@@ -18,7 +19,8 @@
 
 .add-button,
 .rename-button,
-.delete-button {
+.delete-button,
+.notes-button {
   width: 2.3rem;
   border: 2px solid var(--accent);
   fill: transparent;
@@ -41,3 +43,18 @@
     background-color: inherit;
   }
 }
+
+.notes-button {
+  stroke: transparent;
+  fill: var(--accent);
+
+  &:hover {
+    stroke: inherit;
+    fill: var(--text);
+  }
+
+  &:active {
+    background-color: var(--primary);
+  }
+}
+
