@@ -1,6 +1,7 @@
 import { type TodoItem } from './classes'
 
 export type priority = 'low' | 'normal' | 'high'
+export type buttonTypes = 'add' | 'rename' | 'delete' | 'close' | 'notes'
 
 export interface TodoObject {
   title: string
