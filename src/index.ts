@@ -8,7 +8,7 @@ import './styles.scss'
 // TEMP
 localStorage.clear()
 
-const projectList = new ProjectList()
+export const projectList = new ProjectList()
 
 const newTodoBtn = document.getElementById('new-todo')
 newTodoBtn?.addEventListener('click', DOM.newTodoBtnClickHandler)
@@ -83,28 +83,4 @@ function init (): void {
   DOM.listTodos(id)
 }
 
-function getCurrentProjectId (): string {
-  const projectId = localStorage.getItem('currentProjectId')
-  if (projectId == null) {
-    throw new Error('Missing current project ID')
-  }
-  return projectId
-}
-
-function parseDate (date: Date): string {
-  const year = date.getFullYear()
-  const processRaw = (raw: number): string => {
-    const rawStr = String(raw)
-    return (rawStr.length === 1) ? '0' + rawStr : rawStr
-  }
-  // only months are counted from 0
-  const month = processRaw(date.getMonth() + 1)
-  const day = processRaw(date.getDate())
-  const hour = processRaw(date.getHours())
-  const minute = processRaw(date.getMinutes())
-  return `${year}-${month}-${day}T${hour}:${minute}`
-}
-
 init()
-
-export { projectList, getCurrentProjectId, parseDate }
