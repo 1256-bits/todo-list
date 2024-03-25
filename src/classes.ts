@@ -120,7 +120,7 @@ export class Project implements ProjectObject {
 
   private sortByPriority (): void {
     const valueMap = { high: 2, normal: 1, low: 0 }
-    this.items.sort((x, y) => valueMap[y.priority] - valueMap[x.priority] )
+    this.items.sort((x, y) => valueMap[y.priority] - valueMap[x.priority])
   }
 }
 
