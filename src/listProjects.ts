@@ -108,6 +108,8 @@ export function deleteProject (e: Event): void {
     }
     if (projectList.items.length === 1) {
       localStorage.removeItem('currentProjectId')
+      const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
+      addBtn.disabled = true
     }
     projectList.removeProject(id)
     listProjects()

@@ -31,6 +31,12 @@ newProjectForm?.addEventListener('submit', e => {
   const { title, id } = createProjectObject(formData)
   const project = new Project(title, id)
   localStorage.setItem('currentProjectId', id)
+
+  if (projectList.items.length === 0) {
+    const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
+    addBtn.disabled = false
+  }
+
   projectList.addProject(project)
   targetForm.reset()
   DOM.listProjects()
