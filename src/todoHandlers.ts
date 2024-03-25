@@ -29,19 +29,42 @@ export function newTodoBtnClickHandler (): void {
   }
   submitBtn.textContent = 'Create todo'
   form?.addEventListener('submit', createTodoHandler, { once: true })
+  newTodoDialog.addEventListener('close', () => {
+    form?.removeEventListener('submit', createTodoHandler)
+  }, { once: true })
   newTodoDialog.showModal()
 }
 
 export function editTodoItem (e: Event): void {
   const dialog = document.querySelector('#new-todo-dialog')
   const saveBtn = dialog?.querySelector('#create-todo')
+  const form = dialog?.querySelector('form')
   const id = getIdFromEvent(e)
   if (!(dialog instanceof HTMLDialogElement) || !(saveBtn instanceof HTMLButtonElement)) {
     throw new Error('Dialog or button not found')
   }
   assignValues(id, dialog)
   saveBtn.textContent = 'Save'
+  const editTodoHandlerCallback = editTodoHandler.bind({}, id)
+  form?.addEventListener('submit', editTodoHandlerCallback, { once: true })
+  dialog.addEventListener('close', () => {
+    form?.removeEventListener('submit', editTodoHandlerCallback)
+  }, { once: true })
+
   dialog.showModal()
+}
+
+export function editTodoHandler (id: string, e: Event): void {
+  const form = e.target as HTMLFormElement
+  const formData = new FormData(form)
+  const todoObject = createTodoObject(formData)
+
+  const projectId = getCurrentProjectId()
+  const project = projectList.getProject(projectId)
+  const todo = project.getItem(id)
+  todo.updateFields(todoObject)
+
+  listTodos(projectId)
 }
 
 function assignValues (id: string, dialog: HTMLDialogElement): void {
@@ -78,4 +101,3 @@ export function deleteTodoItem (e: Event): void {
     listTodos(projectId)
   }
 }
-
