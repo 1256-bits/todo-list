@@ -56,12 +56,7 @@ dialogCloseBtns?.forEach(button => {
 const dialogs = document.querySelectorAll('dialog')
 dialogs.forEach(dialog => {
   dialog.addEventListener('close', () => {
-    const dialogId = dialog.id
     const form = dialog.querySelector('form') as HTMLFormElement
-    if (dialogId === '#new-todo-dialog') {
-      form.removeEventListener('submit', DOM.createTodoHandler)
-      //form.removeEventListener('submit', renameTodoHandler)
-    }
     form.reset()
   })
 })
