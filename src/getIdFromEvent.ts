@@ -1,7 +1,14 @@
 export default function getIdFromEvent (e: Event): string {
-  if (!(e.currentTarget instanceof HTMLElement) || e.currentTarget.dataset.id == null) {
-    throw new Error('Not an HTML element or missing ID')
+  const target = e.currentTarget
+  if (!(target instanceof HTMLElement)) {
+    throw new Error('currentTarget not found')
   }
-  const id = e.currentTarget.dataset.id
-  return id
+  if (target.dataset.id != null) {
+    return target.dataset.id
+  }
+  const parent = target.parentElement
+  if (parent?.dataset.id != null) {
+    return parent.dataset.id
+  }
+  throw new Error('ID not found')
 }
