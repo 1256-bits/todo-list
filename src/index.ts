@@ -10,19 +10,9 @@ import './styles.scss'
 localStorage.clear()
 
 const projectList = new ProjectList()
+const newTodoBtn = document.getElementById('new-todo')
+newTodoBtn?.addEventListener('click', DOM.newTodoBtnClickHandler)
 
-const form = document.querySelector('#new-todo-dialog')
-form?.addEventListener('submit', e => {
-  const targetForm = e.target as HTMLFormElement
-  const formData = new FormData(targetForm)
-  const initParams = createTodoObject(formData)
-  const currentProjectId = getCurrentProjectId()
-
-  const currentProject = projectList.getProject(currentProjectId)
-  currentProject.addItem(new TodoItem(initParams))
-  targetForm.reset()
-  DOM.listTodos(currentProjectId)
-})
 
 const newProjectForm = document.querySelector('#new-project-form')
 newProjectForm?.addEventListener('submit', e => {
@@ -59,19 +49,6 @@ projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 DOM.listProjects()
 
 // ADD NEW TODO
-const newTodoBtn = document.getElementById('new-todo')
-const newTodoDialog = document.getElementById('new-todo-dialog') as HTMLDialogElement
-newTodoBtn?.addEventListener('click', () => {
-  const submitBtn = document.querySelector('#create-todo') as HTMLButtonElement
-  const dateStarted = newTodoDialog.querySelector('input[name="dateStarted"]')
-  if (dateStarted instanceof HTMLInputElement) {
-    const date = new Date()
-    dateStarted.value = parseDate(date)
-  }
-  submitBtn.textContent = 'Create todo'
-  newTodoDialog.showModal()
-})
-
 // ADD NEW PROJECT
 
 const newProjectBtn = document.getElementById('new-project-button')
@@ -91,6 +68,19 @@ dialogCloseBtns?.forEach(button => {
     dialog.close()
   })
 })
+const dialogs = document.querySelectorAll('dialog')
+dialogs.forEach(dialog => {
+  dialog.addEventListener('close', () => {
+    const dialogId = dialog.id
+    const form = dialog.querySelector('form') as HTMLFormElement
+    if (dialogId === "#new-todo-dialog") {
+      form.removeEventListener('submit', DOM.createTodoHandler)
+      //form.removeEventListener('submit', renameTodoHandler)
+    }
+    form.reset()
+  })
+})
+
 
 // Add empty default project if there are no projects present
 // Or don't
