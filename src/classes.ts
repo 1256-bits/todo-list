@@ -29,7 +29,7 @@ export class TodoItem implements TodoObject {
     this.title = title
     this.description = description
     this.dueDate = dueDate
-    this.dateStarted = dateStarted || new Date()
+    this.dateStarted = (dateStarted == null) ? dateStarted : new Date()
     this.priority = priority
     this.notes = notes
     this.checklist = checklist
