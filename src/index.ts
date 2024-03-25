@@ -13,7 +13,6 @@ const projectList = new ProjectList()
 const newTodoBtn = document.getElementById('new-todo')
 newTodoBtn?.addEventListener('click', DOM.newTodoBtnClickHandler)
 
-
 const newProjectForm = document.querySelector('#new-project-form')
 newProjectForm?.addEventListener('submit', e => {
   const targetForm = e.target as HTMLFormElement
@@ -73,7 +72,7 @@ dialogs.forEach(dialog => {
   dialog.addEventListener('close', () => {
     const dialogId = dialog.id
     const form = dialog.querySelector('form') as HTMLFormElement
-    if (dialogId === "#new-todo-dialog") {
+    if (dialogId === '#new-todo-dialog') {
       form.removeEventListener('submit', DOM.createTodoHandler)
       //form.removeEventListener('submit', renameTodoHandler)
     }
@@ -81,15 +80,6 @@ dialogs.forEach(dialog => {
   })
 })
 
-
-// Add empty default project if there are no projects present
-// Or don't
-/* if (projectList.items.length === 0) {
-  const project = new Project('default', '0')
-  projectList.addProject(project)
-}
-*/
-// Automatically open last opened project or the first available project
 function init (): void {
   const id = localStorage.getItem('currentProjectId')
 
@@ -116,7 +106,7 @@ function getCurrentProjectId (): string {
 
 function parseDate (date: Date): string {
   const year = date.getFullYear()
-  const processRaw = (raw: number) => {
+  const processRaw = (raw: number): string => {
     const rawStr = String(raw)
     return (rawStr.length === 1) ? '0' + rawStr : rawStr
   }
