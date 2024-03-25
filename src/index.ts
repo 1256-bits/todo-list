@@ -33,9 +33,6 @@ item.addChecklistItem('Item 2')
 projectList.items[0].addItem(item)
 projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 
-// LIST PROJECTS IN NAV
-DOM.listProjects()
-
 // ADD NEW TODO
 // ADD NEW PROJECT
 
@@ -77,6 +74,7 @@ function init (): void {
     addBtn.disabled = true
     return
   }
+  DOM.listProjects()
 
   if (id == null) {
     DOM.listTodos(projectList.items[0].id)
