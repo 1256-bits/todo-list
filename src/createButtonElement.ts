@@ -1,5 +1,7 @@
 import createIcon from './create-icon'
-export default function createButtonElement (type: 'add' | 'rename' | 'delete' | 'close', helpMsg: string): HTMLButtonElement {
+import { type buttonTypes } from './interfaces'
+
+export default function createButtonElement (type: buttonTypes, helpMsg: string): HTMLButtonElement {
   const button = document.createElement('button')
   button.classList.add(`${type}-button`)
 
