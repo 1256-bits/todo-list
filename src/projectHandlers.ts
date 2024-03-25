@@ -1,8 +1,9 @@
-import { projectList, getCurrentProjectId } from './index'
+import { projectList } from './index'
 import createProjectObject from './createProjectObject'
 import getIdFromEvent from './getIdFromEvent'
 import * as DOM from './dom'
 import { Project } from './classes'
+import getCurrentProjectId from './getCurrentProjectId'
 
 export function renameHandler (e: Event): void {
   if (projectList.items.length === 0) {

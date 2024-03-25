@@ -1,5 +1,6 @@
-import { getCurrentProjectId, projectList } from '.'
+import { projectList } from '.'
 import { listTodos } from './dom'
+import getCurrentProjectId from './getCurrentProjectId'
 
 export function addChecklistItem (e: Event): void {
   const newChecklistDialog = document.querySelector('#new-checklist') as HTMLDialogElement

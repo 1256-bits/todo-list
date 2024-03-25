@@ -1,9 +1,11 @@
 import { type TodoItem } from './classes'
-import { getCurrentProjectId, parseDate, projectList } from './index'
+import { projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type priority, type checklistItem } from './interfaces'
 import * as DOM from './dom'
 import getIdFromEvent from './getIdFromEvent'
+import parseDate from './parseDate'
+import getCurrentProjectId from './getCurrentProjectId'
 
 export default function listTodos (id: string): void {
   const todoArea = document.querySelector('main > ul')

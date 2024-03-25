@@ -1,7 +1,9 @@
 import createTodoObject from './createTodoObject'
-import { getCurrentProjectId, projectList, parseDate } from './index'
+import { projectList } from './index'
 import { TodoItem } from './classes'
 import { listTodos } from './dom'
+import parseDate from './parseDate'
+import getCurrentProjectId from './getCurrentProjectId'
 
 export function createTodoHandler (e: Event): void {
   const targetForm = e.target as HTMLFormElement
