@@ -98,6 +98,7 @@ export class Project implements ProjectObject {
 
   addItem (item: TodoItem): void {
     this.items.push(item)
+    this.sortByPriority()
   }
 
   removeItem (id: string): void {
@@ -115,6 +116,11 @@ export class Project implements ProjectObject {
       throw new Error('More than 1 items with the same id')
     }
     return item[0]
+  }
+
+  private sortByPriority (): void {
+    const valueMap = { high: 2, normal: 1, low: 0 }
+    this.items.sort((x, y) => valueMap[y.priority] - valueMap[x.priority] )
   }
 }
 
