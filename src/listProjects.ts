@@ -3,6 +3,7 @@ import createButtonElement from './createButtonElement'
 import { projectList } from './index'
 import listTodos from './listTodos'
 import getIdFromEvent from './getIdFromEvent'
+import * as DOM from './dom'
 
 export default function listProjects (): void {
   const projectArea = document.querySelector('.projects-subarea')
@@ -48,8 +49,8 @@ function attachListeners (): void {
       listTodos(getIdFromEvent(e))
     })
 
-    renameBtn?.addEventListener('click', renameHandler)
+    renameBtn?.addEventListener('click', DOM.renameHandler)
 
-    deleteBtn?.addEventListener('click', deleteProject)
+    deleteBtn?.addEventListener('click', DOM.deleteProject)
   })
 }
