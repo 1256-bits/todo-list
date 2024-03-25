@@ -29,7 +29,7 @@ export class TodoItem implements TodoObject {
     this.title = title
     this.description = description
     this.dueDate = dueDate
-    this.dateStarted = (dateStarted == null) ? dateStarted : new Date()
+    this.dateStarted = dateStarted ?? new Date()
     this.priority = priority
     this.notes = notes
     this.checklist = checklist
@@ -43,6 +43,15 @@ export class TodoItem implements TodoObject {
 
   uncheckTodo (): void {
     this.done = false
+  }
+
+  updateFields (data: TodoObject): void {
+    this.title = data.title
+    this.description = data.description
+    this.dueDate = data.dueDate
+    this.dateStarted = data.dateStarted ?? this.dateStarted
+    this.priority = data.priority
+    this.notes = data.notes
   }
 
   addChecklistItem (itemText: string): void {
