@@ -6,7 +6,7 @@ export default function createTodoObject (formData: FormData): TodoObject {
   const dueDate = getDateParam(formData.get('dueDate'), null)
   const dateStarted = new Date() // Generate it here for testing purposes but ideally on class instance
   const priority = getPriority(formData.get('priority'), 'normal')
-  const notes = ''
+  const notes = getStringParam(formData.get('notes'), '')
   const checklist: checklistItem[] = []
   const id = uuid()
   const done = getBoolean(formData.get('done'), false)
