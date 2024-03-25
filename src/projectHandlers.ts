@@ -1,6 +1,8 @@
-import { projectList } from './index'
+import { projectList, getCurrentProjectId } from './index'
+import createProjectObject from './createProjectObject'
 import getIdFromEvent from './getIdFromEvent'
 import * as DOM from './dom'
+import { Project } from './classes'
 
 export function renameHandler (e: Event): void {
   if (projectList.items.length === 0) {
@@ -84,4 +86,22 @@ export function deleteProject (e: Event): void {
     projectList.removeProject(id)
     DOM.listProjects()
   }
+}
+
+export function newProjectHandler (e: Event): void {
+  const targetForm = e.target as HTMLFormElement
+  const formData = new FormData(targetForm)
+  const { title, id } = createProjectObject(formData)
+  const project = new Project(title, id)
+  localStorage.setItem('currentProjectId', id)
+
+  if (projectList.items.length === 0) {
+    const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
+    addBtn.disabled = false
+  }
+
+  projectList.addProject(project)
+  targetForm.reset()
+  DOM.listProjects()
+  DOM.listTodos(getCurrentProjectId())
 }
