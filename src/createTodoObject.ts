@@ -2,7 +2,7 @@ import { type TodoObject, type checklistItem, type priority } from './interfaces
 import { v4 as uuid } from 'uuid'
 export default function createTodoObject (formData: FormData): TodoObject {
   const title = getStringParam(formData.get('title'), 'New task')
-  const description = getStringParam(formData.get('title'), '')
+  const description = getStringParam(formData.get('description'), '')
   const dueDate = getDateParam(formData.get('dueDate'), null)
   const dateStarted = new Date() // Generate it here for testing purposes but ideally on class instance
   const priority = getPriority(formData.get('priority'), 'normal')
