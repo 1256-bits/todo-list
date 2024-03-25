@@ -31,3 +31,13 @@
     fill: var(--text);
   }
 }
+
+.add-button:disabled {
+  stroke: var(--primary);
+  border-color: var(--primary);
+  cursor: default;
+
+  &:active {
+    background-color: inherit;
+  }
+}
