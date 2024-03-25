@@ -38,6 +38,11 @@ function createProjectItem (project: Project): HTMLLIElement {
 }
 
 export function renameHandler (e: Event): void {
+  if (projectList.items.length === 0) {
+    console.log('No projects available. Aborting')
+    return
+  }
+
   const id = getIdFromEvent(e)
   const title = projectList.getProject(id).title
 
@@ -87,6 +92,10 @@ export function deleteProject (e: Event): void {
   const target = e.currentTarget as HTMLElement
   const id = target.dataset.id as string
   const currentProjectId = localStorage.getItem('currentProjectId')
+  if (currentProjectId == null) {
+    console.log('No projects available. Aborting.')
+    return
+  }
   const projectIndex = projectList.getProjectIndexById(id)
   const projectTitle = projectList.getProject(id).title
   const confirmation = confirm(`Are you sure you want to delete ${projectTitle}`)
