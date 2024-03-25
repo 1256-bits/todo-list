@@ -2,7 +2,8 @@ import { type TodoItem } from './classes'
 import { getCurrentProjectId, parseDate, projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type priority, type checklistItem } from './interfaces'
-import { addChecklistItem, renameChecklistItem, deleteChecklistItem, getIdFromEvent } from './dom'
+import * as DOM from './dom'
+import getIdFromEvent from './getIdFromEvent'
 
 export default function listTodos (id: string): void {
   const todoArea = document.querySelector('main > ul')
@@ -47,7 +48,7 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const addBtn = createButtonElement('add', 'New checklist item')
   const renameBtn = createButtonElement('rename', 'Edit')
   const deleteBtn = createButtonElement('delete', 'Delete')
-  addBtn.addEventListener('click', addChecklistItem)
+  addBtn.addEventListener('click', DOM.addChecklistItem)
   renameBtn.addEventListener('click', editTodoItem)
   deleteBtn.addEventListener('click', deleteTodoItem)
   container.append(priority, done, doneLabelHidden)
@@ -99,8 +100,8 @@ function createChecklistItem (item: checklistItem, parentId: string): HTMLElemen
 
   const closeBtn = createButtonElement('close', 'Remove')
   const renameBtn = createButtonElement('rename', 'Rename')
-  closeBtn.addEventListener('click', deleteChecklistItem)
-  renameBtn.addEventListener('click', renameChecklistItem)
+  closeBtn.addEventListener('click', DOM.deleteChecklistItem)
+  renameBtn.addEventListener('click', DOM.renameChecklistItem)
 
   checklistItem.append(checkbox, label, renameBtn, closeBtn)
   return checklistItem
