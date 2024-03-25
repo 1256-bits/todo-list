@@ -3,8 +3,6 @@ import { projectList } from './index'
 import createButtonElement from './createButtonElement'
 import { type priority, type checklistItem } from './interfaces'
 import * as DOM from './dom'
-import getIdFromEvent from './getIdFromEvent'
-import parseDate from './parseDate'
 import getCurrentProjectId from './getCurrentProjectId'
 
 export default function listTodos (id: string): void {
@@ -51,8 +49,8 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const renameBtn = createButtonElement('rename', 'Edit')
   const deleteBtn = createButtonElement('delete', 'Delete')
   addBtn.addEventListener('click', DOM.addChecklistItem)
-  renameBtn.addEventListener('click', editTodoItem)
-  deleteBtn.addEventListener('click', deleteTodoItem)
+  renameBtn.addEventListener('click', DOM.editTodoItem)
+  deleteBtn.addEventListener('click', DOM.deleteTodoItem)
   container.append(priority, done, doneLabelHidden)
 
   if (item.checklist.length > 0) {
@@ -140,53 +138,6 @@ function createNameField (title: string): HTMLInputElement {
   name.readOnly = true
   name.value = title
   return name
-}
-
-function editTodoItem (e: Event): void {
-  const dialog = document.querySelector('#new-todo-dialog')
-  const saveBtn = dialog?.querySelector('#create-todo')
-  const id = getIdFromEvent(e)
-  if (!(dialog instanceof HTMLDialogElement) || !(saveBtn instanceof HTMLButtonElement)) {
-    throw new Error('Dialog or button not found')
-  }
-  assignValues(id, dialog)
-  saveBtn.textContent = 'Save'
-  dialog.showModal()
-}
-
-function assignValues (id: string, dialog: HTMLDialogElement): void {
-  const projectId = getCurrentProjectId()
-  const todo = projectList.getProject(projectId).getItem(id)
-
-  const title = dialog.querySelector('input[name="title"]') as HTMLInputElement
-  const description = dialog.querySelector('input[name="description"]') as HTMLInputElement
-  const dueDate = dialog.querySelector('input[name="dueDate"]') as HTMLInputElement
-  const dateStarted = dialog.querySelector('input[name="dateStarted"]') as HTMLInputElement
-  const priority = dialog.querySelector(`fieldset input[value="${todo.priority}"]`) as HTMLInputElement
-  const notes = dialog.querySelector('textarea') as HTMLTextAreaElement
-
-  title.value = todo.title
-  description.value = todo.description
-  if (todo.dueDate != null) {
-    dueDate.value = parseDate(todo.dueDate)
-  }
-  dateStarted.value = parseDate(todo.dateStarted)
-  priority.checked = true
-  notes.value = todo.notes
-}
-
-function deleteTodoItem (e: Event): void {
-  const target = e.currentTarget as HTMLElement
-  const id = target.parentElement?.dataset.id
-  if (id == null) {
-    return
-  }
-  const conf = confirm('Are you sure?')
-  const projectId = getCurrentProjectId()
-  if (conf) {
-    projectList.getProject(projectId).removeItem(id)
-    listTodos(projectId)
-  }
 }
 
 function createPriorityElement (priority: priority): SVGSVGElement {
