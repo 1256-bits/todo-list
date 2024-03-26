@@ -1,4 +1,4 @@
-export default function parseDate (date: Date): string {
+export default function parseDate (date: Date, forDisplay: boolean = false): string | string[] {
   const year = date.getFullYear()
   const processRaw = (raw: number): string => {
     const rawStr = String(raw)
@@ -9,5 +9,8 @@ export default function parseDate (date: Date): string {
   const day = processRaw(date.getDate())
   const hour = processRaw(date.getHours())
   const minute = processRaw(date.getMinutes())
+  if (forDisplay) {
+    return [`${day}/${month}/${year}`, `${hour}:${minute}`]
+  }
   return `${year}-${month}-${day}T${hour}:${minute}`
 }
