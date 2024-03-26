@@ -54,6 +54,10 @@ export class TodoItem implements TodoObject {
     this.notes = data.notes
   }
 
+  updataNotes (newNotes: string) {
+    this.notes = newNotes
+  }
+
   addChecklistItem (itemText: string): void {
     const itemCount = this.checklist.length
     const index = (itemCount === 0) ? 0 : this.checklist[itemCount - 1].index + 1
