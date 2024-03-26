@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -35,9 +36,11 @@ const config = {
       extensions: ['js', 'ts'],
       failOnError: false,
     }),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new CopyPlugin({
+      patterns: [
+        { from: "./src/svg", to: "svg" },
+      ],
+    }),
   ],
   module: {
     rules: [
@@ -69,15 +72,10 @@ module.exports = () => {
     config.mode = "production";
 
     config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new FaviconsWebpackPlugin('./src/icon.png'));
   } else {
     config.mode = "development";
     config.devtool = "inline-source-map";
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          { from: "./src/svg", to: "svg" },
-        ],
-      }));
   }
   return config;
 };
