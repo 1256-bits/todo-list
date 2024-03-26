@@ -101,3 +101,39 @@ export function deleteTodoItem (e: Event): void {
     listTodos(projectId)
   }
 }
+
+export function showNotesHandler (e: Event): void {
+  const id = getIdFromEvent(e)
+  const projectId = getCurrentProjectId()
+  const todo = projectList.getProject(projectId).getItem(id)
+  const notes = todo.notes
+  const dialog = document.querySelector('#notes-dialog')
+  if (!(dialog instanceof HTMLDialogElement)) {
+    throw new Error('Dialog not found')
+  }
+  const form = dialog.querySelector('form')
+  const textarea = dialog.querySelector('textarea')
+  if (!(textarea instanceof HTMLTextAreaElement)) {
+    throw new Error('Textarea not found')
+  }
+  textarea.value = notes
+  
+  const callback = updateNotesHandler.bind(todo)
+
+  dialog.showModal()
+  form?.addEventListener('submit', callback, { once: true })
+  dialog.addEventListener('close', () => {
+    form?.removeEventListener('submit', callback)
+  }, { once: true })
+}
+
+function updateNotesHandler (this: TodoItem, e: Event): void {
+  const target = e.target as HTMLFormElement
+  const formData = new FormData(target)
+  const newNotes = formData.get('notes')
+  if (typeof newNotes === 'string') {
+    this.updataNotes(newNotes)
+    return
+  }
+  throw new Error('Could not retrieve notes from form')
+}
