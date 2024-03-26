@@ -51,14 +51,12 @@
 }
 
 .page-wrapper {
-  --padding: 0.5rem;
-  min-height: calc(100vh - var(--padding));
-  min-height: calc(100dvh - var(--padding));
+  height: 100vh;
+  height: 100dvh;
   display: grid;
-  grid-template-rows: repeat(2, min(10%, 60px)) 1fr;
+  grid-template-rows: repeat(2, 60px) calc(100dvh - 120px - 1rem) 1rem;
   grid-template-columns: 1fr 2fr;
   column-gap: 1rem;
-  padding-bottom: 0.5rem;
 
   h2 {
     margin: 0;

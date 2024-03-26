@@ -5,6 +5,11 @@
   margin-right: 1rem;
   width: min(95ch, calc(100% - 1rem));
   position: relative;
+
+  & > ul {
+    overflow: auto;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .no-todos {
