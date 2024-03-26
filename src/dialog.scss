@@ -85,3 +85,25 @@
     }
   }
 }
+
+.notes-form {
+  margin-right: 1.5rem;
+  display: grid;
+  gap: 0.5rem;
+
+  & label {
+    font-size: 1.5rem;
+  }
+
+  & .submit {
+    font-size: 1.2rem;
+    width: 40%;
+    justify-self: center;
+  }
+
+  & textarea {
+    resize: none;
+    border-radius: 1rem;
+    border: solid 2px var(--primary);
+    }
+}
