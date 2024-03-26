@@ -116,11 +116,16 @@ function createCheckbox (item: TodoItem): HTMLInputElement {
   done.setAttribute('type', 'checkbox')
   done.setAttribute('name', 'done')
   done.addEventListener('change', e => {
+    const projectId = getCurrentProjectId()
+    const dueDateElement = document.querySelector(`[data-id="${item.id}"] .due-date`)
     const target = e.target as HTMLInputElement
     if (target.checked) {
       item.checkTodo()
+      dueDateElement?.classList.add('hidden')
+      listTodos(projectId)
     } else {
       item.uncheckTodo()
+      listTodos(projectId)
     }
   })
   done.checked = item.done
@@ -159,19 +164,21 @@ function createPriorityElement (priority: priority): SVGSVGElement {
 
 function createDueDateElement (date: Date | null, done: boolean): HTMLDivElement {
   const div = document.createElement('div')
+  div.classList.add('due-date')
 
   if (date == null || done) {
     return div
   }
 
-  const dateString = parseDate(date, true)
+  const dateDiv = document.createElement('div')
+  const timeDiv = document.createElement('div')
+  const dateStringArr = parseDate(date, true)
   const dueTimestamp = date.getTime()
   const curTimestamp = Date.now()
 
-  div.classList.add('due-date')
-  if (typeof dateString === 'string') {
-    div.textContent = dateString
-  }
+  dateDiv.textContent = dateStringArr[0]
+  timeDiv.textContent = dateStringArr[1]
+  div.append(dateDiv, timeDiv)
 
   if (dueTimestamp - curTimestamp < 0) {
     const overdue = document.createElement('div')
