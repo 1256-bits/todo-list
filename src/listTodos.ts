@@ -51,6 +51,7 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   addBtn.addEventListener('click', DOM.addChecklistItem)
   renameBtn.addEventListener('click', DOM.editTodoItem)
   deleteBtn.addEventListener('click', DOM.deleteTodoItem)
+  notes.addEventListener('click', DOM.showNotesHandler)
   container.append(priority, done, doneLabelHidden)
 
   if (item.checklist.length > 0) {
