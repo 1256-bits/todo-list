@@ -53,6 +53,20 @@
   &:nth-child(2) {
     border-top: 2px solid var(--primary);
   }
+
+  .due-date {
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 23/26;
+    place-self: center;
+    transition: .5s all linear;
+  }
+
+  .overdue-notice {
+    color: color-mix(in lch, var(--accent) 30%, red);
+    font-weight: 700;
+  }
 }
 
 .checklist {
