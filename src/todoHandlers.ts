@@ -25,7 +25,10 @@ export function newTodoBtnClickHandler (): void {
   const form = newTodoDialog.querySelector('form')
   if (dateStarted instanceof HTMLInputElement) {
     const date = new Date()
-    dateStarted.value = parseDate(date)
+    const newDate = parseDate(date)
+    if (typeof newDate === 'string') {
+      dateStarted.value = newDate
+    }
   }
   submitBtn.textContent = 'Create todo'
   form?.addEventListener('submit', createTodoHandler, { once: true })
@@ -80,10 +83,18 @@ function assignValues (id: string, dialog: HTMLDialogElement): void {
 
   title.value = todo.title
   description.value = todo.description
+
   if (todo.dueDate != null) {
-    dueDate.value = parseDate(todo.dueDate)
+    const newDueDate = parseDate(todo.dueDate)
+    if (typeof newDueDate === 'string') {
+      dueDate.value = newDueDate
+    }
   }
-  dateStarted.value = parseDate(todo.dateStarted)
+
+  const newDateStarted = parseDate(todo.dateStarted)
+  if (typeof newDateStarted === 'string') {
+    dateStarted.value = newDateStarted
+  }
   priority.checked = true
   notes.value = todo.notes
 }
@@ -117,7 +128,7 @@ export function showNotesHandler (e: Event): void {
     throw new Error('Textarea not found')
   }
   textarea.value = notes
-  
+
   const callback = updateNotesHandler.bind(todo)
 
   dialog.showModal()
