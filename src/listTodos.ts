@@ -4,6 +4,7 @@ import createButtonElement from './createButtonElement'
 import { type priority, type checklistItem } from './interfaces'
 import * as DOM from './dom'
 import getCurrentProjectId from './getCurrentProjectId'
+import parseDate from './parseDate'
 
 export default function listTodos (id: string): void {
   const todoArea = document.querySelector('main > ul')
@@ -44,6 +45,7 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
   const doneLabelHidden = createCheckboxLabel()
   const name = createNameField(item.title)
   const priority = createPriorityElement(item.priority)
+  const dueDate = createDueDateElement(item.dueDate, item.done)
   const notes = createButtonElement('notes', 'View notes')
   const addBtn = createButtonElement('add', 'New checklist item')
   const renameBtn = createButtonElement('rename', 'Edit')
@@ -56,11 +58,11 @@ function createTodoNode (item: TodoItem): HTMLLIElement {
 
   if (item.checklist.length > 0) {
     const checklist = createChecklist(item.checklist, item.id)
-    todoItem.append(container, name, notes, addBtn, renameBtn, deleteBtn, checklist)
+    todoItem.append(container, name, dueDate, notes, addBtn, renameBtn, deleteBtn, checklist)
     return todoItem
   }
 
-  todoItem.append(container, name, notes, addBtn, renameBtn, deleteBtn)
+  todoItem.append(container, name, dueDate, notes, addBtn, renameBtn, deleteBtn)
   return todoItem
 }
 
@@ -153,4 +155,29 @@ function createPriorityElement (priority: priority): SVGSVGElement {
 
   svg.append(title, use)
   return svg
+}
+
+function createDueDateElement (date: Date | null, done: boolean): HTMLDivElement {
+  const div = document.createElement('div')
+
+  if (date == null || done) {
+    return div
+  }
+
+  const dateString = parseDate(date, true)
+  const dueTimestamp = date.getTime()
+  const curTimestamp = Date.now()
+
+  div.classList.add('due-date')
+  if (typeof dateString === 'string') {
+    div.textContent = dateString
+  }
+
+  if (dueTimestamp - curTimestamp < 0) {
+    const overdue = document.createElement('div')
+    overdue.classList.add('overdue-notice')
+    overdue.textContent = 'Overdue'
+    div.appendChild(overdue)
+  }
+  return div
 }
