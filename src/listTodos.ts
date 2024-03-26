@@ -121,7 +121,7 @@ function createCheckbox (item: TodoItem): HTMLInputElement {
     const target = e.target as HTMLInputElement
     if (target.checked) {
       item.checkTodo()
-      dueDateElement?.classList.add('hidden')
+      dueDateElement?.classList.add('invisible')
       listTodos(projectId)
     } else {
       item.uncheckTodo()
