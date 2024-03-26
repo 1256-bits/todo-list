@@ -22,6 +22,7 @@ const config = {
     host: "localhost",
     static: "./src",
     hot: true,
+    liveReload: false,
     client: {
       overlay: false,
     }
