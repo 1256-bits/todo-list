@@ -33,14 +33,9 @@ item.addChecklistItem('Item 2')
 projectList.items[0].addItem(item)
 projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 
-// ADD NEW TODO
-// ADD NEW PROJECT
-
 const newProjectBtn = document.getElementById('new-project-button')
 const newProjectDialog = document.getElementById('new-project') as HTMLDialogElement
 newProjectBtn?.addEventListener('click', () => { newProjectDialog.showModal() })
-
-// CLOSE DIALOG
 
 const dialogCloseBtns = document.querySelectorAll('#close-dialog')
 dialogCloseBtns?.forEach(button => {
