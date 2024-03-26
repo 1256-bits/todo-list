@@ -46,6 +46,10 @@
   display: none;
 }
 
+.invisible {
+  opacity: 0;
+}
+
 .page-wrapper {
   --padding: 0.5rem;
   min-height: calc(100vh - var(--padding));
