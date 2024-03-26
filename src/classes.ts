@@ -54,7 +54,7 @@ export class TodoItem implements TodoObject {
     this.notes = data.notes
   }
 
-  updataNotes (newNotes: string) {
+  updataNotes (newNotes: string): void {
     this.notes = newNotes
   }
 
