@@ -117,11 +117,9 @@ function createCheckbox (item: TodoItem): HTMLInputElement {
   done.setAttribute('name', 'done')
   done.addEventListener('change', e => {
     const projectId = getCurrentProjectId()
-    const dueDateElement = document.querySelector(`[data-id="${item.id}"] .due-date`)
     const target = e.target as HTMLInputElement
     if (target.checked) {
       item.checkTodo()
-      dueDateElement?.classList.add('invisible')
       listTodos(projectId)
     } else {
       item.uncheckTodo()
