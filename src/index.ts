@@ -5,6 +5,10 @@ import './styles.scss'
 
 export const projectList = new ProjectList()
 
+const exportBtn = document.querySelector('.import')
+const importBtn = document.querySelector('.import')
+exportBtn?.addEventListener('click', DOM.exportHandler)
+
 const newTodoBtn = document.getElementById('new-todo')
 newTodoBtn?.addEventListener('click', DOM.newTodoBtnClickHandler)
 
