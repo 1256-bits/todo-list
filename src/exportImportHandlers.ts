@@ -17,22 +17,25 @@ export function importHandler (): void {
   form?.addEventListener('submit', formSubmitHandler, { once: true })
 }
 
-async function formSubmitHandler (e: Event): Promise<void> {
+function formSubmitHandler (e: Event): void {
   const target = e.target as HTMLFormElement
   const formData = new FormData(target)
   const file = formData.get('import-file')
   if (file instanceof File) {
-    const text = await file.text()
-    projectList.fromJSON(text)
-    const id = projectList.items[0].id
-    DOM.listTodos(id)
-    DOM.listProjects()
-    if (projectList.items[0].items.length > 0) {
-      const addBtn = document.querySelector('.project-header .add-button')
-      if (!(addBtn instanceof HTMLButtonElement)) {
-        throw new Error('Add button not found')
+    file.text().then(text => {
+      projectList.fromJSON(text)
+      const id = projectList.items[0].id
+      DOM.listTodos(id)
+      DOM.listProjects()
+      if (projectList.items[0].items.length > 0) {
+        const addBtn = document.querySelector('.project-header .add-button')
+        if (!(addBtn instanceof HTMLButtonElement)) {
+          throw new Error('Add button not found')
+        }
+        addBtn.disabled = false
       }
-      addBtn.disabled = false
-    }
+    }).catch(() => {
+      console.error('Unable to upload a file')
+    })
   }
 }

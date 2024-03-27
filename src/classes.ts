@@ -159,9 +159,10 @@ export class ProjectList {
     }
     this.clear()
     localStorage.clear()
-    itemCollector.forEach(item => this.addProject(item))
+    itemCollector.forEach(item => {
+      this.addProject(item)
+    })
     this.save()
-    return
   }
 
   addProject (project: Project): void {
