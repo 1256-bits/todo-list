@@ -1,12 +1,7 @@
-import { TodoItem, Project, ProjectList } from './classes'
-import createTodoObject from './createTodoObject'
-import { v4 as uuid } from 'uuid'
+import { ProjectList } from './classes'
 import * as DOM from './dom'
 import 'normalize.css'
 import './styles.scss'
-
-// TEMP
-localStorage.clear()
 
 export const projectList = new ProjectList()
 
@@ -20,18 +15,6 @@ const headerRenameBtn = document.querySelector('.project-header > .rename-button
 const headerDeleteBtn = document.querySelector('.project-header > .delete-button')
 headerRenameBtn?.addEventListener('click', DOM.renameHandler)
 headerDeleteBtn?.addEventListener('click', DOM.deleteProject)
-
-// DUMMY PROJECTS
-projectList.addProject(new Project('Project 1', uuid()))
-projectList.addProject(new Project('Project 2', uuid()))
-projectList.addProject(new Project('Project 3', uuid()))
-
-// DUMMY TODO WITH CHECKLISTS
-const item = new TodoItem(createTodoObject(new FormData()))
-item.addChecklistItem('Item 1')
-item.addChecklistItem('Item 2')
-projectList.items[0].addItem(item)
-projectList.items[0].addItem(new TodoItem(createTodoObject(new FormData())))
 
 const newProjectBtn = document.getElementById('new-project-button')
 const newProjectDialog = document.getElementById('new-project') as HTMLDialogElement
@@ -58,6 +41,7 @@ dialogs.forEach(dialog => {
 
 function init (): void {
   const id = localStorage.getItem('currentProjectId')
+  projectList.restore()
 
   if (projectList.items.length === 0) {
     const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
