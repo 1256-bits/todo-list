@@ -17,7 +17,7 @@ export function importHandler (): void {
   form?.addEventListener('submit', formSubmitHandler, { once: true })
   dialog.addEventListener('close', () => {
     form?.removeEventListener('submit', formSubmitHandler)
-  })
+  }, { once: true })
 }
 
 function formSubmitHandler (e: Event): void {
