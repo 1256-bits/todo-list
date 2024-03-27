@@ -15,6 +15,9 @@ export function importHandler (): void {
   const form = dialog.querySelector('form')
   dialog?.showModal()
   form?.addEventListener('submit', formSubmitHandler, { once: true })
+  dialog.addEventListener('close', () => {
+    form?.removeEventListener('submit', formSubmitHandler)
+  })
 }
 
 function formSubmitHandler (e: Event): void {
