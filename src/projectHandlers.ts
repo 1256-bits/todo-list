@@ -46,6 +46,7 @@ function renameProject (e: Event, id: string): void {
 
   const project = projectList.getProject(id)
   project.title = title
+  projectList.save()
   DOM.listProjects()
 
   const titleBar = document.querySelector('.project-header > h2')
@@ -85,6 +86,7 @@ export function deleteProject (e: Event): void {
       addBtn.disabled = true
     }
     projectList.removeProject(id)
+    projectList.save()
     DOM.listProjects()
   }
 }
@@ -102,6 +104,7 @@ export function newProjectHandler (e: Event): void {
   }
 
   projectList.addProject(project)
+  projectList.save()
   targetForm.reset()
   DOM.listProjects()
   DOM.listTodos(getCurrentProjectId())

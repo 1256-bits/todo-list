@@ -14,6 +14,7 @@ export function createTodoHandler (e: Event): void {
 
   const currentProject = projectList.getProject(currentProjectId)
   currentProject.addItem(new TodoItem(initParams))
+  projectList.save()
   targetForm.reset()
   listTodos(currentProjectId)
 }
@@ -66,6 +67,7 @@ export function editTodoHandler (id: string, e: Event): void {
   const project = projectList.getProject(projectId)
   const todo = project.getItem(id)
   todo.updateFields(todoObject)
+  projectList.save()
 
   listTodos(projectId)
 }
@@ -109,6 +111,7 @@ export function deleteTodoItem (e: Event): void {
   const projectId = getCurrentProjectId()
   if (conf) {
     projectList.getProject(projectId).removeItem(id)
+    projectList.save()
     listTodos(projectId)
   }
 }
@@ -144,6 +147,7 @@ function updateNotesHandler (this: TodoItem, e: Event): void {
   const newNotes = formData.get('notes')
   if (typeof newNotes === 'string') {
     this.updataNotes(newNotes)
+    projectList.save()
     return
   }
   throw new Error('Could not retrieve notes from form')

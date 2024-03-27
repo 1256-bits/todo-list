@@ -56,6 +56,7 @@ export function deleteChecklistItem (e: Event): void {
   if (conf && typeof index === 'string' && typeof id === 'string') {
     const todo = projectList.getProject(projectId).getItem(id)
     todo.removeChecklistItem(parseInt(index))
+    projectList.save()
     listTodos(projectId)
     return
   }
@@ -72,6 +73,7 @@ function addChecklistHandler (e: Event, id: string): void {
   const projectId = getCurrentProjectId()
   const todo = projectList.getProject(projectId).getItem(id)
   todo.addChecklistItem(content)
+  projectList.save()
   listTodos(projectId)
   target.reset()
 }
@@ -87,6 +89,7 @@ function editChecklistHandler (e: Event, id: string, index: number): void {
   const todo = projectList.getProject(projectId).getItem(id)
   const item = todo.findChecklistItem(index)
   item.text = content
+  projectList.save()
   listTodos(projectId)
   target.reset()
 }
