@@ -175,4 +175,18 @@ export class ProjectList {
     const index = this.items.indexOf(project)
     return index
   }
+
+  save (): void {
+    const json = JSON.stringify(this)
+    localStorage.setItem('projectList', json)
+  }
+
+  restore (): void {
+    const json = localStorage.getItem('projectList')
+    if (json == null) {
+      console.log('localStorage is empty. Aborting')
+      return
+    }
+    this.fromJSON(json)
+  }
 }
