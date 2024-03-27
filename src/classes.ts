@@ -138,7 +138,7 @@ export class Project implements ProjectObject {
 }
 
 export class ProjectList {
-  readonly items: Project[] = []
+  items: Project[] = []
 
   fromJSON (json: string | null): void {
     if (json == null) {
@@ -146,11 +146,22 @@ export class ProjectList {
       return
     }
     const imports: ProjectList = JSON.parse(json)
-    imports.items.forEach(prImport => {
-      const project = new Project(prImport.title, prImport.id)
-      prImport.items.forEach(item => { project.addItem(new TodoItem(item)) })
-      this.addProject(project)
-    })
+
+    const itemCollector: Project[] = []
+    try {
+      imports.items.forEach(prImport => {
+        const project = new Project(prImport.title, prImport.id)
+        prImport.items.forEach(item => { project.addItem(new TodoItem(item)) })
+        itemCollector.push(project)
+      })
+    } catch {
+      throw new Error('Import failed. Incorrect import file format')
+    }
+    this.clear()
+    localStorage.clear()
+    itemCollector.forEach(item => this.addProject(item))
+    this.save()
+    return
   }
 
   addProject (project: Project): void {
@@ -188,5 +199,9 @@ export class ProjectList {
       return
     }
     this.fromJSON(json)
+  }
+
+  clear (): void {
+    this.items = []
   }
 }
