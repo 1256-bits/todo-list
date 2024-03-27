@@ -78,12 +78,19 @@ export function deleteProject (e: Event): void {
     if (projectList.items.length === 1) {
       localStorage.removeItem('currentProjectId')
       const addBtn = document.querySelector('.project-header .add-button') as HTMLButtonElement
+      const todoArea = document.querySelector('main > ul')
       const titleBar = document.querySelector('.project-header h2')
       if (titleBar == null) {
         throw new Error('title bar not found')
       }
       titleBar.textContent = ''
       addBtn.disabled = true
+      if (todoArea != null) {
+        const children = Array.from(todoArea.children).filter(child => !child.classList.contains('no-todos'))
+        children.forEach(child => {
+          todoArea?.removeChild(child)
+        })
+      }
     }
     projectList.removeProject(id)
     projectList.save()
