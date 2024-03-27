@@ -105,5 +105,28 @@
     resize: none;
     border-radius: 1rem;
     border: solid 2px var(--primary);
-    }
+  }
+}
+
+input[type="file"] {
+  background-color: white;
+  font-size: 1.2rem;
+}
+
+.upload-form {
+  display: grid;
+  gap: 0.5rem;
+  padding-right: 1.5rem;
+  width: 70ch;
+  margin-inline: 1rem;
+
+  & label {
+    font-size: 1.5rem;
+  }
+
+  & .submit {
+    font-size: 1.2rem;
+    width: 40%;
+    justify-self: center;
+  }
 }
